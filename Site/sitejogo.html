@@ -28,7 +28,7 @@
         *{box-sizing: border-box;
             margin:0px;
             padding: 0px;}
-        body{display:grid; grid-template-rows: auto 1fr auto; min-height: 100vh; overflow-x: hidden;}
+        body{display:grid; grid-template-rows: auto 1fr auto; min-height: 100vh; overflow-x: hidden; background: #000;}
         .cabec{font-size:18px; background: #000000; color: #fff; padding: 1rem;
             display: flex; justify-content: space-between; align-items: center; position: relative;}
             .menu-toggle {display: none; background: none; border: none;
@@ -85,7 +85,7 @@
             .atras {height: auto;
                     object-position: center;}
             .frente {width: 25%;
-                    top: 15vh;
+                    top: 15vh !important;
                     margin: 10vh auto 0;}
             .trilho {bottom: -30vh;}
     }
@@ -207,16 +207,48 @@
             .documento button{grid-area: botao; justify-self: start; margin: 0; font-size: clamp(6px, 2.2vw, 10px); padding: 6px 8px; border-width: 2px;}
          }
 
-         /* Espaço Vazio entre Documento e Git Hub */
-         .aaa{background: #000; color: #000; margin-top: -20px;}
+        /* Espaço Vazio entre Documento e Git Hub */
+        .aaa{background: #000; color: #000; margin-top: -20px;}
+        @media (max-width: 768px){
+            .aaa{font-size: clamp(4px, 2vw, 5px);}
+            body{background: #000;}
+        }
 
-         /* Git Hub */
-         .github{background: #000; color: #fff; font-family: "Press Start 2P", monospace; margin-top: 200px;}
-         .github-titulo{font-size: 60px; text-align: center;}
-         @media (max-width: 768px){
-            .github{min-height: 0; height: 40vw; padding: 0vw 1vw; align-items: center; grid-template-rows: auto;
-                      grid-auto-rows: auto; margin-bottom: 0;}
-         }
+        /* Git Hub */
+        .github{background: #000; color: #fff; font-family: "Press Start 2P", monospace; padding: 60px 3%;}
+        .github-titulo{font-size: clamp(20px, 4vw, 60px); text-align: center; margin: 0 0 50px;}
+        .equipe{display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 20px; align-items: start;}
+        .membro{display: flex; flex-direction: column; align-items: center;}
+        .foto{width: 70%; aspect-ratio: 1/1; border-radius: 50%; object-fit: cover; border: 4px solid #fff; background: #000;
+              position: relative; z-index: 1; margin-bottom: -18%;   /* a cabeça "encaixa" no corpo */}
+        .corpo{width: 100%; border: 4px solid #fff; border-radius: 12px 12px 8px 8px; padding: 22% 8% 12%; text-align: center; min-height: 140px;}
+        .corpo h3{font-size: clamp(8px, 1.1vw, 14px); line-height: 1.5; margin: 0 0 12px;}
+        .corpo a{color:#fff; font-size: clamp(6px, 0.8vw, 10px); word-break: break-all; text-decoration: underline;}
+        .corpo a:hover{background: #fff; color: #000;}
+        .equipe-wrap{display:block;}
+        .seta-git{display:none;}
+        .membro[hidden]{display:none !important;}
+
+        /* Footer */
+        .rodape{display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;  padding: 16px 3%; margin-top: 28px;
+                border-top: 3px solid #fff; background: #000; color: #fff; font-family: "Press Start 2P", monospace;}
+        .rodape-esquerda{display: flex; align-items: center; gap: 10px;}
+        .rodape-logo{color: #fff; text-decoration: none; line-height: 1;}
+        .rodape-texto{font-size: clamp(7px, 1.2vw, 12px);}
+        .rodape-redes{display: flex; list-style: none; margin: 0; padding: 0; gap: 16px;}
+        .rodape-link{color: #fff; display: inline-block;}
+        .rodape-link:hover{opacity: .6;}
+        .rodape-icone{fill: currentColor; vertical-align: -0.125em;}
+        .rodape-imagem{
+  height:48px;
+  width:auto;
+  display:block;
+  image-rendering:pixelated; /* mantém o visual pixelado, se for pixel art */
+}
+        @media (max-width:768px){
+            .rodape{flex-direction:column;gap:12px;text-align:center;}
+            .rodape-imagem{height:36px;}
+        }
     </style>
 </head>
 <body>
@@ -231,22 +263,22 @@
             <span class="contorno-codes" style="color: rgb(0, 0, 0);">CODES</span></a></div>
             <button class="menu-toggle">&equiv;</button> 
         <nav class="nav-menu">
-            <a href="#https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">Início</a>
-            <a href="#https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">Gameplay</a>
-            <a href="#https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">Personagens</a>
-            <a href="#https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">Cenários</a>
-            <a href="#https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">Documento</a>
-            <a href="#https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">Git Hub</a>
+            <a href="#inicio" rel="stylesheet">Início</a>
+            <a href="#gameplay" rel="stylesheet">Gameplay</a>
+            <a href="#personagens" rel="stylesheet">Personagens</a>
+            <a href="#cenario" rel="stylesheet">Cenários</a>
+            <a href="#documento" rel="stylesheet">Documento</a>
+            <a href="#github" rel="stylesheet">Git Hub</a>
         </nav>
     </header>
     <main>
         <div class="trilho">
                 <img class="frente" src="Imagens/Logodojogo-semfundo.png" alt="Logo do Jogo">
         </div>
-        <section class="inicio">
+        <section class="inicio" id="inicio">
             <img class="atras" src="./Imagens/Cenario.fase2.png" alt="Cenário">
         </section>
-        <section class="gameplay">
+        <section class="gameplay" id="gameplay">
             <h2>Gameplay</h2>
             <div>
                 <div class="video">
@@ -256,7 +288,7 @@
                 detalhes sobre nosso jogo!!!</p>
             </div>
         </section>
-        <section class="personagens">
+        <section class="personagens" id="personagens">
                 <h2 class="personagenstitulo"><span>Nossos</span> <span class="spanh2">Personagens</span></h2>
                 <section class="carrosel">
                     <button class="seta" id="esq">&#10094;</button>
@@ -305,7 +337,7 @@
                     </div>
                 </section>
             </section>
-        <section class="cenario">
+        <section class="cenario" id="cenario">
             <h2 class="cenariotitulo"><span>Cenários</span> <span class="spanh2ce">do Jogo</span></h2>
             <section class="carrosel">
                 <button class="seta" id="esqCen">&#10094;</button>
@@ -351,7 +383,7 @@
                 </div>
             </section>
         </section>
-        <section class="documento">
+        <section class="documento" id="documento">
             <h2 class="documentotitulo">Documento</h2>
             <p>Documento ABNT referente a detalhes técnicos e da história de nosso jogo!!!</p>
             <a href="Documento/Documento Teste.pdf">Baixar Documento</a>
@@ -361,45 +393,81 @@
         <section class="aaa">
             <h2>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h2>
         </section>
-        <section class="github">
-            <h2 class="github-titulo">Git Hub</h2>
-            <div>
-                <h3>A</h3>
-            </div>
+        <section class="github" id="github">
+            <h2 class="github-titulo">GitHub</h2>
+                <div class="equipe">
+                    <div class="membro">
+                        <img class="foto" src="Imagens/fotofelipe.jpeg" alt="Foto Felipe">
+                        <div class="corpo">
+                            <h3>Felipe Ferreira Martins</h3>
+                            <a href="https://github.com/GitFelipeDev1" target="_blank" rel="noopener">@GitFelipeDev1</a>
+                        </div>
+                    </div>
 
-            <div>
-                <h3>A</h3>
-            </div>
+                    <div class="membro">
+                        <img class="foto" src="Imagens/fotojons.jpeg" alt="Foto Jons">
+                        <div class="corpo">
+                            <h3>Jônatas David Quispe Pimenta da Silva</h3>
+                            <a href="https://github.com/JonatasDavid27" target="_blank" rel="noopener">@JonatasDavid27</a>
+                        </div>
+                    </div>
 
-            <div>
-                <h3>A</h3>
-            </div>
+                    <div class="membro">
+                        <img class="foto" src="Imagens/fotodiogo2.jpeg" alt="Foto Diogo">
+                        <div class="corpo">
+                            <h3>Lucas Diogo Leite da Silva</h3>
+                            <a href="https://github.com/diogolucasLS" target="_blank" rel="noopener">@diogolucasLS</a>
+                        </div>
+                    </div>
 
-            <div>
-                <h3>A</h3>
-            </div>
+                    <div class="membro">
+                        <img class="foto" src="Imagens/fotomick2.jpeg" alt="Foto Mickeias">
+                        <div class="corpo">
+                            <h3>Mickeias Nascimento de Brito</h3>
+                            <a href="https://github.com/tp4mickeias290-droid" target="_blank" rel="noopener">@tp4mickeias290-droid</a>
+                        </div>
+                    </div>
 
-            <div>
-                <h3>A</h3>
-            </div>
-            <h3>A</h3> 
-            <h3>A</h3> 
-            <h3>A</h3> 
-            <h3>A</h3> 
-            <h3>A</h3> 
-            <h3>A</h3> 
-            <h3>A</h3>
-            <h3>A</h3> 
-            <h3>A</h3> 
-            <h3>A</h3> 
-            <h3>A</h3> 
-            <h3>A</h3> 
-            <h3>A</h3> 
-            <h3>A</h3> 
+                    <div class="membro">
+                        <img class="foto" src="Imagens/fotosirius.jpeg" alt="Foto Sirius">
+                        <div class="corpo">
+                            <h3>Sirius Camara Vessicari</h3>
+                            <a href="https://github.com/SiriusVe" target="_blank" rel="noopener">@SiriusVe</a>
+                        </div>
+                    </div>
+                </div>
+            
         </section>
     </main>
-    <footer>
+    <footer class="rodape">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+            <symbol id="bootstrap" viewBox="0 0 118 94">
+            <title>Bootstrap</title>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
+            </symbol>
+            <symbol id="fgithub" viewBox="0 0 16 16">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+            </symbol>
+        </svg>
 
+        <div class="rodape-esquerda">
+            <a href="#inicio" class="rodape-logo" aria-label="Logo">
+            <img class="rodape-imagem" src="Imagens/Logodojogo-semfundo.png" alt="Logo Jogo Footer">
+            </svg>
+            </a>
+            <span class="rodape-texto">&copy; 2026 Crazy in Codes</span>
+        </div>
+
+        <ul class="rodape-redes">
+            <li>
+            <a class="rodape-link" href="https://github.com/SiriusVe/crazy-in-codes" aria-label="GitHub">
+                <svg class="rodape-icone" width="24" height="24" aria-hidden="true">
+                <use href="#fgithub"></use>
+                </svg>
+            </a>
+            </li>
+        </ul>
     </footer>
     <script>
         /* Script para alternar o menu em telas menores */
@@ -462,7 +530,7 @@
                 pdf.webkitRequestFullscreen();}
         });
 
-        /* Script para a Logo para ao chegar no Git Hub */
+        /* Script para a Logo parar ao chegar no Git Hub */
         const logo = document.querySelector('.frente');
         const alvo = document.querySelector('.documento');
         const trilho = logo.parentElement;
@@ -498,6 +566,10 @@
         window.addEventListener('resize', medir);
         window.addEventListener('load', medir);
         medir();
+        [...document.querySelectorAll('.nav-menu a')].map(a => {
+        const id = a.getAttribute('href').slice(1);
+        return a.textContent.trim() + ' → ' + (document.getElementById(id) ? 'OK' : 'SEM SEÇÃO "' + id + '"');
+        })
     </script>
 </body>
 </html>
