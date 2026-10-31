@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo</title>
     <style>
+        :root{--altura-header: 70px;}
+        html{scroll-behavior: smooth; scroll-padding-top: var(--altura-header);}
         /* Cabeçalho */
         header{position: sticky !important; /* O !important é necessário para sobrescrever o position flex da classe .cabec */
                 top: 0;
@@ -85,7 +87,7 @@
             .atras {height: auto;
                     object-position: center;}
             .frente {width: 25%;
-                    top: 15vh !important;
+                    top: 10vh;
                     margin: 10vh auto 0;}
             .trilho {bottom: -30vh;}
     }
@@ -570,6 +572,17 @@
         const id = a.getAttribute('href').slice(1);
         return a.textContent.trim() + ' → ' + (document.getElementById(id) ? 'OK' : 'SEM SEÇÃO "' + id + '"');
         })
+
+        /* Script para centralização no da logo Quando aperta os botões no header */
+        const headerEl = document.querySelector('header');
+
+function medirHeader(){
+  document.documentElement.style.setProperty('--altura-header', headerEl.offsetHeight + 'px');
+}
+
+medirHeader();
+window.addEventListener('resize', medirHeader);
+window.addEventListener('load', medirHeader);
     </script>
 </body>
 </html>
