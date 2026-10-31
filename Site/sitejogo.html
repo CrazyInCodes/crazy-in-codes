@@ -575,14 +575,12 @@
 
         /* Script para centralização no da logo Quando aperta os botões no header */
         const headerEl = document.querySelector('header');
-
-function medirHeader(){
-  document.documentElement.style.setProperty('--altura-header', headerEl.offsetHeight + 'px');
-}
-
-medirHeader();
-window.addEventListener('resize', medirHeader);
-window.addEventListener('load', medirHeader);
+        function medirHeader(){
+            document.documentElement.style.setProperty('--altura-header', headerEl.offsetHeight + 'px');
+        }
+        medirHeader();
+        window.addEventListener('resize', medirHeader);
+        window.addEventListener('load', medirHeader);
     </script>
 </body>
 </html>
