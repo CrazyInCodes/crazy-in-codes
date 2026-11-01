@@ -3,10 +3,9 @@
 [ext_resource type="Script" uid="uid://cb6ir56ygmecc" path="res://Scripts/fase_1.gd" id="1_acukj"]
 [ext_resource type="Texture2D" uid="uid://7lko7y5hwnvd" path="res://Assets/Sprites/Cenários/cenario.mesa.png" id="2_acukj"]
 [ext_resource type="Texture2D" uid="uid://dq7is1cfvlgri" path="res://Assets/Sprites/Cenários/cenario.telagrande.png" id="3_cq7l2"]
-[ext_resource type="Texture2D" uid="uid://bcavo16a2ijwg" path="res://Assets/Sprites/Player/Sprites-PlayerS1.png" id="4_efuq8"]
 [ext_resource type="PackedScene" uid="uid://ds745cvbq5e0e" path="res://Scenes/PauseMenu.tscn" id="4_gw3gf"]
-[ext_resource type="Texture2D" uid="uid://b5wg8xfbfen5w" path="res://Assets/Sprites/UI/Bars/sanidade.png" id="5_hya8f"]
 [ext_resource type="Texture2D" uid="uid://duqvi7e3vp7wd" path="res://Assets/Sprites/UI/Bars/sanidadeajuste.png" id="6_aw74n"]
+[ext_resource type="Texture2D" uid="uid://lyfd5tgi43ui" path="res://Assets/Sprites/Player/Sprite-PlayerS2.png" id="6_hya8f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cq7l2"]
 font_size = 30
@@ -17,31 +16,31 @@ font_size = 25
 [sub_resource type="LabelSettings" id="LabelSettings_efuq8"]
 font_size = 60
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_aw74n"]
+atlas = ExtResource("6_aw74n")
+region = Rect2(192, 16, 64, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_sl6av"]
-atlas = ExtResource("5_hya8f")
-region = Rect2(96, 0, 32, 32)
+atlas = ExtResource("6_aw74n")
+region = Rect2(128, 16, 64, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5p4kr"]
-atlas = ExtResource("5_hya8f")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ds3y1"]
-atlas = ExtResource("5_hya8f")
-region = Rect2(32, 0, 32, 32)
+atlas = ExtResource("6_aw74n")
+region = Rect2(64, 16, 64, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2q620"]
 atlas = ExtResource("6_aw74n")
 region = Rect2(0, 16, 64, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_14sx1"]
-atlas = ExtResource("5_hya8f")
-region = Rect2(128, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds3y1"]
+atlas = ExtResource("6_aw74n")
+region = Rect2(256, 16, 64, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qgu4t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sl6av")
+"texture": SubResource("AtlasTexture_aw74n")
 }],
 "loop": 1,
 "name": &"25",
@@ -49,7 +48,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5p4kr")
+"texture": SubResource("AtlasTexture_sl6av")
 }],
 "loop": 1,
 "name": &"50",
@@ -57,7 +56,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ds3y1")
+"texture": SubResource("AtlasTexture_5p4kr")
 }],
 "loop": 1,
 "name": &"75",
@@ -73,30 +72,30 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_14sx1")
+"texture": SubResource("AtlasTexture_ds3y1")
 }],
 "loop": 1,
 "name": &"zero",
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gw3gf"]
-atlas = ExtResource("4_efuq8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_14sx1"]
+atlas = ExtResource("6_hya8f")
 region = Rect2(300, 0, 300, 300)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hya8f"]
-atlas = ExtResource("4_efuq8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_unq8r"]
+atlas = ExtResource("6_hya8f")
 region = Rect2(0, 0, 300, 300)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aw74n"]
-atlas = ExtResource("4_efuq8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyob3"]
+atlas = ExtResource("6_hya8f")
 region = Rect2(600, 0, 300, 300)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7fw7d"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gw3gf")
+"texture": SubResource("AtlasTexture_14sx1")
 }],
 "loop": 1,
 "name": &"Happy",
@@ -104,7 +103,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hya8f")
+"texture": SubResource("AtlasTexture_unq8r")
 }],
 "loop": 1,
 "name": &"Sad",
@@ -112,7 +111,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aw74n")
+"texture": SubResource("AtlasTexture_nyob3")
 }],
 "loop": 1,
 "name": &"Serious",
