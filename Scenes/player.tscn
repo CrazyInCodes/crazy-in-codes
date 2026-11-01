@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://h0cgxcdqlk6p" path="res://Scripts/playerMV.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bccu2f3bogstp" path="res://Assets/Sprites/Player/Player.todos.png" id="2_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://iroywe8itilh" path="res://Scenes/dash.tscn" id="2_vgqql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b3kd"]
 size = Vector2(24, 57)
@@ -94,6 +95,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=500233316]
 script = ExtResource("1_cvnsp")
+dash_effect_scene = ExtResource("2_vgqql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2093998276 groups=["Player"]]
 position = Vector2(-6, 18.5)
