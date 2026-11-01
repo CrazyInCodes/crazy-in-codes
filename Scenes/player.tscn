@@ -94,6 +94,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=500233316]
+z_index = 10
 script = ExtResource("1_cvnsp")
 dash_effect_scene = ExtResource("2_vgqql")
 
@@ -106,10 +107,3 @@ position = Vector2(7, -16.5)
 sprite_frames = SubResource("SpriteFrames_7fw7d")
 animation = &"Up"
 frame_progress = 0.7172741
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=893949234]
-limit_left = -701
-limit_top = -400
-limit_right = 700
-limit_bottom = 400
-editor_draw_limits = true
