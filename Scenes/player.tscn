@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://h0cgxcdqlk6p" path="res://Scripts/playerMV.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bccu2f3bogstp" path="res://Assets/Sprites/Player/Player.todos.png" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://iroywe8itilh" path="res://Scenes/dash.tscn" id="2_vgqql"]
+[ext_resource type="Texture2D" uid="uid://dovlspc5lioqv" path="res://Assets/Sprites/Player/spriteplayerS3teste.png" id="4_vgqql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b3kd"]
 size = Vector2(24, 57)
@@ -42,6 +43,22 @@ region = Rect2(300, 0, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
 atlas = ExtResource("2_6t5aa")
 region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukyrk"]
+atlas = ExtResource("4_vgqql")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
+atlas = ExtResource("4_vgqql")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4iuc"]
+atlas = ExtResource("4_vgqql")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd4e3"]
+atlas = ExtResource("4_vgqql")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7fw7d"]
 animations = [{
@@ -91,6 +108,23 @@ animations = [{
 "loop": 1,
 "name": &"Up",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukyrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dp3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4iuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd4e3")
+}],
+"loop": 1,
+"name": &"Walk",
+"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=500233316]
@@ -105,5 +139,5 @@ shape = SubResource("RectangleShape2D_4b3kd")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=957551769]
 position = Vector2(7, -16.5)
 sprite_frames = SubResource("SpriteFrames_7fw7d")
-animation = &"Up"
-frame_progress = 0.7172741
+animation = &"Walk"
+frame_progress = 0.82044864
