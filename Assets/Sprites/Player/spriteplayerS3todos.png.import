@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwce0yuf1f7ac"
-path="res://.godot/imported/abilidade.dash.png-ed33f97a2b4aa1b05ccc1a2cffcfbba3.ctex"
+uid="uid://cfed388kljcu2"
+path="res://.godot/imported/spriteplayerS3todos.png-8382cbcd8098390d22c0b1c179d9d58a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/Itens/abilidade.dash.png"
-dest_files=["res://.godot/imported/abilidade.dash.png-ed33f97a2b4aa1b05ccc1a2cffcfbba3.ctex"]
+source_file="res://Assets/Sprites/Player/spriteplayerS3todos.png"
+dest_files=["res://.godot/imported/spriteplayerS3todos.png-8382cbcd8098390d22c0b1c179d9d58a.ctex"]
 
 [params]
 

@@ -6,34 +6,34 @@
 [ext_resource type="PackedScene" uid="uid://dds5deibvq4vn" path="res://Scenes/rato.tscn" id="4_p0386"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fw7d"]
-size = Vector2(17, 2563)
+size = Vector2(6.000004, 1062)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b3kd"]
-size = Vector2(1608.5, 41)
+size = Vector2(661.75, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exckr"]
-size = Vector2(1602.375, 53.75)
+size = Vector2(674, 26)
 
 [node name="Fase2" type="Node2D" unique_id=1845862309]
 
-[node name="Cenário" type="Sprite2D" parent="." unique_id=1328133885]
-position = Vector2(1233, -225.24998)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("1_1blhx")
-
 [node name="Player" parent="." unique_id=500233316 instance=ExtResource("2_w016j")]
-position = Vector2(4, -197)
+position = Vector2(-26, -76)
 scale = Vector2(0.6, 0.6)
 collision_layer = 2
 collision_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=757326563]
-position = Vector2(3, 0)
-zoom = Vector2(2, 2)
+position = Vector2(4, 0)
+zoom = Vector2(8, 8)
 limit_left = -45
-limit_top = -439
-limit_right = 2500
+limit_top = -186
+limit_right = 1003
 limit_bottom = -15
+
+[node name="Cenário" type="Sprite2D" parent="." unique_id=1328133885]
+position = Vector2(481.46786, -99.74999)
+scale = Vector2(1.0321639, 1.0321639)
+texture = ExtResource("1_1blhx")
 
 [node name="Limites mundo" type="StaticBody2D" parent="." unique_id=222389897]
 position = Vector2(-58, -193.25)
@@ -45,25 +45,18 @@ position = Vector2(9.5, -32)
 shape = SubResource("RectangleShape2D_7fw7d")
 
 [node name="ParedeInv2" type="CollisionShape2D" parent="Limites mundo" unique_id=1287622971]
-position = Vector2(2573, -33)
+position = Vector2(1066, 31.25)
 shape = SubResource("RectangleShape2D_7fw7d")
 
 [node name="ParedeInv3" type="CollisionShape2D" parent="Limites mundo" unique_id=1559249364]
-position = Vector2(1284.5, -51.000046)
+position = Vector2(539, 84.24998)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_7fw7d")
 
 [node name="ParedeInv4" type="CollisionShape2D" parent="Limites mundo" unique_id=376061978]
-position = Vector2(1288, 187)
+position = Vector2(538, 184.25)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_7fw7d")
-
-[node name="UI" type="CanvasLayer" parent="." unique_id=272193892]
-
-[node name="Visor" type="Sprite2D" parent="UI" unique_id=220476346]
-position = Vector2(1070.75, 127.75001)
-scale = Vector2(13.046875, 7.9531255)
-texture = ExtResource("3_eoqrh")
 
 [node name="Rato2" parent="." unique_id=1487017814 instance=ExtResource("4_p0386")]
 visible = false
@@ -74,21 +67,29 @@ visible = false
 position = Vector2(77, -167)
 
 [node name="Calçadas" type="StaticBody2D" parent="." unique_id=1481795342]
+position = Vector2(0, 25)
 
 [node name="dir" type="CollisionShape2D" parent="Calçadas" unique_id=1544942538 groups=["calçada_dir"]]
-position = Vector2(758.5, -209.5)
+position = Vector2(285.125, -118.5)
 shape = SubResource("RectangleShape2D_4b3kd")
 
 [node name="esq" type="CollisionShape2D" parent="Calçadas" unique_id=910910822 groups=["calçada_esq"]]
-position = Vector2(760.75, -36.5)
+position = Vector2(286, -46)
 shape = SubResource("RectangleShape2D_4b3kd")
 
 [node name="Ruas" type="StaticBody2D" parent="." unique_id=845954310]
 
 [node name="RuaD" type="CollisionShape2D" parent="Ruas" unique_id=1742357625 groups=["RuaD"]]
-position = Vector2(761.8125, -153.125)
+position = Vector2(292, -69)
 shape = SubResource("RectangleShape2D_exckr")
 
 [node name="RuaE" type="CollisionShape2D" parent="Ruas" unique_id=1716797949 groups=["RuaE"]]
-position = Vector2(762, -95)
+position = Vector2(292, -43)
 shape = SubResource("RectangleShape2D_exckr")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=272193892]
+
+[node name="Visor" type="Sprite2D" parent="UI" unique_id=220476346]
+position = Vector2(1070.75, 127.75001)
+scale = Vector2(13.046875, 7.9531255)
+texture = ExtResource("3_eoqrh")

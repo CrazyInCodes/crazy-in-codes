@@ -1,63 +1,49 @@
 extends CharacterBody2D
+@onready var player: CharacterBody2D = $"."
+@onready var player_anim: AnimatedSprite2D = $PlayerAnim
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $CollisionShape2D/AnimatedSprite2D
-@export var dash_effect_scene: PackedScene
-
-const SPEED = 250.0
-const DSpeed = 800.0
+const DSPEED = 500.0
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+var dash_on_cd = false
 var is_dashing = false
-var dash_dir = Vector2(0.0,0.0)
-var dash_cooldown = false
+var Ddir: int = 1
 
-func dash_image(dir):
-	await get_tree().create_timer(0.05).timeout
-	var objeto = dash_effect_scene.instantiate()
-	get_parent().add_child(objeto)
-	if dir.y > 0:
-		objeto.rotation = -80
-	elif dir.y < 0:
-		objeto.rotation = 80
-	elif dir.x > 0:
-		objeto.flip_h
-	objeto.global_position = global_position
-	await get_tree().create_timer(0.3).timeout
-	objeto.queue_free()
-
-func dash(dir):
-	if dir != Vector2(0,0):
-		is_dashing = true
-		dash_dir = dir
-		dash_image(dir)
-		await get_tree().create_timer(0.2).timeout
-		is_dashing = false
-		dash_cooldown = true
-		await get_tree().create_timer(8).timeout
-		dash_cooldown = false
+func dash():
+	is_dashing = true
+	dash_on_cd = true
+	await get_tree().create_timer(0.5).timeout
+	is_dashing = false
+	await get_tree().create_timer(3).timeout
+	dash_on_cd = false
 
 func _physics_process(delta: float) -> void:
+	
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if is_dashing:
-		velocity=dash_dir*DSpeed
+		velocity = Vector2(Ddir * DSPEED, 0)
+		player_anim.play("Dash")
+		move_and_slide()
 	else:
-		velocity = SPEED*direction
-		print(direction)
+		velocity = direction * SPEED
+		if direction == Vector2(0.0,0.0):
+			player_anim.play("Idle")
+		else:
+			player_anim.play("Walk")
 		
-	if direction.x > 0:
-		animated_sprite_2d.play("Right")
-	elif direction.x < 0:
-		animated_sprite_2d.play("Left")
-	elif direction.y > 0:
-		animated_sprite_2d.play("Down")
-	elif direction.y < 0:
-		animated_sprite_2d.play("Up")
-	else:
-		pass
+	#inverter sprite
+	if direction.x < 0:
+		player_anim.flip_h = true
+		Ddir = -1
+	elif direction.x > 0:
+		player_anim.flip_h = false
+		Ddir = 1
 	
-	if dash_cooldown:
+	#dash execução
+	if dash_on_cd:
 		pass
 	else:
-		if Input.is_action_just_pressed("ui_dash") and not is_dashing:
-			dash(direction)
+		if Input.is_action_just_pressed("ui_dash"):
+			dash()
 	
 	move_and_slide()
-	
