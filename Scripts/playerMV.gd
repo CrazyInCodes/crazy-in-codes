@@ -2,8 +2,8 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D = $"."
 @onready var player_anim: AnimatedSprite2D = $PlayerAnim
 
-const DSPEED = 500.0
-const SPEED = 300.0
+const DSPEED = 200.0
+const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 var dash_on_cd = false
 var is_dashing = false

@@ -101,7 +101,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=500233316]
+[node name="Player" type="CharacterBody2D" unique_id=500233316 groups=["Player"]]
 z_index = 10
 script = ExtResource("1_cvnsp")
 
@@ -115,3 +115,11 @@ sprite_frames = SubResource("SpriteFrames_7fw7d")
 animation = &"Dash"
 frame = 4
 frame_progress = 1.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2117730069]
+position = Vector2(4, 0)
+zoom = Vector2(7, 7)
+limit_left = -45
+limit_top = -186
+limit_right = 1003
+limit_bottom = -15
