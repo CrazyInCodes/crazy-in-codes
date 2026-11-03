@@ -135,6 +135,7 @@
                    calc(var(--fh) * var(--rows) * var(--zoom) * 1px); background-position: 0 calc(var(--row) * var(--fh) * var(--zoom) * -1px);
                 image-rendering: pixelated; margin: 0 auto 12px;
                 animation: andar 0.8s steps(var(--frames)) infinite; /* Animação de andar */}
+        .spriteprotagonista{animation: andar 1.2s steps(var(--frames)) infinite !important;}
         @keyframes andar{
             to{background-position-x: calc(var(--fw) * var(--frames) * var(--zoom) * -1px);}
             } /* animação de andar do personagem, com 4 sprites */
@@ -301,7 +302,7 @@
                         <div id="todos" hidden>
                             <div class="card">
                                 <h3>Protagonista</h3>
-                                <div class="sprite" style="background-image: url();"></div>
+                                <div class="sprite spriteprotagonista" style="--frames: 15; --duration: 10s; background-image: url(Imagens/spriteplayerS3todos.png);"></div>
                                 <p>Descrição do personagem principal do jogo.</p>
                             </div>
                             
