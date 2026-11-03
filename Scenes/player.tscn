@@ -2,9 +2,30 @@
 
 [ext_resource type="Script" uid="uid://h0cgxcdqlk6p" path="res://Scripts/playerMV.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://cfed388kljcu2" path="res://Assets/Sprites/Player/spriteplayerS3todos.png" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://df01k7en2ir3b" path="res://Scenes/kill_zones.tscn" id="3_vgqql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b3kd"]
 size = Vector2(12, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dp3o"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4iuc"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fd4e3"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqcod"]
+atlas = ExtResource("3_6t5aa")
+region = Rect2(448, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
 atlas = ExtResource("3_6t5aa")
@@ -54,6 +75,26 @@ region = Rect2(128, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6t5aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7dp3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4iuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fd4e3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqcod")
+}],
+"loop": 1,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vgqql")
 }, {
 "duration": 1.0,
@@ -101,6 +142,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkybt"]
+size = Vector2(10, 21)
+
 [node name="Player" type="CharacterBody2D" unique_id=500233316 groups=["Player"]]
 z_index = 10
 script = ExtResource("1_cvnsp")
@@ -112,9 +156,8 @@ shape = SubResource("RectangleShape2D_4b3kd")
 [node name="PlayerAnim" type="AnimatedSprite2D" parent="." unique_id=957551769]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_7fw7d")
-animation = &"Dash"
-frame = 4
-frame_progress = 1.0
+animation = &"Attack"
+frame_progress = 0.78831744
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2117730069]
 position = Vector2(4, 0)
@@ -123,3 +166,15 @@ limit_left = -45
 limit_top = -186
 limit_right = 1003
 limit_bottom = -15
+
+[node name="Cooldown" type="Timer" parent="." unique_id=1194599623]
+wait_time = 3.0
+
+[node name="KillZones" parent="." unique_id=1499759088 instance=ExtResource("3_vgqql")]
+position = Vector2(26, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZones" unique_id=1908556020 groups=["Player"]]
+position = Vector2(-10, -2)
+shape = SubResource("RectangleShape2D_fkybt")
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

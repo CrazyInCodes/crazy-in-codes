@@ -1,21 +1,38 @@
 extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var timer: Timer = $Timer
+var morto = false
 
-const SPEED = 140.0
+
+const SPEED = 40.0
 var direction = 1
-var live:bool = true
+var player
 
-func _ready(): 
+func morrer():
+	if morto:
+		return
+
+	morto = true
+
+	animated_sprite_2d.play("Morrendo")
+
+	await animated_sprite_2d.animation_finished
+
+	queue_free()
+func _ready() -> void:
 	animated_sprite_2d.play("Andando")
+	player = get_tree().get_first_node_in_group("Player")
 
 func _physics_process(delta: float) -> void:
-	if live == true:
-		velocity.x = direction * SPEED
-		move_and_slide()
-		
-		
-		if is_on_wall():
-			direction *= -1
-			animated_sprite_2d.flip_h = direction < 0
+	if player == null:
+		return
+	var direction = global_position.direction_to(player.global_position)
+	velocity = direction*SPEED
+	animated_sprite_2d.play("Andando")
+	
+	if direction.x < 0:
+		animated_sprite_2d.flip_h = true
+	elif direction.x > 0:
+		animated_sprite_2d.flip_h = false
+	move_and_slide()

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dmnuef5hjpe24" path="res://Scripts/fase_2.gd" id="1_cs05n"]
 [ext_resource type="PackedScene" uid="uid://bvnyaklve55h1" path="res://Scenes/player.tscn" id="2_w016j"]
 [ext_resource type="Texture2D" uid="uid://crywt4s7g84dn" path="res://Assets/Sprites/UI/Itens/visor.png" id="3_eoqrh"]
+[ext_resource type="PackedScene" uid="uid://ds745cvbq5e0e" path="res://Scenes/PauseMenu.tscn" id="4_le40s"]
 [ext_resource type="Texture2D" uid="uid://dqjrsv16petuf" path="res://Assets/Sprites/UI/Itens/habilidade-dash.png" id="4_p0386"]
 [ext_resource type="PackedScene" uid="uid://d2bpfcy8n3kfo" path="res://Scenes/morcego.tscn" id="6_dh80i"]
 
@@ -15,6 +16,9 @@ size = Vector2(661.75, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exckr"]
 size = Vector2(674, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgu4t"]
+size = Vector2(4, 12)
 
 [node name="Fase2" type="Node2D" unique_id=1845862309]
 script = ExtResource("1_cs05n")
@@ -76,17 +80,98 @@ shape = SubResource("RectangleShape2D_exckr")
 position = Vector2(292, -43)
 shape = SubResource("RectangleShape2D_exckr")
 
-[node name="UI" type="CanvasLayer" parent="." unique_id=272193892]
+[node name="Morcego" parent="." unique_id=1235634314 groups=["Player"] instance=ExtResource("6_dh80i")]
+position = Vector2(97, -74)
 
-[node name="Visor" type="Sprite2D" parent="UI" unique_id=220476346]
-position = Vector2(1108.75, 106.25)
+[node name="Postes" type="StaticBody2D" parent="." unique_id=1867171147]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Postes" unique_id=1479861922]
+position = Vector2(77, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Postes" unique_id=1369032588]
+position = Vector2(5, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Postes" unique_id=168911693]
+position = Vector2(42, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Postes" unique_id=1742059525]
+position = Vector2(-29, -29)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Postes" unique_id=994541857]
+position = Vector2(109, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Postes" unique_id=1138253144]
+position = Vector2(148, -29)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Postes" unique_id=1158757050]
+position = Vector2(185, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Postes" unique_id=619117095]
+position = Vector2(220, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Postes" unique_id=1832834516]
+position = Vector2(255, -89)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Postes" unique_id=1050537003]
+position = Vector2(285, -28)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Postes" unique_id=270377425]
+position = Vector2(324, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Postes" unique_id=1735601019]
+position = Vector2(361, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Postes" unique_id=245294785]
+position = Vector2(396, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Postes" unique_id=1809300247]
+position = Vector2(431, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Postes" unique_id=1936751378]
+position = Vector2(461, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Postes" unique_id=2117179925]
+position = Vector2(500, -29)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Postes" unique_id=1899002416]
+position = Vector2(572, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Postes" unique_id=1592233324]
+position = Vector2(637, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Postes" unique_id=566422099]
+position = Vector2(607, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1176524184]
+
+[node name="PauseMenu" parent="UI" unique_id=332429809 instance=ExtResource("4_le40s")]
+layer = 10
+
+[node name="Visor" type="Sprite2D" parent="UI" unique_id=329694156]
+position = Vector2(1086, 129)
 scale = Vector2(10.671875, 6.609375)
 texture = ExtResource("3_eoqrh")
 
-[node name="Dash" type="Sprite2D" parent="UI" unique_id=1111070315]
+[node name="Dash" type="Sprite2D" parent="UI" unique_id=1123192256]
 position = Vector2(37, 689.00006)
 scale = Vector2(2.46875, 2.46875)
 texture = ExtResource("4_p0386")
-
-[node name="Morcego" parent="." unique_id=1235634314 groups=["Player"] instance=ExtResource("6_dh80i")]
-position = Vector2(97, -74)

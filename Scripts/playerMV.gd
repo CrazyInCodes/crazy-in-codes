@@ -8,17 +8,26 @@ const JUMP_VELOCITY = -400.0
 var dash_on_cd = false
 var is_dashing = false
 var Ddir: int = 1
+var Inv : Array
+@onready var cooldown: Timer = $Cooldown
 
 func dash():
 	is_dashing = true
 	dash_on_cd = true
+	
 	await get_tree().create_timer(0.5).timeout
+	
 	is_dashing = false
-	await get_tree().create_timer(3).timeout
+	
+	cooldown.wait_time = 3
+	cooldown.start()
+
+func _on_cooldown_timeout() -> void:
 	dash_on_cd = false
 
 func _physics_process(delta: float) -> void:
 	
+	#Movimento e Dash
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if is_dashing:
 		velocity = Vector2(Ddir * DSPEED, 0)
@@ -47,3 +56,7 @@ func _physics_process(delta: float) -> void:
 			dash()
 	
 	move_and_slide()
+	#---------------------------------------------------------
+	if "sword" in Inv:
+		if Input.is_action_just_pressed("ui_attack"):
+			pass

@@ -173,13 +173,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b3kd"]
 size = Vector2(14, 9)
 
-[node name="Caranguejo" type="CharacterBody2D" unique_id=557927447 groups=["inimigos"]]
+[node name="Caranguejo" type="CharacterBody2D" unique_id=557927447]
 scale = Vector2(0.5, 0.5)
 collision_layer = 5
 collision_mask = 6
 script = ExtResource("1_uoead")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147092087]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147092087 groups=["inimigos"]]
 sprite_frames = SubResource("SpriteFrames_7fw7d")
 animation = &"Andando"
 

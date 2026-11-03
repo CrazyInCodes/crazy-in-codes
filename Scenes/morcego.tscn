@@ -180,14 +180,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ilv3s"]
 radius = 5.0
 
-[node name="Morcego" type="CharacterBody2D" unique_id=1235634314 groups=["inimigos"]]
+[node name="Morcego" type="CharacterBody2D" unique_id=1235634314]
 position = Vector2(-68, -2)
 scale = Vector2(0.4, 0.4)
 collision_layer = 5
 collision_mask = 6
 script = ExtResource("1_tf50r")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1866623890]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1866623890 groups=["inimigos"]]
 sprite_frames = SubResource("SpriteFrames_7fw7d")
 animation = &"Voando"
 frame_progress = 0.9524335
@@ -195,10 +195,3 @@ frame_progress = 0.9524335
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598741017]
 position = Vector2(-1, 1)
 shape = SubResource("CircleShape2D_ilv3s")
-
-[node name="Timer" type="Timer" parent="." unique_id=1330704546]
-process_callback = 0
-wait_time = 2.0
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,11 +2,24 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
+var morto = false
+
 
 const SPEED = 40.0
 var direction = 1
 var player
 
+func morrer():
+	if morto:
+		return
+
+	morto = true
+
+	animated_sprite_2d.play("Morrendo")
+
+	await animated_sprite_2d.animation_finished
+
+	queue_free()
 func _ready() -> void:
 	animated_sprite_2d.play("Voando")
 	player = get_tree().get_first_node_in_group("Player")
