@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://sgvxq55ru860"]
 
+[ext_resource type="Script" uid="uid://bgo2jr13lvv2e" path="res://Scripts/espada.gd" id="1_1mny4"]
 [ext_resource type="Texture2D" uid="uid://bfidqkcxy7w1y" path="res://Assets/Sprites/UI/Itens/itens.png" id="1_hkoa1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1mny4"]
@@ -21,6 +22,10 @@ animations = [{
 radius = 133.54025
 
 [node name="Espada" type="Area2D" unique_id=1899664051]
+scale = Vector2(0.05, 0.05)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_1mny4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=649863179]
 sprite_frames = SubResource("SpriteFrames_qgu4t")
@@ -28,3 +33,5 @@ sprite_frames = SubResource("SpriteFrames_qgu4t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1131059545]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_qgu4t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

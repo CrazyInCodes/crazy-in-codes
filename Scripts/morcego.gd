@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+@onready var enemy_kz: Area2D = $EnemyKillZones
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var morto = false
 
@@ -11,6 +11,7 @@ var morrendo = false
 func morrer():
 	if morto:
 		return
+	enemy_kz.monitoring = false
 	morrendo = true
 	morto = true
 
@@ -39,3 +40,7 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.flip_h = false
 		move_and_slide()
 	
+
+
+func _on_kill_zones_body_entered(body: Node2D) -> void:
+	print("Detec: " , body.name)

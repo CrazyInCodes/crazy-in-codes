@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ccv3kawdot66u" path="res://Assets/Sprites/Inimigos/morcego.ataque.png" id="2_rh663"]
 [ext_resource type="Texture2D" uid="uid://d31hjeajo73a6" path="res://Assets/Sprites/Inimigos/morcego.morrendo.png" id="3_mki4t"]
 [ext_resource type="Texture2D" uid="uid://bwba508c0pqgn" path="res://Assets/Sprites/Inimigos/morcego.voando.png" id="4_ndfp5"]
+[ext_resource type="PackedScene" uid="uid://df01k7en2ir3b" path="res://Scenes/enemy_kill_zones.tscn" id="5_rh663"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sc7bm"]
 atlas = ExtResource("2_rh663")
@@ -177,19 +178,28 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ilv3s"]
-radius = 8.558621
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgu4t"]
+radius = 2.4999998
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7vtl"]
+radius = 7.499999
 
 [node name="Morcego" type="CharacterBody2D" unique_id=1235634314 groups=["inimigos"]]
 scale = Vector2(0.4, 0.4)
-collision_layer = 5
-collision_mask = 6
+collision_mask = 3
 script = ExtResource("1_tf50r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1866623890 groups=["inimigos"]]
 sprite_frames = SubResource("SpriteFrames_7fw7d")
 animation = &"Morrendo"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1598741017]
-position = Vector2(-1, 1)
-shape = SubResource("CircleShape2D_ilv3s")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=275086236]
+position = Vector2(0, 2.4999995)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_qgu4t")
+
+[node name="EnemyKillZones" parent="." unique_id=1499759088 instance=ExtResource("5_rh663")]
+position = Vector2(0, 2.4999998)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKillZones" unique_id=1396259283]
+shape = SubResource("CircleShape2D_c7vtl")

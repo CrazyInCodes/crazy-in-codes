@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var player: CharacterBody2D = $"."
 @onready var player_anim: AnimatedSprite2D = $PlayerAnim
-@onready var kill_zones: Area2D = $KillZones
+@onready var kill_zones: Area2D = $PlayerKillZone
 
 const DSPEED = 200.0
 const SPEED = 100.0
@@ -32,12 +32,16 @@ func _on_cooldown_timeout() -> void:
 	dash_on_cd = false
 	cooldown.stop()
 
+func addsword():
+	Inv.append("sword")
+
 func attack():
 	attacking = true
 	attack_cd = true
 	player_anim.play("Attack")
 	kill_zones.monitoring = true
 	await player_anim.animation_finished
+	attacking = false
 	kill_zones.monitoring = false
 	await get_tree().create_timer(1).timeout
 	attack_cd = false
@@ -60,9 +64,11 @@ func _physics_process(delta: float) -> void:
 		if direction.x < 0:
 			player_anim.flip_h = true
 			Ddir = -1
+			kill_zones.scale.x = 1
 		elif direction.x > 0:
 			player_anim.flip_h = false
 			Ddir = 1
+			kill_zones.scale.x = -1
 		
 		#dash execução
 		if dash_on_cd:
