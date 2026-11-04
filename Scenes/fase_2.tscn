@@ -119,79 +119,79 @@ shape = SubResource("RectangleShape2D_exckr")
 [node name="Postes" type="StaticBody2D" parent="Colisões" unique_id=1867171147]
 collision_layer = 3
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1479861922]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1479861922 groups=["Poste"]]
 position = Vector2(77, -90)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1369032588]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1369032588 groups=["Poste"]]
 position = Vector2(5, -90)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Colisões/Postes" unique_id=168911693]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Colisões/Postes" unique_id=168911693 groups=["Poste"]]
 position = Vector2(42, -30)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1742059525]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1742059525 groups=["Poste"]]
 position = Vector2(-29, -29)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Colisões/Postes" unique_id=994541857]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Colisões/Postes" unique_id=994541857 groups=["Poste"]]
 position = Vector2(109, -30)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1138253144]
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1138253144 groups=["Poste"]]
 position = Vector2(148, -30)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D7" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1158757050]
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1158757050 groups=["Poste"]]
 position = Vector2(185, -90)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="Colisões/Postes" unique_id=619117095]
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Colisões/Postes" unique_id=619117095 groups=["Poste"]]
 position = Vector2(220, -30)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1832834516]
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1832834516 groups=["Poste"]]
 position = Vector2(255, -89)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1050537003]
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1050537003 groups=["Poste"]]
 position = Vector2(285, -29)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="Colisões/Postes" unique_id=270377425]
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Colisões/Postes" unique_id=270377425 groups=["Poste"]]
 position = Vector2(324, -30)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1735601019]
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1735601019 groups=["Poste"]]
 position = Vector2(361, -90)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="Colisões/Postes" unique_id=245294785]
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Colisões/Postes" unique_id=245294785 groups=["Poste"]]
 position = Vector2(396, -30)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1809300247]
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1809300247 groups=["Poste"]]
 position = Vector2(431, -90)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1936751378]
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1936751378 groups=["Poste"]]
 position = Vector2(461, -30)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="Colisões/Postes" unique_id=2117179925]
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Colisões/Postes" unique_id=2117179925 groups=["Poste"]]
 position = Vector2(500, -29)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1899002416]
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1899002416 groups=["Poste"]]
 position = Vector2(572, -30)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D18" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1592233324]
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1592233324 groups=["Poste"]]
 position = Vector2(637, -30)
 shape = SubResource("RectangleShape2D_qgu4t")
 
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="Colisões/Postes" unique_id=566422099]
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Colisões/Postes" unique_id=566422099 groups=["Poste"]]
 position = Vector2(607, -90)
 shape = SubResource("RectangleShape2D_qgu4t")
 
@@ -210,7 +210,7 @@ position = Vector2(37, 689.00006)
 scale = Vector2(2.46875, 2.46875)
 texture = ExtResource("4_p0386")
 
-[node name="Label" type="Label" parent="UI" unique_id=1504355242]
+[node name="TLabel" type="Label" parent="UI" unique_id=1504355242]
 offset_left = 9.0
 offset_top = 638.0
 offset_right = 65.0

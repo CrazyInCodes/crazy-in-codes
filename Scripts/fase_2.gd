@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var calçadas: StaticBody2D = $Colisões/Calçadas
-@onready var label: Label = $UI/Label
+@onready var label: Label = $UI/TLabel
 @onready var ruas: StaticBody2D = $Colisões/Ruas
 @onready var cooldown: Timer = $Player/Cooldown
 @onready var visor: Sprite2D = $UI/Visor
@@ -11,11 +11,9 @@ extends Node2D
 
 
 var colisoes_visiveis = true
+var labels_visiveis = true
 
 
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		alternar_colisoes()
 
 # Procura todas as colisões da fase
 func mostrar_colisoes(no):
@@ -26,21 +24,47 @@ func mostrar_colisoes(no):
 # Cria um ColorRect para cada colisão retangular
 func criar_colorrect(colisao):
 	if colisao.shape is RectangleShape2D:
+		#Criação
 		var retangulo = ColorRect.new()
+		var labelT = Label.new()
+		#Retângulo
 		retangulo.size = colisao.shape.size
 		retangulo.position = -retangulo.size / 2
 		retangulo.color = Color(0, 0, 255, 0.15)
+		
+		#Labels
+		var grupo = colisao.get_groups()
+		if grupo.is_empty():
+			labelT.text = "\n"
+		else:
+			labelT.text = str(grupo[0])
+		#labelT.text = str(colisao.get_groups()[0])
+		labelT.size = retangulo.size
+		labelT.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		labelT.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		labelT.add_theme_font_size_override("font_size", 8)
+		#Resolução
+		var fonte = labelT.get_theme_font("font")
+		fonte.antialiasing = TextServer.FONT_ANTIALIASING_GRAY
+		labelT.add_theme_font_override("font", fonte)
+		
+		#Visibilidade
 		retangulo.visible = colisoes_visiveis
+		labelT.visible = labels_visiveis
 		colisao.add_child(retangulo)
+		retangulo.add_child(labelT)
 # Alterna entre mostrar e esconder
 func alternar_colisoes():
 	colisoes_visiveis = !colisoes_visiveis
+	labels_visiveis = !labels_visiveis
 	atualizar_visibilidade(self)
 # Atualiza a visibilidade dos retângulos
 func atualizar_visibilidade(no):
 	for filho in no.get_children():
 		if filho is ColorRect:
 			filho.visible = colisoes_visiveis
+			if filho is Label:
+				filho.visible = labels_visiveis
 		atualizar_visibilidade(filho)
 
 

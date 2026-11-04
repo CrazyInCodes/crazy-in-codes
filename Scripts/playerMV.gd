@@ -106,6 +106,12 @@ func _physics_process(delta: float) -> void:
 					if not equipped:
 						visor.visible = true
 						equipped = true
+						get_parent().colisoes_visiveis = true
+						get_parent().labels_visiveis = true
+					
 					else:
 						visor.visible = false
 						equipped = false
+						get_parent().colisoes_visiveis = false
+						get_parent().labels_visiveis = false
+					get_parent().atualizar_visibilidade(get_parent())
