@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://ug2f7t2t6m2n" path="res://Scripts/caranguejo.gd" id="1_uoead"]
 [ext_resource type="Texture2D" uid="uid://d0yd0qm56ss0" path="res://Assets/Sprites/Inimigos/Caranguejo.ataque.png" id="3_8hac3"]
 [ext_resource type="Texture2D" uid="uid://b614c4ch3uf0u" path="res://Assets/Sprites/Inimigos/Caranguejo.morrendo.png" id="4_4f0y3"]
+[ext_resource type="PackedScene" uid="uid://df01k7en2ir3b" path="res://Scenes/enemy_kill_zones.tscn" id="5_8hac3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b1lns"]
 atlas = ExtResource("1_jq48a")
@@ -173,10 +174,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b3kd"]
 size = Vector2(14, 9)
 
-[node name="Caranguejo" type="CharacterBody2D" unique_id=557927447]
+[sub_resource type="CircleShape2D" id="CircleShape2D_4f0y3"]
+radius = 8.0
+
+[node name="Caranguejo" type="CharacterBody2D" unique_id=557927447 groups=["inimigos"]]
 scale = Vector2(0.5, 0.5)
-collision_layer = 5
-collision_mask = 6
+collision_mask = 3
 script = ExtResource("1_uoead")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147092087 groups=["inimigos"]]
@@ -187,3 +190,10 @@ animation = &"Morrendo"
 visibility_layer = 2
 position = Vector2(-2, 10.5)
 shape = SubResource("RectangleShape2D_4b3kd")
+
+[node name="EnemyKillZones" parent="." unique_id=1499759088 instance=ExtResource("5_8hac3")]
+position = Vector2(0, 2.4999998)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKillZones" unique_id=2120728593]
+position = Vector2(-2, 7.5)
+shape = SubResource("CircleShape2D_4f0y3")

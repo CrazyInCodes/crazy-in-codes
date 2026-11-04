@@ -64,11 +64,13 @@ func _physics_process(delta: float) -> void:
 		if direction.x < 0:
 			player_anim.flip_h = true
 			Ddir = -1
-			kill_zones.scale.x = 1
+			kill_zones.scale.x = -1
+			kill_zones.position.x = -14
 		elif direction.x > 0:
 			player_anim.flip_h = false
 			Ddir = 1
-			kill_zones.scale.x = -1
+			kill_zones.scale.x = 1
+			kill_zones.position.x = 14
 		
 		#dash execução
 		if dash_on_cd:
