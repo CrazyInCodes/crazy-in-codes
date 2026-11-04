@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @onready var player: CharacterBody2D = $"."
 @onready var player_anim: AnimatedSprite2D = $PlayerAnim
+@onready var kill_zones: Area2D = $KillZones
 
 const DSPEED = 200.0
 const SPEED = 100.0
@@ -9,8 +10,13 @@ var dash_on_cd = false
 var is_dashing = false
 var Ddir: int = 1
 var Inv : Array
+var attack_cd = false
+var attacking = false
+
 @onready var cooldown: Timer = $Cooldown
 
+func _ready() -> void:
+	kill_zones.monitoring = false
 func dash():
 	is_dashing = true
 	dash_on_cd = true
@@ -24,39 +30,52 @@ func dash():
 
 func _on_cooldown_timeout() -> void:
 	dash_on_cd = false
+	cooldown.stop()
+
+func attack():
+	attacking = true
+	attack_cd = true
+	player_anim.play("Attack")
+	kill_zones.monitoring = true
+	await player_anim.animation_finished
+	kill_zones.monitoring = false
+	await get_tree().create_timer(1).timeout
+	attack_cd = false
 
 func _physics_process(delta: float) -> void:
-	
-	#Movimento e Dash
-	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if is_dashing:
-		velocity = Vector2(Ddir * DSPEED, 0)
-		player_anim.play("Dash")
-		move_and_slide()
-	else:
-		velocity = direction * SPEED
-		if direction == Vector2(0.0,0.0):
-			player_anim.play("Idle")
+	if not attacking:
+		var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		if is_dashing:
+			velocity = Vector2(Ddir * DSPEED, 0)
+			player_anim.play("Dash")
+			move_and_slide()
 		else:
-			player_anim.play("Walk")
+			velocity = direction * SPEED
+			if direction == Vector2(0.0,0.0):
+				player_anim.play("Idle")
+			else:
+				player_anim.play("Walk")
+			
+		#inverter sprite
+		if direction.x < 0:
+			player_anim.flip_h = true
+			Ddir = -1
+		elif direction.x > 0:
+			player_anim.flip_h = false
+			Ddir = 1
 		
-	#inverter sprite
-	if direction.x < 0:
-		player_anim.flip_h = true
-		Ddir = -1
-	elif direction.x > 0:
-		player_anim.flip_h = false
-		Ddir = 1
-	
-	#dash execução
-	if dash_on_cd:
-		pass
-	else:
-		if Input.is_action_just_pressed("ui_dash"):
-			dash()
-	
-	move_and_slide()
-	#---------------------------------------------------------
-	if "sword" in Inv:
-		if Input.is_action_just_pressed("ui_attack"):
+		#dash execução
+		if dash_on_cd:
 			pass
+		else:
+			if Input.is_action_just_pressed("ui_dash"):
+				dash()
+		
+		move_and_slide()
+		#---------------------------------------------------------
+		if "sword" in Inv:
+			if not attack_cd:
+				if Input.is_action_just_pressed("ui_attack"):
+					attack()
+			else:
+				pass

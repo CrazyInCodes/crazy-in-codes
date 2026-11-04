@@ -80,9 +80,6 @@ shape = SubResource("RectangleShape2D_exckr")
 position = Vector2(292, -43)
 shape = SubResource("RectangleShape2D_exckr")
 
-[node name="Morcego" parent="." unique_id=1235634314 groups=["Player"] instance=ExtResource("6_dh80i")]
-position = Vector2(97, -74)
-
 [node name="Postes" type="StaticBody2D" parent="." unique_id=1867171147]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Postes" unique_id=1479861922]
@@ -161,6 +158,9 @@ shape = SubResource("RectangleShape2D_qgu4t")
 position = Vector2(607, -90)
 shape = SubResource("RectangleShape2D_qgu4t")
 
+[node name="Morcego" parent="." unique_id=1235634314 instance=ExtResource("6_dh80i")]
+position = Vector2(96.99999, -69.99999)
+
 [node name="UI" type="CanvasLayer" parent="." unique_id=1176524184]
 
 [node name="PauseMenu" parent="UI" unique_id=332429809 instance=ExtResource("4_le40s")]
@@ -175,3 +175,9 @@ texture = ExtResource("3_eoqrh")
 position = Vector2(37, 689.00006)
 scale = Vector2(2.46875, 2.46875)
 texture = ExtResource("4_p0386")
+
+[node name="Label" type="Label" parent="UI" unique_id=1504355242]
+offset_left = 9.0
+offset_top = 638.0
+offset_right = 65.0
+offset_bottom = 661.0

@@ -165,7 +165,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_suqqn")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Morrendo",
 "speed": 5.0
 }]
@@ -181,7 +181,7 @@ script = ExtResource("1_uoead")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147092087 groups=["inimigos"]]
 sprite_frames = SubResource("SpriteFrames_7fw7d")
-animation = &"Andando"
+animation = &"Morrendo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=764513727]
 visibility_layer = 2

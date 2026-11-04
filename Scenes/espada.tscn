@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://sgvxq55ru860"]
+
+[ext_resource type="Texture2D" uid="uid://bfidqkcxy7w1y" path="res://Assets/Sprites/UI/Itens/itens.png" id="1_hkoa1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mny4"]
+atlas = ExtResource("1_hkoa1")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgu4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mny4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgu4t"]
+radius = 133.54025
+
+[node name="Espada" type="Area2D" unique_id=1899664051]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=649863179]
+sprite_frames = SubResource("SpriteFrames_qgu4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1131059545]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_qgu4t")

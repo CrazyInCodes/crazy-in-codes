@@ -151,7 +151,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8qjyo")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"Morrendo",
 "speed": 5.0
 }]
@@ -167,7 +167,7 @@ script = ExtResource("1_kajvy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=469088164 groups=["inimigos"]]
 sprite_frames = SubResource("SpriteFrames_7fw7d")
-animation = &"Andando"
+animation = &"Morrendo"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1858841584]
 position = Vector2(2, 12)
