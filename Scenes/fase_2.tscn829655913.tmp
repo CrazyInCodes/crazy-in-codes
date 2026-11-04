@@ -1,0 +1,238 @@
+[gd_scene format=3 uid="uid://b50hshp36j5ux"]
+
+[ext_resource type="Texture2D" uid="uid://cd3by4fyw80ct" path="res://Assets/Sprites/Cenários/Cenarios.fase2completo.png" id="1_1blhx"]
+[ext_resource type="Script" uid="uid://dmnuef5hjpe24" path="res://Scripts/fase_2.gd" id="1_cs05n"]
+[ext_resource type="PackedScene" uid="uid://bvnyaklve55h1" path="res://Scenes/player.tscn" id="2_w016j"]
+[ext_resource type="Texture2D" uid="uid://crywt4s7g84dn" path="res://Assets/Sprites/UI/Itens/visor.png" id="3_eoqrh"]
+[ext_resource type="PackedScene" uid="uid://ds745cvbq5e0e" path="res://Scenes/PauseMenu.tscn" id="4_le40s"]
+[ext_resource type="Texture2D" uid="uid://dqjrsv16petuf" path="res://Assets/Sprites/UI/Itens/habilidade-dash.png" id="4_p0386"]
+[ext_resource type="Texture2D" uid="uid://bfidqkcxy7w1y" path="res://Assets/Sprites/UI/Itens/itens.png" id="7_lhuwr"]
+[ext_resource type="PackedScene" uid="uid://sgvxq55ru860" path="res://Scenes/espada.tscn" id="8_au6ud"]
+[ext_resource type="PackedScene" uid="uid://llraouxeotmv" path="res://Scenes/óculos.tscn" id="11_vjvqt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fw7d"]
+size = Vector2(6.000004, 1062)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b3kd"]
+size = Vector2(661.75, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exckr"]
+size = Vector2(674, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgu4t"]
+size = Vector2(4, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g765r"]
+atlas = ExtResource("7_lhuwr")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgu4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g765r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx7qh"]
+atlas = ExtResource("7_lhuwr")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7vtl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx7qh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Fase2" type="Node2D" unique_id=1845862309]
+script = ExtResource("1_cs05n")
+
+[node name="Player" parent="." unique_id=500233316 instance=ExtResource("2_w016j")]
+position = Vector2(-26, -76)
+scale = Vector2(0.6, 0.6)
+collision_layer = 2
+collision_mask = 2
+
+[node name="Cenário" type="Sprite2D" parent="." unique_id=1328133885]
+position = Vector2(481.46786, -99.74999)
+scale = Vector2(1.0321639, 1.0321639)
+texture = ExtResource("1_1blhx")
+
+[node name="Colisões" type="Node2D" parent="." unique_id=80631030]
+
+[node name="Limites mundo" type="StaticBody2D" parent="Colisões" unique_id=222389897]
+visible = false
+position = Vector2(-58, -193.25)
+collision_layer = 2
+collision_mask = 2
+
+[node name="ParedeInv" type="CollisionShape2D" parent="Colisões/Limites mundo" unique_id=1648548868]
+position = Vector2(9.5, -32)
+shape = SubResource("RectangleShape2D_7fw7d")
+
+[node name="ParedeInv2" type="CollisionShape2D" parent="Colisões/Limites mundo" unique_id=1287622971]
+position = Vector2(1066, 31.25)
+shape = SubResource("RectangleShape2D_7fw7d")
+
+[node name="ParedeInv3" type="CollisionShape2D" parent="Colisões/Limites mundo" unique_id=1559249364]
+position = Vector2(539, 78.25)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_7fw7d")
+
+[node name="ParedeInv4" type="CollisionShape2D" parent="Colisões/Limites mundo" unique_id=376061978]
+position = Vector2(538, 184.25)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_7fw7d")
+
+[node name="Calçadas" type="StaticBody2D" parent="Colisões" unique_id=1481795342]
+visible = false
+position = Vector2(0, 25)
+collision_layer = 8
+collision_mask = 8
+
+[node name="dir" type="CollisionShape2D" parent="Colisões/Calçadas" unique_id=1544942538 groups=["calçada_dir"]]
+position = Vector2(285.125, -118.5)
+shape = SubResource("RectangleShape2D_4b3kd")
+
+[node name="esq" type="CollisionShape2D" parent="Colisões/Calçadas" unique_id=910910822 groups=["calçada_esq"]]
+position = Vector2(286, -46)
+shape = SubResource("RectangleShape2D_4b3kd")
+
+[node name="Ruas" type="StaticBody2D" parent="Colisões" unique_id=845954310]
+visible = false
+collision_layer = 8
+collision_mask = 8
+
+[node name="RuaD" type="CollisionShape2D" parent="Colisões/Ruas" unique_id=1742357625 groups=["RuaD"]]
+position = Vector2(292, -69)
+shape = SubResource("RectangleShape2D_exckr")
+
+[node name="RuaE" type="CollisionShape2D" parent="Colisões/Ruas" unique_id=1716797949 groups=["RuaE"]]
+position = Vector2(292, -43)
+shape = SubResource("RectangleShape2D_exckr")
+
+[node name="Postes" type="StaticBody2D" parent="Colisões" unique_id=1867171147]
+visible = false
+collision_layer = 3
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1479861922]
+position = Vector2(77, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1369032588]
+position = Vector2(5, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Colisões/Postes" unique_id=168911693]
+position = Vector2(42, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1742059525]
+position = Vector2(-29, -29)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Colisões/Postes" unique_id=994541857]
+position = Vector2(109, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1138253144]
+position = Vector2(148, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1158757050]
+position = Vector2(185, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Colisões/Postes" unique_id=619117095]
+position = Vector2(220, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1832834516]
+position = Vector2(255, -89)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1050537003]
+position = Vector2(285, -29)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Colisões/Postes" unique_id=270377425]
+position = Vector2(324, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1735601019]
+position = Vector2(361, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Colisões/Postes" unique_id=245294785]
+position = Vector2(396, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1809300247]
+position = Vector2(431, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1936751378]
+position = Vector2(461, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Colisões/Postes" unique_id=2117179925]
+position = Vector2(500, -29)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1899002416]
+position = Vector2(572, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Colisões/Postes" unique_id=1592233324]
+position = Vector2(637, -30)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Colisões/Postes" unique_id=566422099]
+position = Vector2(607, -90)
+shape = SubResource("RectangleShape2D_qgu4t")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1176524184]
+
+[node name="PauseMenu" parent="UI" unique_id=332429809 instance=ExtResource("4_le40s")]
+layer = 10
+
+[node name="Visor" type="Sprite2D" parent="UI" unique_id=329694156]
+position = Vector2(1112, 103)
+scale = Vector2(10.671875, 6.609375)
+texture = ExtResource("3_eoqrh")
+
+[node name="Dash" type="Sprite2D" parent="UI" unique_id=1123192256]
+position = Vector2(37, 689.00006)
+scale = Vector2(2.46875, 2.46875)
+texture = ExtResource("4_p0386")
+
+[node name="Label" type="Label" parent="UI" unique_id=1504355242]
+offset_left = 9.0
+offset_top = 638.0
+offset_right = 65.0
+offset_bottom = 661.0
+
+[node name="Óculos" type="AnimatedSprite2D" parent="UI" unique_id=1257102752]
+position = Vector2(121.000015, 682)
+scale = Vector2(0.345, 0.345)
+sprite_frames = SubResource("SpriteFrames_qgu4t")
+
+[node name="Espada" type="AnimatedSprite2D" parent="UI" unique_id=481226269]
+position = Vector2(220.75, 686.25)
+scale = Vector2(0.36124995, 0.36124995)
+sprite_frames = SubResource("SpriteFrames_c7vtl")
+
+[node name="Espada" parent="." unique_id=1899664051 instance=ExtResource("8_au6ud")]
+position = Vector2(28.99997, -59)
+
+[node name="Óculos" parent="." unique_id=1999891671 instance=ExtResource("11_vjvqt")]
+position = Vector2(-16, -55)
+scale = Vector2(0.05, 0.05)

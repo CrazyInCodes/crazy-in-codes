@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player_anim: AnimatedSprite2D = $PlayerAnim
 @onready var kill_zones: Area2D = $PlayerKillZone
 @onready var visor: Sprite2D = get_node("../UI/Visor")
+
 const DSPEED = 200.0
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
@@ -36,6 +37,7 @@ func _on_cooldown_timeout() -> void:
 
 func addsword():
 	Inv.append("sword")
+	get_node("../UI/Espada").visible = true
 
 func die():
 	live = false
@@ -45,6 +47,7 @@ func die():
 
 func addoculos():
 	Inv.append("oculos")
+	get_node("../UI/Óculos").visible = true
 func attack():
 	attacking = true
 	attack_cd = true
@@ -102,5 +105,7 @@ func _physics_process(delta: float) -> void:
 				if Input.is_action_just_pressed("ui_equip"):
 					if not equipped:
 						visor.visible = true
+						equipped = true
 					else:
 						visor.visible = false
+						equipped = false
