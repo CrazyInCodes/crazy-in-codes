@@ -227,7 +227,7 @@ scale = Vector2(0.36124995, 0.36124995)
 sprite_frames = SubResource("SpriteFrames_c7vtl")
 
 [node name="Espada" parent="." unique_id=1899664051 instance=ExtResource("8_au6ud")]
-position = Vector2(28.99997, -59)
+position = Vector2(762.9999, -56)
 
 [node name="Óculos" parent="." unique_id=1999891671 instance=ExtResource("11_vjvqt")]
 position = Vector2(-16, -55)

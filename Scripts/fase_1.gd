@@ -18,6 +18,8 @@ extends Control
 @onready var tela_cheia: TextureRect = $TelaCheia
 
 @onready var player_face: AnimatedSprite2D = $QuizUI/PlayerFace
+@onready var pause_menu: CanvasLayer = $Camera2D/PauseMenu
+@onready var monstro: AnimatedSprite2D = $Monstro
 
 @onready var color_rect: ColorRect = $ColorRect
 
@@ -388,6 +390,33 @@ func bar_anim_control():
 	elif mental == 0:
 		barlayout.play("zero")
 
+func Lost():
+	
+	await get_tree().create_timer(0.3).timeout
+	pause_menu.visible = false
+	get_tree().paused
+	
+	#cor troca
+	var tween = create_tween()
+	color_rect.color.a = 1
+	tween.tween_property(color_rect,"color", Color.BLACK, 3.0)
+	await tween
+	await get_tree().create_timer(2).timeout
+	#sumir com a cena
+	for x in get_children():
+		if !x is ColorRect:
+			x.visible = false
+	
+	monstro.visible = true
+	await get_tree().create_timer(1).timeout
+	color_rect.visible = false
+	await get_tree().create_timer(0.8).timeout
+	monstro.play("2")
+
+
+	
+	
+
 func camera_control():
 	camera_2d.zoom = Vector2(0.5,0.5)
 	var tween = create_tween()
@@ -466,7 +495,7 @@ func _ready():
 
 
 func _process(delta):
-	var mentalLoss
+	var mentalLoss:float = 0.0
 	if fimzoom:
 		if mental >= 70:
 			mentalLoss = 20
@@ -479,9 +508,12 @@ func _process(delta):
 			mentalLoss = 60
 			error = 8
 			player_face.play("Sad")
-		else:
+		elif mental > 0:
 			mentalLoss = 100
 			error = 10
+		elif mental <= 0:
+			Lost()
+			return
 		timeR -= delta
 		timeR = max(timeR, 0)
 		timer_txt.text = str(ceil(timeR))

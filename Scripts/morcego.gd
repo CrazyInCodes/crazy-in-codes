@@ -4,7 +4,7 @@ extends CharacterBody2D
 var morto = false
 
 
-const SPEED = 40.0
+const SPEED = 55.0
 var direction = 1
 var player
 var morrendo = false

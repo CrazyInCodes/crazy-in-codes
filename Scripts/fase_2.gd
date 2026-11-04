@@ -43,7 +43,7 @@ func criar_colorrect(colisao):
 		labelT.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		labelT.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		labelT.add_theme_font_size_override("font_size", 8)
-		#Resolução
+		#Resolução melhorada
 		var fonte = labelT.get_theme_font("font")
 		fonte.antialiasing = TextServer.FONT_ANTIALIASING_GRAY
 		labelT.add_theme_font_override("font", fonte)

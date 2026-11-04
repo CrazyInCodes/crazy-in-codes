@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ds745cvbq5e0e" path="res://Scenes/PauseMenu.tscn" id="4_gw3gf"]
 [ext_resource type="Texture2D" uid="uid://duqvi7e3vp7wd" path="res://Assets/Sprites/UI/Bars/sanidadeajuste.png" id="6_aw74n"]
 [ext_resource type="Texture2D" uid="uid://lyfd5tgi43ui" path="res://Assets/Sprites/Player/Sprite-PlayerS2.png" id="6_hya8f"]
+[ext_resource type="Texture2D" uid="uid://bbvd8c814qp6o" path="res://Assets/Sprites/Cenários/cenario.monstro.png" id="7_aw74n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cq7l2"]
 font_size = 30
@@ -115,6 +116,33 @@ animations = [{
 }],
 "loop": 1,
 "name": &"Serious",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5itq"]
+atlas = ExtResource("7_aw74n")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwkih"]
+atlas = ExtResource("7_aw74n")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c7vtl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5itq")
+}],
+"loop": 1,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwkih")
+}],
+"loop": 1,
+"name": &"2",
 "speed": 5.0
 }]
 
@@ -294,6 +322,7 @@ sprite_frames = SubResource("SpriteFrames_7fw7d")
 animation = &"Happy"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1161064633]
+process_mode = 3
 z_index = 5
 layout_mode = 0
 offset_left = -88.0
@@ -302,3 +331,12 @@ offset_right = 1296.0
 offset_bottom = 981.0
 mouse_filter = 2
 color = Color(1, 0, 0, 0)
+
+[node name="Monstro" type="AnimatedSprite2D" parent="." unique_id=1886839832]
+process_mode = 2
+visible = false
+z_index = 2
+position = Vector2(652, 619)
+scale = Vector2(3.3021874, 3.2521873)
+sprite_frames = SubResource("SpriteFrames_c7vtl")
+animation = &"1"
