@@ -147,7 +147,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_t3idy")
 }],
 "loop": 1,
-"name": &"Atacando",
+"name": &"Ataque",
 "speed": 7.0
 }, {
 "frames": [{
@@ -184,7 +184,7 @@ script = ExtResource("1_uoead")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=147092087 groups=["inimigos"]]
 sprite_frames = SubResource("SpriteFrames_7fw7d")
-animation = &"Morrendo"
+animation = &"Ataque"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=764513727]
 visibility_layer = 2

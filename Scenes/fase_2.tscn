@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://crywt4s7g84dn" path="res://Assets/Sprites/UI/Itens/visor.png" id="3_eoqrh"]
 [ext_resource type="PackedScene" uid="uid://ds745cvbq5e0e" path="res://Scenes/PauseMenu.tscn" id="4_le40s"]
 [ext_resource type="Texture2D" uid="uid://dqjrsv16petuf" path="res://Assets/Sprites/UI/Itens/habilidade-dash.png" id="4_p0386"]
+[ext_resource type="PackedScene" uid="uid://d2bpfcy8n3kfo" path="res://Scenes/morcego.tscn" id="6_dh80i"]
 [ext_resource type="PackedScene" uid="uid://sgvxq55ru860" path="res://Scenes/espada.tscn" id="8_au6ud"]
 [ext_resource type="PackedScene" uid="uid://brxw61a388b6" path="res://Scenes/caranguejo.tscn" id="8_b0mac"]
+[ext_resource type="PackedScene" uid="uid://dds5deibvq4vn" path="res://Scenes/rato.tscn" id="9_wu88a"]
+[ext_resource type="PackedScene" uid="uid://llraouxeotmv" path="res://Scenes/óculos.tscn" id="11_vjvqt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fw7d"]
 size = Vector2(6.000004, 1062)
@@ -189,4 +192,14 @@ offset_bottom = 661.0
 position = Vector2(28.99997, -59)
 
 [node name="Caranguejo" parent="." unique_id=557927447 instance=ExtResource("8_b0mac")]
-position = Vector2(74, -60)
+position = Vector2(910, -68)
+
+[node name="Rato" parent="." unique_id=1487017814 instance=ExtResource("9_wu88a")]
+position = Vector2(143, -81)
+
+[node name="Morcego" parent="." unique_id=1235634314 instance=ExtResource("6_dh80i")]
+position = Vector2(464, -90)
+
+[node name="Óculos" parent="." unique_id=1999891671 instance=ExtResource("11_vjvqt")]
+position = Vector2(-16, -55)
+scale = Vector2(0.05, 0.05)

@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bxxwgqmu82m5r" path="res://Scripts/start_button.gd" id="1_sj23m"]
 [ext_resource type="Script" uid="uid://cakgfqgh4tpnb" path="res://Scripts/quitButton.gd" id="2_4uahm"]
 [ext_resource type="Texture2D" uid="uid://b402ht303k12h" path="res://Assets/Sprites/UI/Botões/botao-sair.png" id="3_206en"]
+[ext_resource type="Texture2D" uid="uid://1tsojdnruprn" path="res://Assets/Sprites/Cenários/tela-inicial.png" id="5_206en"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iq3d2"]
 atlas = ExtResource("1_26p5a")
@@ -68,36 +69,42 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="StartVisual" type="AnimatedSprite2D" parent="." unique_id=1188971946]
-position = Vector2(604, 262)
+position = Vector2(267, 226)
 scale = Vector2(13, 13)
 sprite_frames = SubResource("SpriteFrames_7fw7d")
 
 [node name="Start" type="Button" parent="." unique_id=505519816]
 z_index = -1
 layout_mode = 0
-offset_left = 390.0
-offset_top = 171.0
-offset_right = 812.0
-offset_bottom = 300.0
+offset_left = 53.0
+offset_top = 135.0
+offset_right = 475.0
+offset_bottom = 264.0
 theme_type_variation = &"FlatButton"
 script = ExtResource("1_sj23m")
 
 [node name="QuitVisual" type="AnimatedSprite2D" parent="." unique_id=2034477714]
-position = Vector2(605, 505)
+position = Vector2(268, 469)
 scale = Vector2(13, 13)
 sprite_frames = SubResource("SpriteFrames_4b3kd")
 
 [node name="Quit" type="Button" parent="." unique_id=2088075113]
 z_index = -1
 layout_mode = 0
-offset_left = 396.0
-offset_top = 414.0
-offset_right = 816.0
-offset_bottom = 547.0
+offset_left = 59.0
+offset_top = 378.0
+offset_right = 479.0
+offset_bottom = 511.0
 theme_type_variation = &"FlatButton"
 text = "
 "
 script = ExtResource("2_4uahm")
+
+[node name="TelaInicial" type="Sprite2D" parent="." unique_id=369448732]
+z_index = -2
+position = Vector2(637.00006, 465)
+scale = Vector2(20, 20)
+texture = ExtResource("5_206en")
 
 [connection signal="mouse_entered" from="Start" to="Start" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Start" to="Start" method="_on_mouse_exited"]

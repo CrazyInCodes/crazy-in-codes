@@ -26,19 +26,25 @@ func _ready() -> void:
 		animated_sprite_2d.play("Voando")
 		player = get_tree().get_first_node_in_group("Player")
 
+var atacando = false
+func attack():
+	atacando = true
+	animated_sprite_2d.play("Ataque")
+
 func _physics_process(delta: float) -> void:
-	if not morrendo:
-		if player == null:
-			return
-		var direction = global_position.direction_to(player.global_position)
-		velocity = direction*SPEED
-		animated_sprite_2d.play("Voando")
-		
-		if direction.x < 0:
-			animated_sprite_2d.flip_h = true
-		elif direction.x > 0:
-			animated_sprite_2d.flip_h = false
-		move_and_slide()
+	if not atacando:
+		if not morrendo:
+			if player == null:
+				return
+			var direction = global_position.direction_to(player.global_position)
+			velocity = direction*SPEED
+			animated_sprite_2d.play("Voando")
+			
+			if direction.x < 0:
+				animated_sprite_2d.flip_h = true
+			elif direction.x > 0:
+				animated_sprite_2d.flip_h = false
+			move_and_slide()
 	
 
 

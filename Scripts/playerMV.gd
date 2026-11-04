@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var player: CharacterBody2D = $"."
 @onready var player_anim: AnimatedSprite2D = $PlayerAnim
 @onready var kill_zones: Area2D = $PlayerKillZone
-
+@onready var visor: Sprite2D = get_node("../UI/Visor")
 const DSPEED = 200.0
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
@@ -12,6 +12,8 @@ var Ddir: int = 1
 var Inv : Array
 var attack_cd = false
 var attacking = false
+var live = true
+var equipped = false
 
 @onready var cooldown: Timer = $Cooldown
 
@@ -35,6 +37,14 @@ func _on_cooldown_timeout() -> void:
 func addsword():
 	Inv.append("sword")
 
+func die():
+	live = false
+	await get_tree().create_timer(1).timeout
+	get_tree().call_deferred("reload_current_scene")
+
+
+func addoculos():
+	Inv.append("oculos")
 func attack():
 	attacking = true
 	attack_cd = true
@@ -47,43 +57,50 @@ func attack():
 	attack_cd = false
 
 func _physics_process(delta: float) -> void:
-	if not attacking:
-		var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		if is_dashing:
-			velocity = Vector2(Ddir * DSPEED, 0)
-			player_anim.play("Dash")
-			move_and_slide()
-		else:
-			velocity = direction * SPEED
-			if direction == Vector2(0.0,0.0):
-				player_anim.play("Idle")
+	if live:
+		if not attacking:
+			var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+			if is_dashing:
+				velocity = Vector2(Ddir * DSPEED, 0)
+				player_anim.play("Dash")
+				move_and_slide()
 			else:
-				player_anim.play("Walk")
+				velocity = direction * SPEED
+				if direction == Vector2(0.0,0.0):
+					player_anim.play("Idle")
+				else:
+					player_anim.play("Walk")
+				
+			#inverter sprite
+			if direction.x < 0:
+				player_anim.flip_h = true
+				Ddir = -1
+				kill_zones.scale.x = -1
+				kill_zones.position.x = -14
+			elif direction.x > 0:
+				player_anim.flip_h = false
+				Ddir = 1
+				kill_zones.scale.x = 1
+				kill_zones.position.x = 14
 			
-		#inverter sprite
-		if direction.x < 0:
-			player_anim.flip_h = true
-			Ddir = -1
-			kill_zones.scale.x = -1
-			kill_zones.position.x = -14
-		elif direction.x > 0:
-			player_anim.flip_h = false
-			Ddir = 1
-			kill_zones.scale.x = 1
-			kill_zones.position.x = 14
-		
-		#dash execução
-		if dash_on_cd:
-			pass
-		else:
-			if Input.is_action_just_pressed("ui_dash"):
-				dash()
-		
-		move_and_slide()
-		#---------------------------------------------------------
-		if "sword" in Inv:
-			if not attack_cd:
-				if Input.is_action_just_pressed("ui_attack"):
-					attack()
-			else:
+			#dash execução
+			if dash_on_cd:
 				pass
+			else:
+				if Input.is_action_just_pressed("ui_dash"):
+					dash()
+			
+			move_and_slide()
+			#---------------------------------------------------------
+			if "sword" in Inv:
+				if not attack_cd:
+					if Input.is_action_just_pressed("ui_attack"):
+						attack()
+				else:
+					pass
+			if "oculos" in Inv:
+				if Input.is_action_just_pressed("ui_equip"):
+					if not equipped:
+						visor.visible = true
+					else:
+						visor.visible = false
