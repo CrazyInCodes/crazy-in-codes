@@ -155,7 +155,7 @@
             .card{width: 100%; max-width: 20vw; min-height: 40vw; padding: 4px; min-width: 30px; margin-top: 2vw;}
             .card h3{font-size: clamp(10px, 4px, 20px);}
             .card p{font-size: clamp(7px, 2.5px, 14px); line-height: 1.5;}
-            .sprite{zoom: 0.5;}
+            .sprite{zoom: 0.5; margin: 0 4px;}
             #ladoEsq{justify-self: start;}
             #ladoDir{justify-self: end;}
         }
@@ -242,15 +242,10 @@
         .rodape-link{color: #fff; display: inline-block;}
         .rodape-link:hover{opacity: .6;}
         .rodape-icone{fill: currentColor; vertical-align: -0.125em;}
-        .rodape-imagem{
-  height:48px;
-  width:auto;
-  display:block;
-  image-rendering:pixelated; /* mantém o visual pixelado, se for pixel art */
-}
-        @media (max-width:768px){
-            .rodape{flex-direction:column;gap:12px;text-align:center;}
-            .rodape-imagem{height:36px;}
+        .rodape-imagem{height: 48px; width: auto; display: block; image-rendering:pixelated;}
+        @media (max-width: 768px){
+            .rodape{flex-direction: column;gap:12px;text-align: center;}
+            .rodape-imagem{height: 36px;}
         }
     </style>
 </head>
@@ -285,7 +280,7 @@
             <h2>Gameplay</h2>
             <div>
                 <div class="video">
-                    <video src="Gameplay/videoteste.mp4" controls poster="Gameplay/videoteste.mp4"></video>
+                    <video src="Gameplay/gameplay.mp4" controls poster="Imagens/thumbnailjogo.jpeg"></video>
                 </div>
                 <p href="#https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">Vídeo de Jogabilidade com tutorial mostrando
                 detalhes sobre nosso jogo!!!</p>
@@ -301,9 +296,9 @@
                     <div>
                         <div id="todos" hidden>
                             <div class="card">
-                                <h3>Protagonista</h3>
+                                <h3>Raíssa</h3>
                                 <div class="sprite spriteprotagonista" style="--frames: 15; --duration: 10s; background-image: url(Imagens/spriteplayerS3todos.png);"></div>
-                                <p>Descrição do personagem principal do jogo.</p>
+                                <p>Protagonista do jogo, ama programar.</p>
                             </div>
                             
                             <div class="card">
@@ -332,9 +327,22 @@
                             </div>
 
                             <div class="card">                               
-                                <h3>Boss</h3>
-                                <div class="sprite" style="background-image: url();"></div>
+                                <h3>Cobra</h3>
+                                <div class="sprite" style="--frames: 4; --rows: 1; --row: 0; background-image: url(Imagens/Andando_Cobra.png);"></div>
                                 <p>Descrição do Boss do jogo.</p>
+                            </div>
+
+                            <div class="card">                               
+                                <h3>Escorpião</h3>
+                                <div class="sprite" style="background-image: url(Imagens/Andando_Escorpiao.png);"></div>
+                                <p>Descrição do Boss do jogo.</p>
+                            </div>
+                            
+
+                            <div class="card">                               
+                                <h3>Monstro</h3>
+                                <div class="sprite" style="--fw: 400; --fh: 400; --frames: 6; --rows: 1; --row: 0; --zoom: 0.45; background-image: url(Imagens/Monstro..png);"></div>
+                                <p>Descrição do Monstro do jogo.</p>
                             </div>
                         </div>
                     </div>
@@ -389,8 +397,8 @@
         <section class="documento" id="documento">
             <h2 class="documentotitulo">Documento</h2>
             <p>Documento ABNT referente a detalhes técnicos e da história de nosso jogo!!!</p>
-            <a href="Documento/Documento Teste.pdf">Baixar Documento</a>
-            <iframe id="pdf" src="Documento/Documento Teste.pdf" title="Documento do Projeto" allowfullscreen></iframe>
+            <a href="Documento/DocumentoJogo.pdf">Baixar Documento</a>
+            <iframe id="pdf" src="Documento/DocumentoJogo.pdf" title="Documento do Projeto" allowfullscreen></iframe>
             <button id="btnTela" type="button">Tela Cheia</button> 
         </section>
         <section class="aaa">
@@ -486,23 +494,20 @@
         const ladoDir = document.getElementById('ladoDir');
         const btnEsq = document.getElementById('esq');
         const btnDir = document.getElementById('dir');
-        const mq = window.matchMedia('(max-width: 768px)'); /* Para Celulares */
-        const maxInicio = () => mq.matches ? 4 : 2;
-        let inicio = 0; // 0 = cards 1-4 | 2 = cards 3-6
-        function mostrar() {
-            inicio = Math.min(inicio, maxInicio());
-            if (mq.matches) {
-                ladoEsq.replaceChildren(cards[inicio]);
-                ladoDir.replaceChildren(cards[inicio + 1]);
-            } else {
-                ladoEsq.replaceChildren(cards[inicio], cards[inicio + 1]);
-                ladoDir.replaceChildren(cards[inicio + 2], cards[inicio + 3]);
-            }
+        const mq = window.matchMedia('(max-width:768px)');
+        let inicio = 0;
+        const porLado   = () => mq.matches ? 1 : 2;
+        const maxInicio = () => cards.length - porLado() * 2;
+        function mostrar(){
+            const n = porLado();
+            if (inicio > maxInicio()) inicio = maxInicio();
+            ladoEsq.replaceChildren(...cards.slice(inicio, inicio + n));
+            ladoDir.replaceChildren(...cards.slice(inicio + n, inicio + n * 2));
             btnEsq.disabled = inicio === 0;
-            btnDir.disabled = inicio === maxInicio();
+            btnDir.disabled = inicio >= maxInicio();
         }
-        btnDir.addEventListener('click', () => { inicio = Math.min(inicio + 2, maxInicio()); mostrar(); });
-        btnEsq.addEventListener('click', () => { inicio = Math.max(inicio - 2, 0); mostrar(); });
+        btnEsq.addEventListener('click', () => { inicio = Math.max(0, inicio - 2); mostrar(); });
+        btnDir.addEventListener('click', () => { inicio = Math.min(maxInicio(), inicio + 2); mostrar(); });
         mq.addEventListener('change', mostrar);
         mostrar();
         
