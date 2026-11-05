@@ -510,6 +510,7 @@ func _ready():
 	c.pressed.connect(func(): verificar_resposta(2))
 	d.pressed.connect(func(): verificar_resposta(3))
 
+var trocamus = false
 
 func _process(delta):
 	var mentalLoss:float = 0.0
@@ -523,7 +524,9 @@ func _process(delta):
 			player_face.play("Serious")
 		elif mental >= 25:
 			calma.stop()
-			tensa.play()
+			if not trocamus:
+				tensa.play()
+				trocamus = true
 			mentalLoss = 60
 			error = 8
 			player_face.play("Sad")
