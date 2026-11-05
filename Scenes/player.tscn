@@ -177,4 +177,9 @@ position = Vector2(15, 4)
 position = Vector2(-2.75, -3.75)
 shape = SubResource("RectangleShape2D_qgu4t")
 
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1062779259]
+target_position = Vector2(0, 20)
+collision_mask = 8
+collide_with_areas = true
+
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

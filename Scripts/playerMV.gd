@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player_anim: AnimatedSprite2D = $PlayerAnim
 @onready var kill_zones: Area2D = $PlayerKillZone
 @onready var visor: Sprite2D = get_node("../UI/Visor")
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 const DSPEED = 200.0
 const SPEED = 100.0
@@ -20,6 +21,16 @@ var equipped = false
 
 func _ready() -> void:
 	kill_zones.monitoring = false
+	
+	
+	
+func check():
+	if ray_cast_2d.is_colliding():
+		var obj = ray_cast_2d.get_collider()
+		var grp = obj.get_groups()
+		return grp
+	return []
+		
 func dash():
 	is_dashing = true
 	dash_on_cd = true

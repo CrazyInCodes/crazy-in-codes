@@ -412,7 +412,8 @@ func Lost():
 	color_rect.visible = false
 	await get_tree().create_timer(0.8).timeout
 	monstro.play("2")
-
+	await get_tree().create_timer(3).timeout
+	get_tree().change_scene_to_file("res://Scenes/fase_2.tscn")
 
 	
 	

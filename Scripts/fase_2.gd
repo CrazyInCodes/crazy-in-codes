@@ -7,14 +7,19 @@ extends Node2D
 @onready var visor: Sprite2D = $UI/Visor
 @onready var óculos: AnimatedSprite2D = $UI/Óculos
 @onready var espada: AnimatedSprite2D = $UI/Espada
+@onready var glitch: AnimatedSprite2D = $Glitches/Glitch
+@onready var glitch_2: AnimatedSprite2D = $Glitches/Glitch2
+@onready var player: CharacterBody2D = $Player
 
+const morcego = preload("res://Scenes/morcego.tscn")
+const rato = preload("res://Scenes/rato.tscn")
+
+
+var missões: Array = ["On_body_entered(rato)\n\tIf player on RuaD:\n\t\tplayer.die()\n\telse:\n\t\trato.die()"]
 
 
 var colisoes_visiveis = true
 var labels_visiveis = true
-
-
-
 # Procura todas as colisões da fase
 func mostrar_colisoes(no):
 	for filho in no.get_children():
@@ -67,6 +72,13 @@ func atualizar_visibilidade(no):
 				filho.visible = labels_visiveis
 		atualizar_visibilidade(filho)
 
+func desafio_1():
+	var groups = player.check()
+	var x = player.get_node("PlayerKillZone")
+	if "RuaD" in groups:
+		x.monitoring = true
+	else:
+		x.monitoring = false
 
 
 func _ready() -> void:
@@ -79,8 +91,21 @@ func _ready() -> void:
 	alternar_colisoes()
 
 func _process(delta: float) -> void:
+	desafio_1()
+	
+	
 	var timeL = cooldown.time_left
 	if timeL > 0:
 		label.text = str(ceil(timeL))
 	elif timeL == 0:
 		label.text = "carregado"
+
+
+func _on_óculos_body_entered(body: Node2D) -> void:
+	var rat = rato.instantiate()
+	glitch.add_child(rat)
+	rat.scale = Vector2(5,5)
+
+	var mor = morcego.instantiate()
+	glitch_2.add_child(mor)
+	mor.scale = Vector2(5,5)

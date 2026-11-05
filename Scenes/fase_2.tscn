@@ -8,13 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://dqjrsv16petuf" path="res://Assets/Sprites/UI/Itens/habilidade-dash.png" id="4_p0386"]
 [ext_resource type="Texture2D" uid="uid://bfidqkcxy7w1y" path="res://Assets/Sprites/UI/Itens/itens.png" id="7_lhuwr"]
 [ext_resource type="PackedScene" uid="uid://sgvxq55ru860" path="res://Scenes/espada.tscn" id="8_au6ud"]
+[ext_resource type="Texture2D" uid="uid://de3fkyml15hlq" path="res://Assets/Sprites/Inimigos/glitch.png" id="10_wu88a"]
 [ext_resource type="PackedScene" uid="uid://llraouxeotmv" path="res://Scenes/óculos.tscn" id="11_vjvqt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7fw7d"]
 size = Vector2(6.000004, 1062)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b3kd"]
-size = Vector2(661.75, 19)
+size = Vector2(673.75, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exckr"]
 size = Vector2(674, 24)
@@ -46,6 +47,40 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xx7qh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qgu4t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7vtl"]
+size = Vector2(20, 121)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjvqt"]
+atlas = ExtResource("10_wu88a")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhuwr"]
+atlas = ExtResource("10_wu88a")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_offno"]
+atlas = ExtResource("10_wu88a")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ck8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjvqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhuwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_offno")
 }],
 "loop": 1,
 "name": &"default",
@@ -97,7 +132,7 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="dir" type="CollisionShape2D" parent="Colisões/Calçadas" unique_id=1544942538 groups=["calçada_dir"]]
-position = Vector2(285.125, -118.5)
+position = Vector2(291.125, -118.5)
 shape = SubResource("RectangleShape2D_4b3kd")
 
 [node name="esq" type="CollisionShape2D" parent="Colisões/Calçadas" unique_id=910910822 groups=["calçada_esq"]]
@@ -226,9 +261,58 @@ position = Vector2(220.75, 686.25)
 scale = Vector2(0.36124995, 0.36124995)
 sprite_frames = SubResource("SpriteFrames_c7vtl")
 
+[node name="Label" type="Label" parent="UI" unique_id=1346938522]
+offset_left = 977.0
+offset_top = 6.0
+offset_right = 1227.0
+offset_bottom = 195.0
+label_settings = SubResource("LabelSettings_qgu4t")
+
 [node name="Espada" parent="." unique_id=1899664051 instance=ExtResource("8_au6ud")]
 position = Vector2(762.9999, -56)
 
 [node name="Óculos" parent="." unique_id=1999891671 instance=ExtResource("11_vjvqt")]
-position = Vector2(-16, -55)
+z_index = 1
+position = Vector2(199, -57)
 scale = Vector2(0.05, 0.05)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1703070430]
+position = Vector2(641, -72)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1944795025 groups=["divisor"]]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_c7vtl")
+
+[node name="Glitches" type="Node2D" parent="." unique_id=974700761]
+
+[node name="Glitch" type="AnimatedSprite2D" parent="Glitches" unique_id=1367364460]
+position = Vector2(36.000008, -73.00001)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_4ck8y")
+autoplay = "default"
+frame_progress = 0.92938346
+
+[node name="Glitch2" type="AnimatedSprite2D" parent="Glitches" unique_id=287485977]
+position = Vector2(81, -55)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_4ck8y")
+autoplay = "default"
+frame_progress = 0.12957099
+
+[node name="Glitch3" type="AnimatedSprite2D" parent="Glitches" unique_id=2017505344]
+position = Vector2(139, -73)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_4ck8y")
+autoplay = "default"
+frame_progress = 0.76298636
+
+[node name="Glitch4" type="AnimatedSprite2D" parent="Glitches" unique_id=133919336]
+position = Vector2(200, -60)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_4ck8y")
+autoplay = "default"
+frame_progress = 0.76298636
+
+[connection signal="body_entered" from="Óculos" to="." method="_on_óculos_body_entered"]
