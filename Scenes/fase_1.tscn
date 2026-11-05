@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://duqvi7e3vp7wd" path="res://Assets/Sprites/UI/Bars/sanidadeajuste.png" id="6_aw74n"]
 [ext_resource type="Texture2D" uid="uid://lyfd5tgi43ui" path="res://Assets/Sprites/Player/Sprite-PlayerS2.png" id="6_hya8f"]
 [ext_resource type="Texture2D" uid="uid://bbvd8c814qp6o" path="res://Assets/Sprites/Cenários/cenario.monstro.png" id="7_aw74n"]
+[ext_resource type="AudioStream" uid="uid://biyo5q8emna26" path="res://Assets/Músicas/musica4.mp3" id="8_5p4kr"]
+[ext_resource type="AudioStream" uid="uid://dr1l8nih1cavn" path="res://Assets/Músicas/musica5.mp3" id="9_ds3y1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cq7l2"]
 font_size = 30
@@ -340,3 +342,9 @@ position = Vector2(652, 619)
 scale = Vector2(3.3021874, 3.2521873)
 sprite_frames = SubResource("SpriteFrames_c7vtl")
 animation = &"1"
+
+[node name="Calma" type="AudioStreamPlayer2D" parent="." unique_id=1209900444]
+stream = ExtResource("8_5p4kr")
+
+[node name="Tensa" type="AudioStreamPlayer2D" parent="." unique_id=1185225601]
+stream = ExtResource("9_ds3y1")

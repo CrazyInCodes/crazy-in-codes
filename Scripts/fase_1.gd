@@ -25,6 +25,8 @@ extends Control
 
 @onready var barlayout: AnimatedSprite2D = $QuizUI/Barlayout
 
+@onready var calma: AudioStreamPlayer2D = $Calma
+@onready var tensa: AudioStreamPlayer2D = $Tensa
 
 var mental = 100.00
 var questao_atual = 0
@@ -390,33 +392,46 @@ func bar_anim_control():
 	elif mental == 0:
 		barlayout.play("zero")
 
-func Lost():
-	
-	await get_tree().create_timer(0.3).timeout
-	pause_menu.visible = false
-	get_tree().paused
-	
-	#cor troca
-	var tween = create_tween()
-	color_rect.color.a = 1
-	tween.tween_property(color_rect,"color", Color.BLACK, 3.0)
-	await tween
-	await get_tree().create_timer(2).timeout
-	#sumir com a cena
-	for x in get_children():
-		if !x is ColorRect:
-			x.visible = false
-	
-	monstro.visible = true
-	await get_tree().create_timer(1).timeout
-	color_rect.visible = false
-	await get_tree().create_timer(0.8).timeout
-	monstro.play("2")
-	await get_tree().create_timer(3).timeout
-	get_tree().change_scene_to_file("res://Scenes/fase_2.tscn")
+var perdeu = false
 
-	
-	
+func Lost():
+	if perdeu:
+		return
+
+	perdeu = true
+	set_process(false)
+
+	var arvore = get_tree()
+
+	await arvore.create_timer(0.3).timeout
+
+	pause_menu.visible = false
+	arvore.paused = false
+
+	# Transição para preto
+	var tween = create_tween()
+	color_rect.color.a = 1.0
+	tween.tween_property(color_rect, "color", Color.BLACK, 3.0)
+
+	await tween.finished
+
+	await arvore.create_timer(2.0).timeout
+
+	# Esconder os elementos da fase
+	for x in get_children():
+		if x != color_rect:
+			x.visible = false
+
+	monstro.visible = true
+
+	await arvore.create_timer(1.0).timeout
+
+	color_rect.visible = false
+	monstro.play("2")
+
+	await arvore.create_timer(3.0).timeout
+
+	arvore.change_scene_to_file("res://Scenes/fase_2.tscn")
 
 func camera_control():
 	camera_2d.zoom = Vector2(0.5,0.5)
@@ -488,6 +503,7 @@ func _ready():
 	questoes.shuffle()
 	
 	await get_tree().create_timer(7).timeout
+	calma.play()
 	mostrar_questao()
 	a.pressed.connect(func(): verificar_resposta(0))
 	b.pressed.connect(func(): verificar_resposta(1))
@@ -506,6 +522,8 @@ func _process(delta):
 			error = 6
 			player_face.play("Serious")
 		elif mental >= 25:
+			calma.stop()
+			tensa.play()
 			mentalLoss = 60
 			error = 8
 			player_face.play("Sad")
