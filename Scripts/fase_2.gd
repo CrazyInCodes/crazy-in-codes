@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var calçadas: StaticBody2D = $Colisões/Calçadas
+
 @onready var label: Label = $UI/TLabel
-@onready var ruas: StaticBody2D = $Colisões/Ruas
+
 @onready var cooldown: Timer = $Player/Cooldown
 @onready var visor: Sprite2D = $UI/Visor
 @onready var óculos: AnimatedSprite2D = $UI/Óculos
@@ -72,18 +72,8 @@ func atualizar_visibilidade(no):
 				filho.visible = labels_visiveis
 		atualizar_visibilidade(filho)
 
-func desafio_1():
-	var groups = player.check()
-	var x = player.get_node("PlayerKillZone")
-	if "RuaD" in groups:
-		x.monitoring = true
-	else:
-		x.monitoring = false
-
 
 func _ready() -> void:
-	calçadas.visible = true
-	ruas.visible = true
 	visor.visible = false
 	óculos.visible = false
 	espada.visible = false
@@ -91,7 +81,6 @@ func _ready() -> void:
 	alternar_colisoes()
 
 func _process(delta: float) -> void:
-	desafio_1()
 	
 	
 	var timeL = cooldown.time_left

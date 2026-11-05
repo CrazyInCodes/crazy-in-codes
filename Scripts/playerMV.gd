@@ -23,13 +23,7 @@ func _ready() -> void:
 	kill_zones.monitoring = false
 	
 	
-	
-func check():
-	if ray_cast_2d.is_colliding():
-		var obj = ray_cast_2d.get_collider()
-		var grp = obj.get_groups()
-		return grp
-	return []
+
 		
 func dash():
 	is_dashing = true
@@ -126,3 +120,13 @@ func _physics_process(delta: float) -> void:
 						get_parent().colisoes_visiveis = false
 						get_parent().labels_visiveis = false
 					get_parent().atualizar_visibilidade(get_parent())
+
+
+func _on_rua_d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		kill_zones.monitoring = true
+
+
+func _on_rua_d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		kill_zones.monitoring = false

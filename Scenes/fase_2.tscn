@@ -54,6 +54,7 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qgu4t"]
+font_size = 22
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c7vtl"]
 size = Vector2(20, 121)
@@ -126,28 +127,33 @@ position = Vector2(538, 184.25)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_7fw7d")
 
-[node name="Calçadas" type="StaticBody2D" parent="Colisões" unique_id=1481795342]
+[node name="CalD" type="Area2D" parent="Colisões" unique_id=59932892 groups=["calçada_dir"]]
 position = Vector2(0, 25)
-collision_layer = 8
-collision_mask = 8
+collision_mask = 3
 
-[node name="dir" type="CollisionShape2D" parent="Colisões/Calçadas" unique_id=1544942538 groups=["calçada_dir"]]
+[node name="dir" type="CollisionShape2D" parent="Colisões/CalD" unique_id=1544942538 groups=["calçada_dir"]]
 position = Vector2(291.125, -118.5)
 shape = SubResource("RectangleShape2D_4b3kd")
 
-[node name="esq" type="CollisionShape2D" parent="Colisões/Calçadas" unique_id=910910822 groups=["calçada_esq"]]
+[node name="CalE" type="Area2D" parent="Colisões" unique_id=924752135 groups=["calçada_esq"]]
+position = Vector2(0, 25)
+collision_mask = 3
+
+[node name="esq" type="CollisionShape2D" parent="Colisões/CalE" unique_id=910910822 groups=["calçada_esq"]]
 position = Vector2(286, -46)
 shape = SubResource("RectangleShape2D_4b3kd")
 
-[node name="Ruas" type="StaticBody2D" parent="Colisões" unique_id=845954310]
-collision_layer = 8
-collision_mask = 8
+[node name="RuaD" type="Area2D" parent="Colisões" unique_id=1124335009 groups=["RuaD"]]
+collision_mask = 3
 
-[node name="RuaD" type="CollisionShape2D" parent="Colisões/Ruas" unique_id=1742357625 groups=["RuaD"]]
+[node name="RuaD" type="CollisionShape2D" parent="Colisões/RuaD" unique_id=1742357625 groups=["RuaD"]]
 position = Vector2(292, -70)
 shape = SubResource("RectangleShape2D_exckr")
 
-[node name="RuaE" type="CollisionShape2D" parent="Colisões/Ruas" unique_id=1716797949 groups=["RuaE"]]
+[node name="RuaE" type="Area2D" parent="Colisões" unique_id=1106980786 groups=["RuaE"]]
+collision_mask = 3
+
+[node name="RuaE" type="CollisionShape2D" parent="Colisões/RuaE" unique_id=1716797949 groups=["RuaE"]]
 position = Vector2(292, -43)
 shape = SubResource("RectangleShape2D_exckr")
 
@@ -315,4 +321,6 @@ sprite_frames = SubResource("SpriteFrames_4ck8y")
 autoplay = "default"
 frame_progress = 0.76298636
 
+[connection signal="body_entered" from="Colisões/RuaD" to="Player" method="_on_rua_d_body_entered"]
+[connection signal="body_exited" from="Colisões/RuaD" to="Player" method="_on_rua_d_body_exited"]
 [connection signal="body_entered" from="Óculos" to="." method="_on_óculos_body_entered"]
