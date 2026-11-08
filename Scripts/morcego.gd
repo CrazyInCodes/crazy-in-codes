@@ -12,6 +12,7 @@ func morrer():
 	if morto:
 		return
 	enemy_kz.monitoring = false
+	player.derrotados += 1
 	morrendo = true
 	morto = true
 

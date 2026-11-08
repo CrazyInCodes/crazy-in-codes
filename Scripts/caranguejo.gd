@@ -19,7 +19,7 @@ func morrer():
 	enemy_kz.monitoring = false
 	morrendo = true
 	morto = true
-
+	player.derrotados += 1
 	animated_sprite_2d.play("Morrendo")
 
 	await animated_sprite_2d.animation_finished

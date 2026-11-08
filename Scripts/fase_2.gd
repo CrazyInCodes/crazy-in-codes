@@ -1,7 +1,8 @@
 extends Node2D
 
-
 @onready var label: Label = $UI/TLabel
+@onready var Pkill_zones: Area2D = $Player/PlayerKillZone
+@onready var Vlabel: Label = $UI/Label
 
 @onready var cooldown: Timer = $Player/Cooldown
 @onready var visor: Sprite2D = $UI/Visor
@@ -11,11 +12,12 @@ extends Node2D
 @onready var glitch_2: AnimatedSprite2D = $Glitches/Glitch2
 @onready var player: CharacterBody2D = $Player
 
+
 const morcego = preload("res://Scenes/morcego.tscn")
 const rato = preload("res://Scenes/rato.tscn")
 
 
-var missões: Array = ["On_body_entered(rato)\n\tIf player on RuaD:\n\t\tplayer.die()\n\telse:\n\t\trato.die()"]
+var missões: Array = [{"txt":"On_body_entered(rato)\n\tIf player on RuaD:\n\t\tplayer.die()\n\telse:\n\t\trato.die()"}]
 
 
 var colisoes_visiveis = true
@@ -73,7 +75,11 @@ func atualizar_visibilidade(no):
 		atualizar_visibilidade(filho)
 
 
+func proxima_missãotxt(x):
+	label.text = str(missões[x]["txt"])
+
 func _ready() -> void:
+	proxima_missãotxt(0)
 	visor.visible = false
 	óculos.visible = false
 	espada.visible = false
@@ -81,16 +87,18 @@ func _ready() -> void:
 	alternar_colisoes()
 
 func _process(delta: float) -> void:
-	
-	
+	mostrartx()
 	var timeL = cooldown.time_left
 	if timeL > 0:
 		label.text = str(ceil(timeL))
 	elif timeL == 0:
 		label.text = "carregado"
 
+func mostrartx():
+	#ambos tipo bool
+	Vlabel.visible = player.equipped
 
-func _on_óculos_body_entered(body: Node2D) -> void:
+func _on_óculos_body_entered(body: Node2D) -> void:	
 	var rat = rato.instantiate()
 	glitch.add_child(rat)
 	rat.scale = Vector2(5,5)
@@ -98,3 +106,13 @@ func _on_óculos_body_entered(body: Node2D) -> void:
 	var mor = morcego.instantiate()
 	glitch_2.add_child(mor)
 	mor.scale = Vector2(5,5)
+	
+
+func _on_rua_d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		Pkill_zones.monitoring = true
+
+
+func _on_rua_d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		Pkill_zones.monitoring = false

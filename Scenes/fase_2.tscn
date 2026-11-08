@@ -272,6 +272,7 @@ offset_left = 977.0
 offset_top = 6.0
 offset_right = 1227.0
 offset_bottom = 195.0
+text = "asdasdasdasdas"
 label_settings = SubResource("LabelSettings_qgu4t")
 
 [node name="Espada" parent="." unique_id=1899664051 instance=ExtResource("8_au6ud")]
@@ -321,6 +322,8 @@ sprite_frames = SubResource("SpriteFrames_4ck8y")
 autoplay = "default"
 frame_progress = 0.76298636
 
+[connection signal="body_entered" from="Colisões/RuaD" to="." method="_on_rua_d_body_entered"]
 [connection signal="body_entered" from="Colisões/RuaD" to="Player" method="_on_rua_d_body_entered"]
+[connection signal="body_exited" from="Colisões/RuaD" to="." method="_on_rua_d_body_exited"]
 [connection signal="body_exited" from="Colisões/RuaD" to="Player" method="_on_rua_d_body_exited"]
 [connection signal="body_entered" from="Óculos" to="." method="_on_óculos_body_entered"]
