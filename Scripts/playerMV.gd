@@ -3,7 +3,6 @@ extends CharacterBody2D
 @onready var player_anim: AnimatedSprite2D = $PlayerAnim
 @onready var kill_zones: Area2D = $PlayerKillZone
 @onready var visor: Sprite2D = get_node("../UI/Visor")
-@onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 const DSPEED = 200.0
 const SPEED = 100.0
@@ -16,6 +15,7 @@ var attack_cd = false
 var attacking = false
 var live = true
 var equipped = false
+var derrotados: int = 0
 
 @onready var cooldown: Timer = $Cooldown
 
@@ -120,13 +120,3 @@ func _physics_process(delta: float) -> void:
 						get_parent().colisoes_visiveis = false
 						get_parent().labels_visiveis = false
 					get_parent().atualizar_visibilidade(get_parent())
-
-
-func _on_rua_d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		kill_zones.monitoring = true
-
-
-func _on_rua_d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		kill_zones.monitoring = false
