@@ -270,28 +270,28 @@ columns = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 text = "5"
 
 [node name="B" type="Button" parent="QuizUI/QuestionPanel/Answers" unique_id=2005646345]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 text = "0"
 
 [node name="C" type="Button" parent="QuizUI/QuestionPanel/Answers" unique_id=691734294]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 text = "10"
 
 [node name="D" type="Button" parent="QuizUI/QuestionPanel/Answers" unique_id=1539932499]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 text = "Error"
 
 [node name="Timertxt" type="Label" parent="QuizUI/QuestionPanel" unique_id=681253588]
