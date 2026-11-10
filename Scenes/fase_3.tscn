@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://d4gd48fw8br26"]
 
+[ext_resource type="Script" uid="uid://bamglwwy60qep" path="res://Scripts/fase_3.gd" id="1_od1yq"]
 [ext_resource type="Texture2D" uid="uid://b0ytrmgd2lae5" path="res://Assets/Sprites/Cenários/fase3.cenario.png" id="1_w1jmt"]
 [ext_resource type="Texture2D" uid="uid://brh7v7d1qs6nm" path="res://Assets/Sprites/Cenários/fase3.o_ultimo_cenario.png" id="2_wyqio"]
 [ext_resource type="Texture2D" uid="uid://dh6vcif3wlmdn" path="res://Assets/Sprites/UI/Itens/Nucleo_corrompido.png" id="3_43iu4"]
 [ext_resource type="PackedScene" uid="uid://bvnyaklve55h1" path="res://Scenes/player.tscn" id="4_wyqio"]
+[ext_resource type="PackedScene" uid="uid://ds745cvbq5e0e" path="res://Scenes/PauseMenu.tscn" id="6_m48by"]
+[ext_resource type="Texture2D" uid="uid://crywt4s7g84dn" path="res://Assets/Sprites/UI/Itens/visor.png" id="7_jduhe"]
+[ext_resource type="Texture2D" uid="uid://dqjrsv16petuf" path="res://Assets/Sprites/UI/Itens/habilidade-dash.png" id="8_x3but"]
+[ext_resource type="Texture2D" uid="uid://bfidqkcxy7w1y" path="res://Assets/Sprites/UI/Itens/itens.png" id="9_sspfj"]
+[ext_resource type="PackedScene" uid="uid://sgvxq55ru860" path="res://Scenes/espada.tscn" id="10_m48by"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubys0"]
 atlas = ExtResource("2_wyqio")
@@ -29,7 +35,41 @@ size = Vector2(674, 24)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_43iu4"]
 size = Vector2(14.500002, 1409)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_g765r"]
+atlas = ExtResource("9_sspfj")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_afk17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g765r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx7qh"]
+atlas = ExtResource("9_sspfj")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p3jxf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx7qh")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4bbw7"]
+font_size = 22
+
 [node name="Fase3" type="Node2D" unique_id=1564983420]
+script = ExtResource("1_od1yq")
 
 [node name="Tela1" type="Sprite2D" parent="." unique_id=1012078974]
 position = Vector2(402, -201)
@@ -112,3 +152,47 @@ shape = SubResource("RectangleShape2D_43iu4")
 position = Vector2(538, 184.25)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_43iu4")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2084417022]
+
+[node name="PauseMenu" parent="UI" unique_id=332429809 instance=ExtResource("6_m48by")]
+layer = 10
+
+[node name="Visor" type="Sprite2D" parent="UI" unique_id=553737981]
+position = Vector2(1112, 103)
+scale = Vector2(10.671875, 6.609375)
+texture = ExtResource("7_jduhe")
+
+[node name="Dash" type="Sprite2D" parent="UI" unique_id=2024351236]
+position = Vector2(37, 689.00006)
+scale = Vector2(2.46875, 2.46875)
+texture = ExtResource("8_x3but")
+
+[node name="TLabel" type="Label" parent="UI" unique_id=1538422986]
+offset_left = 9.0
+offset_top = 638.0
+offset_right = 65.0
+offset_bottom = 661.0
+
+[node name="Óculos" type="AnimatedSprite2D" parent="UI" unique_id=645624442]
+position = Vector2(121.000015, 682)
+scale = Vector2(0.345, 0.345)
+sprite_frames = SubResource("SpriteFrames_afk17")
+
+[node name="Espada" type="AnimatedSprite2D" parent="UI" unique_id=212590046]
+position = Vector2(220.75, 686.25)
+scale = Vector2(0.36124995, 0.36124995)
+sprite_frames = SubResource("SpriteFrames_p3jxf")
+
+[node name="Label" type="Label" parent="UI" unique_id=542468316]
+offset_left = 977.0
+offset_top = 6.0
+offset_right = 1227.0
+offset_bottom = 195.0
+text = "asdasdasdasdas"
+label_settings = SubResource("LabelSettings_4bbw7")
+
+[node name="Espada" parent="." unique_id=1899664051 instance=ExtResource("10_m48by")]
+position = Vector2(246, -105)
+scale = Vector2(0.2, 0.2)
+collision_mask = 1

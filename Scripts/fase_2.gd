@@ -80,7 +80,7 @@ func atualizar_visibilidade(no):
 
 
 func proxima_missãotxt(x):
-	label.text = str(missões[x]["txt"])
+	Vlabel.text = str(missões[x]["txt"])
 func atualizar_missão():
 	if der <=2:
 		proxima_missãotxt(0)
@@ -141,12 +141,12 @@ func _on_óculos_body_entered(body: Node2D) -> void:
 	escorpiaoSpawn.call_deferred()
 	
 func _on_rua_d_body_entered(body: Node2D) -> void:
-	if der >= 0 and der<=2:
-		if body.is_in_group("Player"):
-			Pkill_zones.monitoring = true
+	if body.is_in_group("Player"):
+		if der >= 0 and der<=2:
+				Pkill_zones.monitoring = true
 
 
 func _on_rua_d_body_exited(body: Node2D) -> void:
-	if der >= 0 and der<=2:
-		if body.is_in_group("Player"):
-			Pkill_zones.monitoring = false
+	if body.is_in_group("Player"):
+		if der >= 0 and der<=2:
+				Pkill_zones.monitoring = false

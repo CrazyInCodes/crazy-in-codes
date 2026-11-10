@@ -4,8 +4,8 @@ extends CharacterBody2D
 @onready var kill_zones: Area2D = $PlayerKillZone
 @onready var visor: Sprite2D = get_node("../UI/Visor")
 
-const DSPEED = 200.0
-const SPEED = 100.0
+var DSPEED = 200.0
+var SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 var dash_on_cd = false
 var is_dashing = false
