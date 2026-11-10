@@ -280,7 +280,7 @@ position = Vector2(762.9999, -56)
 
 [node name="Óculos" parent="." unique_id=1999891671 instance=ExtResource("11_vjvqt")]
 z_index = 1
-position = Vector2(199, -57)
+position = Vector2(251, -63)
 scale = Vector2(0.05, 0.05)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1703070430]

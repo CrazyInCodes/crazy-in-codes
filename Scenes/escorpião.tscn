@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://ci5r0smhnghfv"]
+
+[ext_resource type="Script" uid="uid://wi6muu4d7p4d" path="res://Scripts/escorpião.gd" id="1_5o156"]
+[ext_resource type="Texture2D" uid="uid://bvdf844wsl104" path="res://Assets/Sprites/Inimigos/Andando_Escorpiao.png" id="2_jss54"]
+[ext_resource type="Texture2D" uid="uid://yc7iulevm3fe" path="res://Assets/Sprites/Inimigos/Ataque_Escorpiao.png" id="3_dm2qg"]
+[ext_resource type="Texture2D" uid="uid://btqywkk1mg4ly" path="res://Assets/Sprites/Inimigos/TomaDano_Escorpiao.png" id="4_mnip5"]
+[ext_resource type="PackedScene" uid="uid://df01k7en2ir3b" path="res://Scenes/enemy_kill_zones.tscn" id="5_c8vi6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me3xx"]
+atlas = ExtResource("2_jss54")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce8af"]
+atlas = ExtResource("2_jss54")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scj10"]
+atlas = ExtResource("2_jss54")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy0qy"]
+atlas = ExtResource("2_jss54")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4xma"]
+atlas = ExtResource("3_dm2qg")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vmue"]
+atlas = ExtResource("3_dm2qg")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_migv4"]
+atlas = ExtResource("3_dm2qg")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iayp"]
+atlas = ExtResource("3_dm2qg")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igseq"]
+atlas = ExtResource("4_mnip5")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3do6s"]
+atlas = ExtResource("4_mnip5")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uc62s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me3xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce8af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scj10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy0qy")
+}],
+"loop": 1,
+"name": &"Andando",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4xma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vmue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_migv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iayp")
+}],
+"loop": 1,
+"name": &"Ataque",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igseq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3do6s")
+}],
+"loop": 0,
+"name": &"Morrendo",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bwe2a"]
+size = Vector2(14, 9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kvxq3"]
+
+[node name="Escorpião" type="CharacterBody2D" unique_id=1603784988 groups=["inimigos"]]
+collision_mask = 3
+script = ExtResource("1_5o156")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1707462888 groups=["inimigos"]]
+sprite_frames = SubResource("SpriteFrames_uc62s")
+animation = &"Ataque"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1833553026 groups=["inimigos"]]
+visibility_layer = 2
+position = Vector2(8, 19)
+shape = SubResource("RectangleShape2D_bwe2a")
+
+[node name="EnemyKillZones" parent="." unique_id=1499759088 groups=["inimigos"] instance=ExtResource("5_c8vi6")]
+position = Vector2(0, 2.4999998)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKillZones" unique_id=1647619123 groups=["inimigos"]]
+position = Vector2(8, 13.5)
+shape = SubResource("CircleShape2D_kvxq3")

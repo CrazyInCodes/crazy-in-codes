@@ -4,11 +4,10 @@ extends CharacterBody2D
 var morto = false
 
 
-const SPEED = 40.0
+const SPEED = 70.0
 var direction = 1
 var player
 var morrendo = false
-
 var atacando = false
 func attack():
 	atacando = true
@@ -16,10 +15,12 @@ func attack():
 func morrer():
 	if morto:
 		return
+	
 	enemy_kz.monitoring = false
-	morrendo = true
-	morto = true
 	player.derrotados += 1
+	morrendo = true
+	morto = true 
+
 	animated_sprite_2d.play("Morrendo")
 
 	await animated_sprite_2d.animation_finished
