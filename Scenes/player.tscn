@@ -159,14 +159,6 @@ sprite_frames = SubResource("SpriteFrames_7fw7d")
 animation = &"Attack"
 frame_progress = 0.78831744
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2117730069]
-position = Vector2(4, 0)
-zoom = Vector2(7, 7)
-limit_left = -45
-limit_top = -186
-limit_right = 1003
-limit_bottom = -15
-
 [node name="Cooldown" type="Timer" parent="." unique_id=1194599623]
 wait_time = 3.0
 

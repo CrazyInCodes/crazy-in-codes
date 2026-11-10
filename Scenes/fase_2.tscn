@@ -15,10 +15,10 @@
 size = Vector2(6.000004, 1062)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4b3kd"]
-size = Vector2(673.75, 19)
+size = Vector2(1505.75, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exckr"]
-size = Vector2(674, 24)
+size = Vector2(1449, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgu4t"]
 size = Vector2(4, 8)
@@ -55,9 +55,6 @@ animations = [{
 
 [sub_resource type="LabelSettings" id="LabelSettings_qgu4t"]
 font_size = 22
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c7vtl"]
-size = Vector2(20, 121)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vjvqt"]
 atlas = ExtResource("10_wu88a")
@@ -97,6 +94,14 @@ scale = Vector2(0.6, 0.6)
 collision_layer = 2
 collision_mask = 2
 
+[node name="Camera2D2" type="Camera2D" parent="Player" unique_id=1390926047]
+position = Vector2(4, 0)
+zoom = Vector2(7, 7)
+limit_left = -45
+limit_top = -186
+limit_right = 1003
+limit_bottom = -15
+
 [node name="Cenário" type="Sprite2D" parent="." unique_id=1328133885]
 position = Vector2(481.46786, -99.74999)
 scale = Vector2(1.0321639, 1.0321639)
@@ -132,7 +137,7 @@ position = Vector2(0, 25)
 collision_mask = 3
 
 [node name="dir" type="CollisionShape2D" parent="Colisões/CalD" unique_id=1544942538 groups=["calçada_dir"]]
-position = Vector2(291.125, -118.5)
+position = Vector2(350, -118.5)
 shape = SubResource("RectangleShape2D_4b3kd")
 
 [node name="CalE" type="Area2D" parent="Colisões" unique_id=924752135 groups=["calçada_esq"]]
@@ -154,7 +159,7 @@ shape = SubResource("RectangleShape2D_exckr")
 collision_mask = 3
 
 [node name="RuaE" type="CollisionShape2D" parent="Colisões/RuaE" unique_id=1716797949 groups=["RuaE"]]
-position = Vector2(292, -43)
+position = Vector2(300, -43)
 shape = SubResource("RectangleShape2D_exckr")
 
 [node name="Postes" type="StaticBody2D" parent="Colisões" unique_id=1867171147]
@@ -287,10 +292,6 @@ scale = Vector2(0.05, 0.05)
 position = Vector2(641, -72)
 collision_layer = 2
 collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1944795025 groups=["divisor"]]
-position = Vector2(0, 4.5)
-shape = SubResource("RectangleShape2D_c7vtl")
 
 [node name="Glitches" type="Node2D" parent="." unique_id=974700761]
 

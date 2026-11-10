@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://d4gd48fw8br26"]
+
+[ext_resource type="Texture2D" uid="uid://b0ytrmgd2lae5" path="res://Assets/Sprites/Cenários/fase3.cenario.png" id="1_w1jmt"]
+[ext_resource type="Texture2D" uid="uid://brh7v7d1qs6nm" path="res://Assets/Sprites/Cenários/fase3.o_ultimo_cenario.png" id="2_wyqio"]
+[ext_resource type="Texture2D" uid="uid://dh6vcif3wlmdn" path="res://Assets/Sprites/UI/Itens/Nucleo_corrompido.png" id="3_43iu4"]
+[ext_resource type="PackedScene" uid="uid://bvnyaklve55h1" path="res://Scenes/player.tscn" id="4_wyqio"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubys0"]
+atlas = ExtResource("2_wyqio")
+region = Rect2(2400, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgu4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubys0")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wyqio"]
+size = Vector2(673.75, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubys0"]
+size = Vector2(674, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_43iu4"]
+size = Vector2(14.500002, 1409)
+
+[node name="Fase3" type="Node2D" unique_id=1564983420]
+
+[node name="Tela1" type="Sprite2D" parent="." unique_id=1012078974]
+position = Vector2(402, -201)
+texture = ExtResource("1_w1jmt")
+
+[node name="TelaN" type="AnimatedSprite2D" parent="." unique_id=1745850965]
+position = Vector2(1002, -191)
+sprite_frames = SubResource("SpriteFrames_qgu4t")
+
+[node name="Nucleo" type="Sprite2D" parent="." unique_id=1678487384]
+position = Vector2(1001, -117)
+texture = ExtResource("3_43iu4")
+
+[node name="Player" parent="." unique_id=500233316 instance=ExtResource("4_wyqio")]
+position = Vector2(112, -145)
+scale = Vector2(2, 2)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=512302332]
+zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = -359
+limit_right = 1200
+limit_bottom = 0
+editor_draw_limits = true
+
+[node name="CalD" type="Area2D" parent="." unique_id=431161559 groups=["calçada_dir"]]
+position = Vector2(72, 64)
+scale = Vector2(2, 2)
+collision_mask = 3
+
+[node name="dir" type="CollisionShape2D" parent="CalD" unique_id=134311882 groups=["calçada_dir"]]
+position = Vector2(291.125, -118.5)
+shape = SubResource("RectangleShape2D_wyqio")
+
+[node name="CalE" type="Area2D" parent="." unique_id=1399641710 groups=["calçada_esq"]]
+position = Vector2(72, 64)
+scale = Vector2(2, 2)
+collision_mask = 3
+
+[node name="esq" type="CollisionShape2D" parent="CalE" unique_id=1854314434 groups=["calçada_esq"]]
+position = Vector2(286, -46)
+shape = SubResource("RectangleShape2D_wyqio")
+
+[node name="RuaD" type="Area2D" parent="." unique_id=1761887539 groups=["RuaD"]]
+position = Vector2(72, 14)
+scale = Vector2(2, 2)
+collision_mask = 3
+
+[node name="RuaD" type="CollisionShape2D" parent="RuaD" unique_id=593489342 groups=["RuaD"]]
+position = Vector2(292, -70)
+shape = SubResource("RectangleShape2D_ubys0")
+
+[node name="RuaE" type="Area2D" parent="." unique_id=574261731 groups=["RuaE"]]
+position = Vector2(72, 14)
+scale = Vector2(2, 2)
+collision_mask = 3
+
+[node name="RuaE" type="CollisionShape2D" parent="RuaE" unique_id=1428587165 groups=["RuaE"]]
+position = Vector2(292, -43)
+shape = SubResource("RectangleShape2D_ubys0")
+
+[node name="Limites mundo" type="StaticBody2D" parent="." unique_id=851034316]
+position = Vector2(-12, -186)
+collision_mask = 3
+
+[node name="ParedeInv" type="CollisionShape2D" parent="Limites mundo" unique_id=1721161535]
+position = Vector2(5.250001, -32)
+shape = SubResource("RectangleShape2D_43iu4")
+
+[node name="ParedeInv2" type="CollisionShape2D" parent="Limites mundo" unique_id=1783904246]
+position = Vector2(1213, 32)
+shape = SubResource("RectangleShape2D_43iu4")
+
+[node name="ParedeInv3" type="CollisionShape2D" parent="Limites mundo" unique_id=791697985]
+position = Vector2(710, -31)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_43iu4")
+
+[node name="ParedeInv4" type="CollisionShape2D" parent="Limites mundo" unique_id=401054210]
+position = Vector2(538, 184.25)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_43iu4")

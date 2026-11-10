@@ -101,6 +101,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	der = player.derrotados
+	print(der)
 	mostrartx()
 	var timeL = cooldown.time_left
 	if timeL > 0:
