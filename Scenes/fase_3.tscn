@@ -113,7 +113,7 @@ texture = ExtResource("1_w1jmt")
 position = Vector2(1002, -191)
 sprite_frames = SubResource("SpriteFrames_qgu4t")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1084858744]
+[node name="Area2D" type="Area2D" parent="." unique_id=1084858744 groups=["reator"]]
 position = Vector2(999, -131)
 collision_layer = 15
 collision_mask = 15

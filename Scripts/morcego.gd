@@ -7,6 +7,7 @@ signal resolvido
 const SPEED = 55.0
 var direction = 1
 var player
+var reator
 var morrendo = false
 func morrer():
 	if morto:
@@ -26,6 +27,9 @@ func _ready() -> void:
 	if not morrendo:
 		animated_sprite_2d.play("Voando")
 		player = get_tree().get_first_node_in_group("Player")
+		if self.is_in_group("fase3"):
+			reator = get_tree().get_first_node_in_group("reator")
+
 
 var atacando = false
 func attack():
@@ -33,11 +37,15 @@ func attack():
 	animated_sprite_2d.play("Ataque")
 
 func _physics_process(delta: float) -> void:
+	var direction
 	if not atacando:
 		if not morrendo:
 			if player == null:
 				return
-			var direction = global_position.direction_to(player.global_position)
+			if not self.is_in_group("fase3"):
+				direction = global_position.direction_to(reator.global_position)
+			else:
+				direction = global_position.direction_to(player.global_position)
 			velocity = direction*SPEED
 			animated_sprite_2d.play("Voando")
 			

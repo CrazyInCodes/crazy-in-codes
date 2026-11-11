@@ -163,6 +163,7 @@ func ratoSpawn():
 	rat.resolvido.connect(registrar_derrota)
 	glitch.add_child(rat)
 	rat.scale = Vector2(5, 5)
+	rat.add_to_group("fase3")
 	inimigos_da_onda += 1
 
 
@@ -171,6 +172,7 @@ func morcegoSpawn():
 	mor.resolvido.connect(registrar_derrota)
 	glitch_2.add_child(mor)
 	mor.scale = Vector2(5, 5)
+	mor.add_to_group("fase3")
 	inimigos_da_onda += 1
 
 
@@ -179,6 +181,7 @@ func caranguejoSpawn():
 	car.resolvido.connect(registrar_derrota)
 	glitch_3.add_child(car)
 	car.scale = Vector2(5, 5)
+	car.add_to_group("fase3")
 	inimigos_da_onda += 1
 
 
@@ -187,6 +190,7 @@ func escorpiaoSpawn():
 	esc.resolvido.connect(registrar_derrota)
 	glitch_4.add_child(esc)
 	esc.scale = Vector2(4.5, 4.5)
+	esc.add_to_group("fase3")
 	inimigos_da_onda += 1
 
 

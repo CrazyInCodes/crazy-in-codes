@@ -16,13 +16,12 @@ var attacking = false
 var live = true
 var equipped = false
 var derrotados: int = 0
+var glitched:bool = false
 
 @onready var cooldown: Timer = $Cooldown
 
 func _ready() -> void:
 	kill_zones.monitoring = false
-	
-	
 
 		
 func dash():
