@@ -451,6 +451,7 @@ func camera_control():
 
 func mostrar_questao():
 	quiz_ui.visible = true
+	color_rect.visible=true
 	timeR = time
 	var questao = questoes[questao_atual]
 	
@@ -495,10 +496,12 @@ func proxima_questao():
 	print("Nova questão! Timer:", timeR)
 
 func tension():
-	color_rect.color.a = (100 - mental_bar.value)/350
+	color_rect.color.a = (100 - mental_bar.value)/200
 	
 	
 func _ready():
+	color_rect.color = Color(0,0,0)
+	color_rect.visible=false
 	camera_control()
 	questoes.shuffle()
 	
