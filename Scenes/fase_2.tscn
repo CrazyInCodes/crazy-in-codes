@@ -310,14 +310,14 @@ autoplay = "default"
 frame_progress = 0.12957099
 
 [node name="Glitch3" type="AnimatedSprite2D" parent="Glitches" unique_id=2017505344]
-position = Vector2(139, -73)
+position = Vector2(641, -72)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_4ck8y")
 autoplay = "default"
 frame_progress = 0.76298636
 
 [node name="Glitch4" type="AnimatedSprite2D" parent="Glitches" unique_id=133919336]
-position = Vector2(200, -60)
+position = Vector2(898.99994, -69)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_4ck8y")
 autoplay = "default"

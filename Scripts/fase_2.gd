@@ -21,7 +21,9 @@ const caranguejo = preload("res://Scenes/caranguejo.tscn")
 const escorpião = preload("res://Scenes/escorpião.tscn")
 
 var der:int = 0
-var missões: Array = [{"txt":"On_body_entered(rato)\n\tIf player on RuaD:\n\t\tplayer.die()\n\telse:\n\t\trato.die()"}]
+var missões: Array = [{"txt":"On_body_entered(inimigo)\n\tIf player on RuaD:\n\t\tplayer.die()\n\telse:\n\t\tinimigo.die()"},
+{"txt":"On_body_entered(inimigo)\n\tIf player.isdashing:\n\t\tinimigo.die()\n\telse:\n\t\tplayer.die"}
+]
 
 
 var colisoes_visiveis = true
@@ -98,6 +100,8 @@ func _ready() -> void:
 	espada.visible = false
 	mostrar_colisoes(self)
 	alternar_colisoes()
+	await get_tree().create_timer(10).timeout
+	start = true
 
 func _process(delta: float) -> void:
 	der = player.derrotados
@@ -108,6 +112,9 @@ func _process(delta: float) -> void:
 		label.text = str(ceil(timeL))
 	elif timeL == 0:
 		label.text = "carregado"
+	mission_start()
+	if der >= 3 and der <= 5:
+		miss2()
 
 func mostrartx():
 	#ambos tipo bool
@@ -130,15 +137,36 @@ func caranguejoSpawn():
 func escorpiaoSpawn():
 	var esc = escorpião.instantiate()
 	glitch_4.add_child(esc)
-	esc.scale = Vector2(4.5,4.5)
-	
+	esc.scale = Vector2(4.5,4.5)	
 ##
+# controle missões
+var primeira_onda = false
+var segunda_onda = false
+var start: bool
+func mission_start():
+	if start:
+		if not primeira_onda and der == 0:
+			ratoSpawn.call_deferred()
+			morcegoSpawn.call_deferred()
+			primeira_onda = true
 
-func _on_óculos_body_entered(body: Node2D) -> void:
-	ratoSpawn.call_deferred()
-	morcegoSpawn.call_deferred()
-	caranguejoSpawn.call_deferred()
-	escorpiaoSpawn.call_deferred()
+		if not segunda_onda and der == 2:
+			caranguejoSpawn.call_deferred()
+			morcegoSpawn.call_deferred()
+			ratoSpawn.call_deferred()
+			segunda_onda = true
+func miss2():
+	if player.is_dashing == true:
+		Pkill_zones.monitoring = true
+	else:
+		Pkill_zones.monitoring = false
+	
+
+#func _on_óculos_body_entered(body: Node2D) -> void:
+	#ratoSpawn.call_deferred()
+	#morcegoSpawn.call_deferred()
+	#caranguejoSpawn.call_deferred()
+	#escorpiaoSpawn.call_deferred()
 	
 func _on_rua_d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
