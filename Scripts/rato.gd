@@ -2,7 +2,7 @@ extends CharacterBody2D
 @onready var enemy_kz: Area2D = $EnemyKillZones
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 var morto = false
-
+signal resolvido
 
 const SPEED = 70.0
 var direction = 1
@@ -20,7 +20,7 @@ func morrer():
 	player.derrotados += 1
 	morrendo = true
 	morto = true 
-
+	resolvido.emit()
 	animated_sprite_2d.play("Morrendo")
 
 	await animated_sprite_2d.animation_finished

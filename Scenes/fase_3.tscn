@@ -27,6 +27,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgu4t"]
+size = Vector2(144, 108)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wyqio"]
 size = Vector2(673.75, 19)
 
@@ -109,9 +112,16 @@ texture = ExtResource("1_w1jmt")
 position = Vector2(1002, -191)
 sprite_frames = SubResource("SpriteFrames_qgu4t")
 
-[node name="Nucleo" type="Sprite2D" parent="." unique_id=1678487384]
-position = Vector2(1001, -117)
+[node name="Area2D" type="Area2D" parent="." unique_id=1084858744]
+position = Vector2(999, -131)
+
+[node name="Nucleo" type="Sprite2D" parent="Area2D" unique_id=1678487384]
+position = Vector2(2, 3)
 texture = ExtResource("3_43iu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=909029391]
+position = Vector2(-1, -16)
+shape = SubResource("RectangleShape2D_qgu4t")
 
 [node name="Player" parent="." unique_id=500233316 instance=ExtResource("4_wyqio")]
 position = Vector2(112, -145)
