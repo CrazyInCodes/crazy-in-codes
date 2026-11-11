@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		if not morrendo:
 			if player == null:
 				return
-			if not self.is_in_group("fase3"):
+			if self.is_in_group("fase3"):
 				direction = global_position.direction_to(reator.global_position)
 			else:
 				direction = global_position.direction_to(player.global_position)

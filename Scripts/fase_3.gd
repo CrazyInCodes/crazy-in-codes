@@ -161,36 +161,36 @@ func mostrartx():
 func ratoSpawn():
 	var rat = rato.instantiate()
 	rat.resolvido.connect(registrar_derrota)
+	rat.add_to_group("fase3")
 	glitch.add_child(rat)
 	rat.scale = Vector2(5, 5)
-	rat.add_to_group("fase3")
 	inimigos_da_onda += 1
 
 
 func morcegoSpawn():
 	var mor = morcego.instantiate()
 	mor.resolvido.connect(registrar_derrota)
+	mor.add_to_group("fase3")
 	glitch_2.add_child(mor)
 	mor.scale = Vector2(5, 5)
-	mor.add_to_group("fase3")
 	inimigos_da_onda += 1
 
 
 func caranguejoSpawn():
 	var car = caranguejo.instantiate()
 	car.resolvido.connect(registrar_derrota)
+	car.add_to_group("fase3")
 	glitch_3.add_child(car)
 	car.scale = Vector2(5, 5)
-	car.add_to_group("fase3")
 	inimigos_da_onda += 1
 
 
 func escorpiaoSpawn():
 	var esc = escorpião.instantiate()
 	esc.resolvido.connect(registrar_derrota)
+	esc.add_to_group("fase3")
 	glitch_4.add_child(esc)
 	esc.scale = Vector2(4.5, 4.5)
-	esc.add_to_group("fase3")
 	inimigos_da_onda += 1
 
 
