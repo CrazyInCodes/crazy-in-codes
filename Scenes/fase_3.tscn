@@ -114,6 +114,8 @@ sprite_frames = SubResource("SpriteFrames_qgu4t")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1084858744]
 position = Vector2(999, -131)
+collision_layer = 15
+collision_mask = 15
 
 [node name="Nucleo" type="Sprite2D" parent="Area2D" unique_id=1678487384]
 position = Vector2(2, 3)
@@ -262,3 +264,31 @@ position = Vector2(737, -60)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_x3but")
 autoplay = "default"
+
+[node name="Glitches2" type="Node2D" parent="." unique_id=298619403]
+
+[node name="Glitch" type="AnimatedSprite2D" parent="Glitches2" unique_id=843965160]
+position = Vector2(36.000008, -73.00001)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_x3but")
+autoplay = "default"
+
+[node name="Glitch2" type="AnimatedSprite2D" parent="Glitches2" unique_id=338761691]
+position = Vector2(81, -55)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_x3but")
+autoplay = "default"
+
+[node name="Glitch3" type="AnimatedSprite2D" parent="Glitches2" unique_id=1150337489]
+position = Vector2(641, -72)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_x3but")
+autoplay = "default"
+
+[node name="Glitch4" type="AnimatedSprite2D" parent="Glitches2" unique_id=1274187707]
+position = Vector2(898.99994, -69)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_x3but")
+autoplay = "default"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

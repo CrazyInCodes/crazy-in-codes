@@ -24,7 +24,7 @@ const caranguejo = preload("res://Scenes/caranguejo.tscn")
 const escorpião = preload("res://Scenes/escorpião.tscn")
 
 var der: int = 0
-var missões: Array = [{"txt": "Testetxt"}]
+
 
 
 # SISTEMA DE ONDAS
@@ -105,12 +105,15 @@ func atualizar_visibilidade(no):
 
 # MISSÕES
 
-func proxima_missãotxt(x):
-	Vlabel.text = str(missões[x]["txt"])
+func infs():
+	Vlabel.text = "SOBREVIVA AOS INIMIGOS\nONDA: %d/3\nInimigos: %d/%d\nNúcleo: %d%%" % [
+		onda_atual,
+		inimigos_resolvidos,
+		inimigos_da_onda,
+		vida_nucleo
+	]
 
 
-func atualizar_missão():
-	pass
 
 
 # INICIALIZAÇÃO
@@ -121,8 +124,7 @@ func _ready() -> void:
 	player.Inv.append("oculos")
 	player.SPEED = 250.0
 	player.DSPEED = 500.0
-
-	proxima_missãotxt(0)
+	
 
 	visor.visible = false
 	óculos.visible = true
@@ -148,7 +150,7 @@ func _process(delta: float) -> void:
 		label.text = str(ceil(timeL))
 	elif timeL == 0:
 		label.text = "carregado"
-
+	infs()
 
 func mostrartx():
 	Vlabel.visible = player.equipped
@@ -160,7 +162,7 @@ func ratoSpawn():
 	var rat = rato.instantiate()
 	rat.resolvido.connect(registrar_derrota)
 	glitch.add_child(rat)
-	rat.scale = Vector2(2, 2)
+	rat.scale = Vector2(5, 5)
 	inimigos_da_onda += 1
 
 
@@ -168,7 +170,7 @@ func morcegoSpawn():
 	var mor = morcego.instantiate()
 	mor.resolvido.connect(registrar_derrota)
 	glitch_2.add_child(mor)
-	mor.scale = Vector2(2, 2)
+	mor.scale = Vector2(5, 5)
 	inimigos_da_onda += 1
 
 
@@ -176,7 +178,7 @@ func caranguejoSpawn():
 	var car = caranguejo.instantiate()
 	car.resolvido.connect(registrar_derrota)
 	glitch_3.add_child(car)
-	car.scale = Vector2(2, 2)
+	car.scale = Vector2(5, 5)
 	inimigos_da_onda += 1
 
 
@@ -184,7 +186,7 @@ func escorpiaoSpawn():
 	var esc = escorpião.instantiate()
 	esc.resolvido.connect(registrar_derrota)
 	glitch_4.add_child(esc)
-	esc.scale = Vector2(2.5, 2.5)
+	esc.scale = Vector2(4.5, 4.5)
 	inimigos_da_onda += 1
 
 
@@ -288,7 +290,7 @@ func receber_dano_nucleo():
 
 # COLISÃO COM O NÚCLEO
 
-func _on_area_nucleo_body_entered(body: Node2D):
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("inimigos"):
 		body.resolvido.emit()
 		inimigos_atingiram_nucleo += 1

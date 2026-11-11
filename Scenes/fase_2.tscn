@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ds745cvbq5e0e" path="res://Scenes/PauseMenu.tscn" id="4_le40s"]
 [ext_resource type="Texture2D" uid="uid://dqjrsv16petuf" path="res://Assets/Sprites/UI/Itens/habilidade-dash.png" id="4_p0386"]
 [ext_resource type="Texture2D" uid="uid://bfidqkcxy7w1y" path="res://Assets/Sprites/UI/Itens/itens.png" id="7_lhuwr"]
+[ext_resource type="AudioStream" uid="uid://mj435u3e8l2k" path="res://Assets/Músicas/Musica1.mp3" id="10_vjvqt"]
 [ext_resource type="Texture2D" uid="uid://de3fkyml15hlq" path="res://Assets/Sprites/Inimigos/glitch.png" id="10_wu88a"]
 [ext_resource type="PackedScene" uid="uid://llraouxeotmv" path="res://Scenes/óculos.tscn" id="11_vjvqt"]
 
@@ -324,10 +325,16 @@ frame_progress = 0.76298636
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1499714998]
 position = Vector2(984, -27)
+collision_layer = 0
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=241266330]
 position = Vector2(1, -30)
 shape = SubResource("RectangleShape2D_rwnh6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=524699213]
+stream = ExtResource("10_vjvqt")
+autoplay = true
 
 [connection signal="body_entered" from="Colisões/CalD" to="." method="_on_cal_d_body_entered"]
 [connection signal="body_exited" from="Colisões/CalD" to="." method="_on_cal_d_body_exited"]
