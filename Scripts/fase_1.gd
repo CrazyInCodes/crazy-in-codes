@@ -500,6 +500,7 @@ func tension():
 	
 	
 func _ready():
+		
 	color_rect.color = Color(0,0,0)
 	color_rect.visible=false
 	camera_control()

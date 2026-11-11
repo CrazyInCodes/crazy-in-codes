@@ -13,7 +13,7 @@ extends Node2D
 @onready var glitch_3: AnimatedSprite2D = $Glitches/Glitch3
 @onready var glitch_4: AnimatedSprite2D = $Glitches/Glitch4
 @onready var player: CharacterBody2D = $Player
-
+@onready var tut_label: Label = $UI/TutLabel
 
 const morcego = preload("res://Scenes/morcego.tscn")
 const rato = preload("res://Scenes/rato.tscn")
@@ -109,6 +109,8 @@ func _ready() -> void:
 	start = true
 
 func _process(delta: float) -> void:
+	if "oculos" in player.Inv:
+		tut_label.visible = true
 	der = player.derrotados
 	print(der)
 	mostrartx()
