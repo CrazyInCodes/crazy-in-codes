@@ -10,6 +10,12 @@ extends Node2D
 @onready var espada: AnimatedSprite2D = $UI/Espada
 @onready var player: CharacterBody2D = $Player
 
+@onready var glitch: AnimatedSprite2D = $Glitches/Glitch
+@onready var glitch_2: AnimatedSprite2D = $Glitches/Glitch2
+@onready var glitch_3: AnimatedSprite2D = $Glitches/Glitch3
+@onready var glitch_4: AnimatedSprite2D = $Glitches/Glitch4
+
+@onready var nucleo: Sprite2D = $Nucleo
 
 const morcego = preload("res://Scenes/morcego.tscn")
 const rato = preload("res://Scenes/rato.tscn")
@@ -109,22 +115,18 @@ func mostrartx():
 ##Inimigos evoke
 func ratoSpawn():
 	var rat = rato.instantiate()
-	rat.scale = Vector2(5,5)
+	glitch.add_child(rat)
+	rat.scale = Vector2(2,2)
 func morcegoSpawn():
 	var mor = morcego.instantiate()
-	mor.scale = Vector2(5,5)
+	glitch_2.add_child(mor)
+	mor.scale = Vector2(2,2)
 func caranguejoSpawn():
 	var car = caranguejo.instantiate()
-	car.scale = Vector2(5,5)
+	glitch_3.add_child(car)
+	car.scale = Vector2(2,2)
 func escorpiaoSpawn():
 	var esc = escorpião.instantiate()
-	esc.scale = Vector2(4.5,4.5)
+	glitch_4.add_child(esc)
+	esc.scale = Vector2(2.5,2.5)
 	
-##
-	
-func _on_rua_d_body_entered(body: Node2D) -> void:
-	pass
-
-
-func _on_rua_d_body_exited(body: Node2D) -> void:
-	pass

@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dqjrsv16petuf" path="res://Assets/Sprites/UI/Itens/habilidade-dash.png" id="8_x3but"]
 [ext_resource type="Texture2D" uid="uid://bfidqkcxy7w1y" path="res://Assets/Sprites/UI/Itens/itens.png" id="9_sspfj"]
 [ext_resource type="PackedScene" uid="uid://sgvxq55ru860" path="res://Scenes/espada.tscn" id="10_m48by"]
+[ext_resource type="Texture2D" uid="uid://de3fkyml15hlq" path="res://Assets/Sprites/Inimigos/glitch.png" id="11_jduhe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubys0"]
 atlas = ExtResource("2_wyqio")
@@ -67,6 +68,35 @@ animations = [{
 
 [sub_resource type="LabelSettings" id="LabelSettings_4bbw7"]
 font_size = 22
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjvqt"]
+atlas = ExtResource("11_jduhe")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhuwr"]
+atlas = ExtResource("11_jduhe")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_offno"]
+atlas = ExtResource("11_jduhe")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3but"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjvqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhuwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_offno")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Fase3" type="Node2D" unique_id=1564983420]
 script = ExtResource("1_od1yq")
@@ -196,3 +226,29 @@ label_settings = SubResource("LabelSettings_4bbw7")
 position = Vector2(246, -105)
 scale = Vector2(0.2, 0.2)
 collision_mask = 1
+
+[node name="Glitches" type="Node2D" parent="." unique_id=2068417899]
+
+[node name="Glitch" type="AnimatedSprite2D" parent="Glitches" unique_id=249985391]
+position = Vector2(203.99998, -198)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_x3but")
+autoplay = "default"
+
+[node name="Glitch2" type="AnimatedSprite2D" parent="Glitches" unique_id=602509855]
+position = Vector2(414, -58.000008)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_x3but")
+autoplay = "default"
+
+[node name="Glitch3" type="AnimatedSprite2D" parent="Glitches" unique_id=885247148]
+position = Vector2(575, -194)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_x3but")
+autoplay = "default"
+
+[node name="Glitch4" type="AnimatedSprite2D" parent="Glitches" unique_id=112593476]
+position = Vector2(737, -60)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_x3but")
+autoplay = "default"

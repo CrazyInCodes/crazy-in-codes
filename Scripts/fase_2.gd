@@ -21,10 +21,13 @@ const caranguejo = preload("res://Scenes/caranguejo.tscn")
 const escorpião = preload("res://Scenes/escorpião.tscn")
 
 var der:int = 0
-var missões: Array = [{"txt":"On_body_entered(inimigo)\n\tIf player on RuaD:\n\t\tplayer.die()\n\telse:\n\t\tinimigo.die()"},
-{"txt":"On_body_entered(inimigo)\n\tIf player.isdashing:\n\t\tinimigo.die()\n\telse:\n\t\tplayer.die"}
+var missões: Array = [{"txt":"On_body_entered(inimigo)\n\tIf player on RuaD:\n\t\tinimigo.die()\n\telse:\n\t\tplayer.die()"},
+{"txt":"On_body_entered(inimigo)\n\tIf player.is_dashing:\n\t\tinimigo.die()\n\telse:\n\t\tplayer.die"},
+{"txt": "On_body_entered(inimigo)\n\tIf not player.glasses_equipped\n\t\tinimigo.die()\n\telse:\n\t\tplayer.die()"},
+{"txt": "On body_entered(inimigo)\n\tIf player on calçada_esq or calçada_dir\n\t\tinimigo.die()\n\telse:\n\t\tplayer.die()"},
+{"txt": "Siga ao final da Fase"}
 ]
-
+#missoes
 
 var colisoes_visiveis = true
 var labels_visiveis = true
@@ -84,14 +87,16 @@ func atualizar_visibilidade(no):
 func proxima_missãotxt(x):
 	Vlabel.text = str(missões[x]["txt"])
 func atualizar_missão():
-	if der <=2:
+	if der <=1:
 		proxima_missãotxt(0)
-	elif der <=5:
+	elif der <=4:
 		proxima_missãotxt(1)
-	elif der <=8:
+	elif der <=7:
 		proxima_missãotxt(2)
-	elif der <= 12:
+	elif der <= 10:
 		proxima_missãotxt(3)
+	elif der>10:
+		proxima_missãotxt(4)
 
 func _ready() -> void:
 	proxima_missãotxt(0)
@@ -107,14 +112,17 @@ func _process(delta: float) -> void:
 	der = player.derrotados
 	print(der)
 	mostrartx()
+	atualizar_missão()
 	var timeL = cooldown.time_left
 	if timeL > 0:
 		label.text = str(ceil(timeL))
 	elif timeL == 0:
 		label.text = "carregado"
 	mission_start()
-	if der >= 3 and der <= 5:
+	if der >= 2 and der < 5:
 		miss2()
+	if der >=5 and der <=7:
+		miss3()
 
 func mostrartx():
 	#ambos tipo bool
@@ -142,39 +150,97 @@ func escorpiaoSpawn():
 # controle missões
 var primeira_onda = false
 var segunda_onda = false
+var terceira_onda = false
+var quarta_onda = false
 var start: bool
 func mission_start():
 	if start:
 		if not primeira_onda and der == 0:
+			primeira_onda = true
+			await get_tree().create_timer(4).timeout
 			ratoSpawn.call_deferred()
 			morcegoSpawn.call_deferred()
-			primeira_onda = true
+			
 
 		if not segunda_onda and der == 2:
+			segunda_onda = true
+			await get_tree().create_timer(4).timeout
 			caranguejoSpawn.call_deferred()
 			morcegoSpawn.call_deferred()
 			ratoSpawn.call_deferred()
-			segunda_onda = true
+			
+		if not terceira_onda and der == 5:
+			terceira_onda = true
+			await get_tree().create_timer(4).timeout
+			caranguejoSpawn.call_deferred()
+			escorpiaoSpawn.call_deferred()
+			morcegoSpawn.call_deferred()
+
+		if not quarta_onda and der == 8:
+			quarta_onda = true
+			await get_tree().create_timer(4).timeout
+			caranguejoSpawn.call_deferred()
+			morcegoSpawn.call_deferred()
+			escorpiaoSpawn.call_deferred()
+			ratoSpawn.call_deferred()
+
 func miss2():
 	if player.is_dashing == true:
+		Pkill_zones.monitoring = true
+		
+	else:
+		Pkill_zones.monitoring = false
+	
+func miss3():
+	if not player.equipped:
 		Pkill_zones.monitoring = true
 	else:
 		Pkill_zones.monitoring = false
 	
-
-#func _on_óculos_body_entered(body: Node2D) -> void:
-	#ratoSpawn.call_deferred()
-	#morcegoSpawn.call_deferred()
-	#caranguejoSpawn.call_deferred()
-	#escorpiaoSpawn.call_deferred()
-	
 func _on_rua_d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		if der >= 0 and der<=2:
-				Pkill_zones.monitoring = true
+			Pkill_zones.monitoring = true
+		else:
+			Pkill_zones.monitoring = false
 
 
 func _on_rua_d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		if der >= 0 and der<=2:
 				Pkill_zones.monitoring = false
+
+
+func _on_cal_e_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		if der >=8 and der <=12:
+			Pkill_zones.monitoring = true
+		else:
+			Pkill_zones.monitoring = false
+
+
+func _on_cal_e_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		if der >= 8 and der<=12:
+				Pkill_zones.monitoring = false
+
+
+func _on_cal_d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		if der >=8 and der <=12:
+			Pkill_zones.monitoring = true
+		else:
+			Pkill_zones.monitoring = false
+
+
+func _on_cal_d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		if der >= 8 and der<=12:
+				Pkill_zones.monitoring = false
+				
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		if der > 10:
+			get_tree().change_scene_to_file("res://Scenes/fase_3.tscn")
