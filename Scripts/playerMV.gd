@@ -48,7 +48,8 @@ func die():
 	live = false
 	await get_tree().create_timer(0.1).timeout
 	if not live:
-		await get_tree().create_timer(1).timeout
+		player_anim.play("Die")
+		await player_anim.animation_finished
 		get_tree().call_deferred("reload_current_scene")
 
 
