@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bfidqkcxy7w1y" path="res://Assets/Sprites/UI/Itens/itens.png" id="9_sspfj"]
 [ext_resource type="PackedScene" uid="uid://sgvxq55ru860" path="res://Scenes/espada.tscn" id="10_m48by"]
 [ext_resource type="Texture2D" uid="uid://de3fkyml15hlq" path="res://Assets/Sprites/Inimigos/glitch.png" id="11_jduhe"]
+[ext_resource type="AudioStream" uid="uid://mj435u3e8l2k" path="res://Assets/Músicas/Musica1.mp3" id="12_x3but"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ubys0"]
 atlas = ExtResource("2_wyqio")
@@ -290,5 +291,9 @@ position = Vector2(898.99994, -69)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_x3but")
 autoplay = "default"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=976233187]
+stream = ExtResource("12_x3but")
+autoplay = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
