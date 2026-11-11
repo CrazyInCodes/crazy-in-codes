@@ -15,6 +15,7 @@ extends Node2D
 @onready var glitch_2: AnimatedSprite2D = $Glitches/Glitch2
 @onready var glitch_3: AnimatedSprite2D = $Glitches/Glitch3
 @onready var glitch_4: AnimatedSprite2D = $Glitches/Glitch4
+@onready var glitch_5: AnimatedSprite2D = $Glitches/Glitch5
 
 @onready var nucleo: Sprite2D = $Area2D/Nucleo
 
@@ -22,6 +23,7 @@ const morcego = preload("res://Scenes/morcego.tscn")
 const rato = preload("res://Scenes/rato.tscn")
 const caranguejo = preload("res://Scenes/caranguejo.tscn")
 const escorpião = preload("res://Scenes/escorpião.tscn")
+const monstro = preload("res://Scenes/monstro.tscn")
 
 var der: int = 0
 
@@ -192,6 +194,14 @@ func escorpiaoSpawn():
 	glitch_4.add_child(esc)
 	esc.scale = Vector2(4.5, 4.5)
 	inimigos_da_onda += 1
+	
+func monstroSpawn():
+	var mon = monstro.instantiate()
+	mon.resolvido.connect(registrar_derrota)
+	mon.add_to_group("fase3")
+	glitch_5.add_child(mon)
+	mon.scale = Vector2(8,8)
+	inimigos_da_onda+=1
 
 
 # CONTROLE DAS ONDAS
@@ -249,6 +259,7 @@ func executar_onda(numero: int):
 			ratoSpawn()
 			await get_tree().create_timer(1.5).timeout
 			caranguejoSpawn()
+			monstroSpawn()
 			await get_tree().create_timer(1.5).timeout
 			morcegoSpawn()
 
@@ -260,9 +271,11 @@ func executar_onda(numero: int):
 
 			caranguejoSpawn()
 			escorpiaoSpawn()
+			monstroSpawn()
 			await get_tree().create_timer(1.5).timeout
 			caranguejoSpawn()
 			escorpiaoSpawn()
+			monstroSpawn()
 
 	# Aguarda a resolução de todos os inimigos
 	while inimigos_resolvidos < inimigos_da_onda:

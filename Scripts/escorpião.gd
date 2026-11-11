@@ -50,8 +50,8 @@ func _physics_process(delta: float) -> void:
 			animated_sprite_2d.play("Andando")
 			
 			if direction.x < 0:
-				animated_sprite_2d.flip_h = true
-			elif direction.x > 0:
 				animated_sprite_2d.flip_h = false
+			elif direction.x > 0:
+				animated_sprite_2d.flip_h = true
 			move_and_slide()
 	

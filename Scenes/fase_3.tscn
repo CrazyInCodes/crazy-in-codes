@@ -266,6 +266,12 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_x3but")
 autoplay = "default"
 
+[node name="Glitch5" type="AnimatedSprite2D" parent="Glitches" unique_id=630534099]
+position = Vector2(101, -110)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_x3but")
+autoplay = "default"
+
 [node name="Glitches2" type="Node2D" parent="." unique_id=298619403]
 
 [node name="Glitch" type="AnimatedSprite2D" parent="Glitches2" unique_id=843965160]
