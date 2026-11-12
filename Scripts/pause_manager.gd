@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var pause_button: Button = $PauseButton
 @onready var panel: Panel = $Panel
+@onready var pause_visual: AnimatedSprite2D = $PauseVisual
 
 @onready var continue_visual: AnimatedSprite2D = $Panel/ContinueVisual
 @onready var menu_visual: AnimatedSprite2D = $Panel/MenuVisual
@@ -49,3 +50,10 @@ func _on_restart_mouse_entered() -> void:
 
 func _on_restart_mouse_exited() -> void:
 	restart_visual.play("Default")
+
+
+func _on_pause_button_mouse_entered() -> void:
+	pause_visual.play("MouseOn")
+
+func _on_pause_button_mouse_exited() -> void:
+	pause_visual.play("default")

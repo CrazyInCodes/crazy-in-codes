@@ -2,8 +2,36 @@
 
 [ext_resource type="Script" uid="uid://bwqd32kotknkn" path="res://Scripts/pause_manager.gd" id="1_lj4oq"]
 [ext_resource type="Texture2D" uid="uid://bsii4e08y7u6i" path="res://Assets/Sprites/UI/Botões/botao-continuar.png" id="2_ey1tb"]
+[ext_resource type="Texture2D" uid="uid://cllfpoocjmmla" path="res://Assets/Sprites/UI/Botões/botao-pause.png" id="2_siy43"]
 [ext_resource type="Texture2D" uid="uid://br1v0mg6axtkb" path="res://Assets/Sprites/UI/Botões/botao-menu.png" id="3_siy43"]
 [ext_resource type="Texture2D" uid="uid://ucslsvgscvtq" path="res://Assets/Sprites/UI/Botões/botao-restart.png" id="4_yxrls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siy43"]
+atlas = ExtResource("2_siy43")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxrls"]
+atlas = ExtResource("2_siy43")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgu4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siy43")
+}],
+"loop": 1,
+"name": &"MouseOn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxrls")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7fw7d"]
 font_size = 120
@@ -93,6 +121,13 @@ animations = [{
 process_mode = 3
 script = ExtResource("1_lj4oq")
 
+[node name="PauseVisual" type="AnimatedSprite2D" parent="." unique_id=1688929726]
+z_index = 3
+position = Vector2(1257, 24.5)
+scale = Vector2(1.437501, 1.46875)
+sprite_frames = SubResource("SpriteFrames_qgu4t")
+animation = &"MouseOn"
+
 [node name="PauseButton" type="Button" parent="." unique_id=847556526]
 offset_left = 1234.0
 offset_top = 1.0
@@ -100,7 +135,6 @@ offset_right = 1327.0
 offset_bottom = 95.0
 scale = Vector2(0.5, 0.5)
 theme_override_font_sizes/font_size = 60
-text = "▶"
 
 [node name="Panel" type="Panel" parent="." unique_id=140443629]
 visible = false
@@ -160,6 +194,8 @@ scale = Vector2(0.3, 0.3)
 text = "
 "
 
+[connection signal="mouse_entered" from="PauseButton" to="." method="_on_pause_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseButton" to="." method="_on_pause_button_mouse_exited"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="mouse_entered" from="Panel/ContinueVisual/Continue" to="." method="_on_continue_mouse_entered"]
 [connection signal="mouse_exited" from="Panel/ContinueVisual/Continue" to="." method="_on_continue_mouse_exited"]
