@@ -15,7 +15,7 @@
         header div a{font-family: "Press Start 2P", monospace;
             color:#fff;
             text-decoration: none;
-            font-size: 30px;} /* Nome do Jogo */
+            font-size: 30px;}
         .contorno-crazy{display: inline-flex;
             flex-direction: row;
             letter-spacing: -15px;
@@ -23,7 +23,7 @@
         .contorno-codes{text-shadow: -2px 0 #fcfcfc, 2px 0 #fcfcfc, 0 -2px #fcfcfc, 0 2px #fcfcfc;}
         nav a{text-decoration: none;
             color:#fff; font-family: "Press Start 2P", monospace;
-            padding: 0.5rem 0.6rem;
+            padding: 0.4rem 0.5rem;
             display: inline-block;} /* Opções do Menu */
         .nav-menu a:hover{color: #555;}
         .in{margin-left: 15px;}
@@ -35,7 +35,7 @@
             display: flex; justify-content: space-between; align-items: center; position: relative;}
             .menu-toggle {display: none; background: none; border: none;
                             color: white; font-size: 1.7rem; cursor: pointer; margin-left: auto;}
-            @media (max-width: 768px) /* Ajuste para telas menores */ {
+            @media (max-width: 768px) and (max-width:1366px) /* Ajuste para telas menores */ {
             .menu-toggle { display: block;}
             .nav-menu { display: none; flex-direction: column; position: absolute;
                         top: 100%; /* Posiciona exatamente abaixo do header */
@@ -56,39 +56,21 @@
 
         /* Início */
         main{background: #000; position: relative;}
-        .inicio {position: relative;
-                background: #000;}
-        .atras {display: block; width: 100%;
-                height: auto;
-                image-rendering: pixelated;}
-        .trilho {position: absolute; top: 0;
-                bottom: 0;/* a logo solta um pouco antes do fim da imagem */ 
-                left: 0; width: 100%;
-                pointer-events: none;
-                z-index: 2;}
-        .frente {position: sticky; top: 35vh;/* posição da logo na tela enquanto você rola */
-                display: block;
-                margin: 20vh auto 0;/* posição inicial, no começo da página */
-                width: 25%;
-                max-width: 300px; height: auto;
-                image-rendering: pixelated;}
+        .inicio {position: relative; background: #000;}
+        .atras {display: block; width: 100%; height: auto; image-rendering: pixelated;}
+        .trilho {position: absolute; top: 0; bottom: 0; left: 0; width: 100%; pointer-events: none; z-index: 2;}
+        .frente {position: sticky; top: 35vh; display: block; margin: 20vh auto 0; width: 25%;
+                 max-width: 300px; height: auto; image-rendering: pixelated;}
         .frente.parada{position: absolute; top: var(--topo-parada); left: var(--esq-parada); width: var(--larg-parada);}
-                /* sombra no fim da imagem */
-        .inicio::after {content: ""; position: absolute;
-                        left: 0; bottom: -1px;
-                        width: 100%; height: 50%;
-                        pointer-events: none; z-index: 1;
+        .inicio::after {content: ""; position: absolute; left: 0; bottom: -1px; width: 100%; height: 50%; pointer-events: none; z-index: 1;
                         background: linear-gradient(to bottom,
                             rgba(0,0,0,0) 0%, rgba(0,0,0,0.03) 10%, rgba(0,0,0,0.10) 20%,
                             rgba(0,0,0,0.22) 30%, rgba(0,0,0,0.38) 40%, rgba(0,0,0,0.55) 50%,
                             rgba(0,0,0,0.72) 60%, rgba(0,0,0,0.85) 70%, rgba(0,0,0,0.94) 80%,
                             rgba(0,0,0,0.99) 90%, #000 100%);}
         @media (max-width: 768px) {
-            .atras {height: auto;
-                    object-position: center;}
-            .frente {width: 25%;
-                    top: 10vh;
-                    margin: 10vh auto 0;}
+            .atras {height: auto; object-position: center;}
+            .frente {width: 25%; top: 10vh; margin: 10vh auto 0;}
             .trilho {bottom: -30vh;}
     }
 
@@ -97,7 +79,8 @@
                   min-height: 85vh; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
                   grid-template-areas:
                         "video titulo"
-                        "video texto";
+                        "video texto"
+                        "video botao";
                   align-content: center; column-gap: 2rem; max-height: auto;}
         .gameplay > div{ display: contents; }   /* faz o vídeo e o texto virarem itens do grid */
         .gameplay h2{grid-area: titulo; align-self: end; font-size: 60px; text-align: right; margin: 0 140px 1rem 0;}
@@ -106,6 +89,10 @@
         .video{grid-area: video; align-self: center; justify-self: start; width: 70%; max-width: 600px; aspect-ratio: 16/9;
                border: 4px solid #fff; border-radius: 8px; overflow: hidden; background: #000; margin: 0 0 0 2rem;}
                .video video, .video iframe{width: 100%; height: 100%; display:block}
+               .btn-jogar{grid-area: botao; justify-self: end; align-self: start; margin: 1.5rem 90px 0 0; padding: 16px 22px;
+                          font-family:"Press Start 2P", monospace; font-size: clamp(10px, 1.4vw, 20px); color: #000;background: #fff;
+                          border: 4px solid #fff; border-radius: 8px; text-decoration: none; cursor: pointer;}
+        .btn-jogar:hover{background:#000; color:#fff;}
         @media (max-width: 768px){
             .gameplay{min-height: 0; height: 40vw; padding: 0vw 1vw; align-items: start; align-content: start; grid-template-rows: auto;
                       grid-auto-rows: auto; margin-bottom: 0;}
@@ -114,6 +101,13 @@
                          align-self: start; margin-top: -4vw; line-height: 1.5; justify-self: end; text-align: right; padding-left: 2vw;}
             .video{ width: 70%; margin: 1.5rem 0; margin-top: -2vw;}
             .video video, .video iframe{width: 100%; height: 100%; display:block}
+        }
+        @media (min-width:769px) and (max-width:1366px){
+            .gameplay{min-height: 0; padding: 2rem 3vw 35vh; column-gap: 2vw; align-content: start;}
+            .gameplay h2{font-size: clamp(24px, 4.6vw, 60px); margin: 0 3vw 1rem 0;}
+            .gameplay p{font-size: clamp(12px, 1.9vw, 30px); line-height: 1.8; max-width: 16em; margin:0 3vw 0 0; justify-self:end; text-align:right;}
+            .video{width: 70%; max-width:none; margin:0;}
+            .btn-jogar{margin: 2vw 0 0; padding: 6px 8px; border-width: 2px; border-radius: 4px; font-size: clamp(5px, 2.2vw, 11px);}
         }
 
         /*personagens*/
@@ -159,6 +153,19 @@
             #ladoEsq{justify-self: start;}
             #ladoDir{justify-self: end;}
         }
+        @media (min-width:769px) and (max-width:1366px){
+            .personagenstitulo{font-size: clamp(24px, 4.6vw, 60px); margin: 0; padding: 0 3vw; box-sizing: border-box;}
+            .spanh2{margin: 0;}
+            .carrosel{grid-template-columns: minmax(0,1fr) minmax(0,22vw) minmax(0,1fr); padding: 0 2vw;}
+            .lado{gap: 1vw;}
+            .card{width: 100%; max-width: 16vw; min-width: 0; min-height: 360px; margin-left: 10px;}
+            .card h3{font-size: clamp(10px, 1.4vw, 25px); overflow-wrap: anywhere;}
+            .card p{font-size: clamp(8px, 1.2vw, 16px); line-height: 1.5;}
+            .sprite{zoom:0.7;}
+        }
+        @media (min-width:769px) and (max-width:1100px){
+            .sprite{zoom: 0.7;}
+        }
 
         /* Cenários */
         .cenario{background: #000; color: #fff; font-family: "Press Start 2P", monospace;}
@@ -180,6 +187,9 @@
             .card-cen{max-width: 30vw; padding: 4px; border-width: 2px; margin-top: 20px;}
             .card-cen h3{font-size: clamp(6px, 2.2vw, 12px); margin-bottom: 4px;}
             .card-cen p{font-size: clamp(4px, 1.5vw, 8px); line-height: 1.4;}
+        }
+        @media (min-width:769px) and (max-width:1100px){
+            .card-cen{padding: 8px; margin-top: 30px; margin-left: 20px; margin-right: 20px;}
         }
 
         /* Documento */
@@ -209,6 +219,11 @@
             .documento iframe{grid-area: pdf; justify-self: start; align-self: start; width: 90%; height: 100px; margin: 0; border-width: 3px;}
             .documento button{grid-area: botao; justify-self: start; margin: 0; font-size: clamp(6px, 2.2vw, 10px); padding: 6px 8px; border-width: 2px;}
          }
+         @media (min-width:769px) and (max-width:1366px){
+            .documentotitulo{font-size: clamp(28px, 4.2vw, 60px); margin: 0 4% 1rem 0;}
+            .documento p{font-size: clamp(12px, 1.9vw, 30px); max-width: 100%; margin: 0 4% 0 0;}
+            .documento iframe{height: 60vh;}
+         }
 
         /* Espaço Vazio entre Documento e Git Hub */
         .aaa{background: #000; color: #000; margin-top: -20px;}
@@ -217,8 +232,34 @@
             body{background: #000;}
         }
 
+        /* Códigos e Storyboard */
+        .codigos, .storyboard{background:#000; color:#fff;  font-family: "Press Start 2P", monospace; margin-top: 150px;}
+        .codigostitulo, .storyboardtitulo{display: flex; justify-content: space-between; width: 100%; box-sizing: border-box;
+                                          margin: 0; padding: 0 4vw; font-size:clamp(14px, 3.6vw, 60px);}
+        .card-cod, .card-sb{width: 120%; max-width: 26vw; box-sizing:border-box; padding: 12px; margin-top: 50px;
+                            border: 3px solid #fff; border-radius: 8px; text-align: center;}
+        .card-cod img, .card-sb img{width: 100%; aspect-ratio: 16/9; object-fit: cover;display: block; margin-bottom: 10px;}
+        .card-cod h3, .card-sb h3{font-size: clamp(10px, 1.4vw, 18px); margin: 0 0 8px; overflow-wrap: anywhere;}
+        .card-cod p, .card-sb p{font-size: clamp(8px, 1vw, 11px); line-height: 1.6; margin: 0;}
+        .btn-tela{font-family: inherit; font-size: clamp(7px, 0.9vw, 10px); background:#000; color: #fff; border: 2px solid #fff;
+                  padding: 8px 10px; margin-top: 10px; cursor: pointer;}
+        .btn-tela:hover{background:#fff; color:#000;}
+        .card-cod img:fullscreen{width: 100vw; height: 100vh; aspect-ratio: auto; object-fit: contain; background:#000; margin: 0;}
+        .card-cod img:-webkit-full-screen{width: 100vw; height: 100vh; aspect-ratio: auto; object-fit: contain; background:#000; margin: 0;}
+        #codEsq, #sbEsq{grid-column:1; justify-self: start;}
+        #codDir, #sbDir{grid-column:3; justify-self: end;}
+        #esqCod{left: 1vw;}
+        #dirCod{right: 1vw;}
+        @media (max-width: 768px){
+            .codigostitulo, .storyboardtitulo{font-size: clamp(9px, 4vw, 30px); padding: 0 4%;}
+            .card-cod, .card-sb{max-width: 30vw; padding: 4px; border-width: 2px; margin-top: 20px;}
+            .card-cod h3, .card-sb h3{font-size: clamp(6px, 2.2vw, 12px); margin-bottom: 4px;}
+            .card-cod p, .card-sb p{font-size: clamp(4px, 1.5vw, 8px); line-height: 1.4;}
+            .btn-tela{font-size: clamp(4px, 1.6vw, 8px); padding: 3px 4px; border-width: 1px; margin-top: 4px;}
+        }
+
         /* Git Hub */
-        .github{background: #000; color: #fff; font-family: "Press Start 2P", monospace; padding: 60px 3%;}
+        .github{background: #000; color: #fff; font-family: "Press Start 2P", monospace; padding: 60px 3%; margin-top: 120px;}
         .github-titulo{font-size: clamp(20px, 4vw, 60px); text-align: center; margin: 0 0 50px;}
         .equipe{display: grid; grid-template-columns: repeat(5, minmax(0,1fr)); gap: 20px; align-items: start;}
         .membro{display: flex; flex-direction: column; align-items: center;}
@@ -244,7 +285,7 @@
         .rodape-icone{fill: currentColor; vertical-align: -0.125em;}
         .rodape-imagem{height: 48px; width: auto; display: block; image-rendering:pixelated;}
         @media (max-width: 768px){
-            .rodape{flex-direction: column;gap:12px;text-align: center;}
+            .rodape{flex-direction: column; gap:12px; text-align: center;}
             .rodape-imagem{height: 36px;}
         }
     </style>
@@ -266,6 +307,8 @@
             <a href="#personagens" rel="stylesheet">Personagens</a>
             <a href="#cenario" rel="stylesheet">Cenários</a>
             <a href="#documento" rel="stylesheet">Documento</a>
+            <a href="#codigos" rel="stylesheet">Códigos</a>
+            <a href="#storyboard" rel="stylesheet">Storyboard</a>
             <a href="#github" rel="stylesheet">Git Hub</a>
         </nav>
     </header>
@@ -280,10 +323,11 @@
             <h2>Gameplay</h2>
             <div>
                 <div class="video">
-                    <video src="Gameplay/gameplay.mp4" controls poster="Imagens/thumbnailjogo.jpeg"></video>
+                    <video src="Gameplay/GameplayEditada.mp4" controls poster="Imagens/thumbnailjogo.jpeg"></video>
                 </div>
                 <p href="#https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">Vídeo de Jogabilidade com tutorial mostrando
                 detalhes sobre nosso jogo!!!</p>
+                <a class="btn-jogar" href="Gameplay/Crazy in Codes.exe" download>Jogue agora</a>
             </div>
         </section>
         <section class="personagens" id="personagens">
@@ -381,14 +425,14 @@
                     </div>
 
                     <div class="card-cen">
-                        <img src="Imagens/" alt="Pré Luta">
-                        <h3>Quarto da Protagonista</h3>
-                        <p>Fase 3</p>
+                        <img src="Imagens/Cenarios.fase2deserto.png" alt="Deserto">
+                        <h3>Deserto da Fase 2</h3>
+                        <p>Fase 2</p>
                     </div>
 
                     <div class="card-cen">
-                        <img src="Imagens/" alt="Arena">
-                        <h3>Quarto da Protagonista</h3>
+                        <img src="Imagens/fase3.cenario.png" alt="Arena">
+                        <h3>Núcleo do Jogo</h3>
                         <p>Fase 3</p>
                     </div>
                 </div>
@@ -397,12 +441,74 @@
         <section class="documento" id="documento">
             <h2 class="documentotitulo">Documento</h2>
             <p>Documento ABNT referente a detalhes técnicos e da história de nosso jogo!!!</p>
-            <a href="Documento/DocumentoJogo.pdf">Baixar Documento</a>
-            <iframe id="pdf" src="Documento/DocumentoJogo.pdf" title="Documento do Projeto" allowfullscreen></iframe>
+            <a href="Documento/DocumentoJogoA.pdf">Baixar Documento</a>
+            <iframe id="pdf" src="Documento/DocumentoJogoA.pdf" title="Documento do Projeto" allowfullscreen></iframe>
             <button id="btnTela" type="button">Tela Cheia</button> 
         </section>
         <section class="aaa">
             <h2>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</h2>
+        </section>
+        <section class="codigos" id="codigos">
+            <h2 class="codigostitulo"><span>Códigos</span><span>do Jogo e Site</span></h2>
+            <section class="carrosel">
+                <button id="esqCod" class="seta" type="button" aria-label="Anterior">&lt;</button>
+                <div class="lado" id="codEsq"></div>
+                    <div class="lado" id="codDir"></div>
+                        <button id="dirCod" class="seta" type="button" aria-label="Próximo">&gt;</button>
+                        <div id="todosCod" hidden>
+                            <div class="card-cod">
+                                <img src="Imagens/codigojogo2.jpeg" alt="Código 1">
+                                <h3>Código 1</h3>
+                                <p>Código do jogo para colisões</p>
+                                <button class="btn-tela" type="button">Tela cheia</button>
+                            </div>
+
+                            <div class="card-cod">
+                                <img src="Imagens/codigojogo1.jpeg" alt="Código 1">
+                                <h3>Código 2</h3>
+                                <p>Código do jogo para fase 3</p>
+                                <button class="btn-tela" type="button">Tela cheia</button>
+                            </div>
+
+                            <div class="card-cod">
+                                <img src="Imagens/codigosite1.png" alt="Código 1">
+                                <h3>Código 3</h3>
+                                <p>Código do site para mostrar os códigos referentes ao jogo</p>
+                                <button class="btn-tela" type="button">Tela cheia</button>
+                            </div>
+
+                            <div class="card-cod">
+                                <img src="Imagens/codigosite2.png" alt="Código 1">
+                                <h3>Código 4</h3>
+                                <p>Código do site para o estilo do início.</p>
+                                <button class="btn-tela" type="button">Tela cheia</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        </section>
+        <section class="storyboard" id="storyboard">
+            <h2 class="storyboardtitulo"><span>Story</span><span>board</span></h2>
+            <section class="carrosel">
+                <div class="lado" id="sbEsq">
+                    <div class="card-sb">
+                        <img src="Imagens/Storyboard2.jpeg" alt="Storyboard 1">
+                        <h3>Storyboard 1</h3>
+                        <p>Storyboard Primeira Fase</p>
+                    </div>
+                </div>
+
+                <div class="lado" id="sbDir">
+                    <div class="card-sb">
+                        <img src="Imagens/Storyboard1.jpeg" alt="Storyboard 2">
+                        <h3>Storyboard 2</h3>
+                        <p>Storyboard Fase Final</p>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section>
+
         </section>
         <section class="github" id="github">
             <h2 class="github-titulo">GitHub</h2>
@@ -540,7 +646,7 @@
 
         /* Script para a Logo parar ao chegar no Git Hub */
         const logo = document.querySelector('.frente');
-        const alvo = document.querySelector('.documento');
+        const alvo = document.querySelector('.storyboard');
         const trilho = logo.parentElement;
         let topoSticky = 0;
         if (getComputedStyle(trilho).position === 'static') {
@@ -587,6 +693,36 @@
         medirHeader();
         window.addEventListener('resize', medirHeader);
         window.addEventListener('load', medirHeader);
+
+        /* Carrossel dos Códigos (1 de cada lado, de 2 em 2) */
+        function carrossel2em2({todos, esq, dir, btnEsq, btnDir}){
+            const cards = [...document.querySelectorAll(todos + ' > *')];
+            const ladoE = document.getElementById(esq);
+            const ladoD = document.getElementById(dir);
+            const bE = document.getElementById(btnEsq);
+            const bD = document.getElementById(btnDir);
+            let ini = 0;
+            function mostrar(){
+                ladoE.replaceChildren(...cards.slice(ini, ini + 1));
+                ladoD.replaceChildren(...cards.slice(ini + 1, ini + 2));
+                bE.disabled = ini === 0;
+                bD.disabled = ini + 2 >= cards.length;
+            }
+            bE.addEventListener('click', () => { ini = Math.max(0, ini - 2); mostrar(); });
+            bD.addEventListener('click', () => { ini = Math.min(cards.length - 2, ini + 2); mostrar(); });
+            mostrar();
+        }
+        carrossel2em2({todos:'#todosCod', esq:'codEsq', dir:'codDir', btnEsq:'esqCod', btnDir:'dirCod'});
+
+        /* Botão de tela cheia dos Códigos */
+        document.addEventListener('click', e => {
+            const b = e.target.closest('.btn-tela');
+            if (!b) return;
+            if (document.fullscreenElement) { document.exitFullscreen(); return; }
+            const img = b.closest('.card-cod').querySelector('img');
+            const abrir = img.requestFullscreen || img.webkitRequestFullscreen;
+            if (abrir) abrir.call(img); else window.open(img.src, '_blank');
+        });
     </script>
 </body>
 </html>
