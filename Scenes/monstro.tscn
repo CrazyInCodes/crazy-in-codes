@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cq08ruf1c5gvr" path="res://Assets/Sprites/Inimigos/Monstro..png" id="3_tewva"]
 [ext_resource type="Texture2D" uid="uid://bxdaii5ehkhen" path="res://Assets/Sprites/Player/spriteplayerS3morte.png" id="3_yc572"]
 [ext_resource type="PackedScene" uid="uid://df01k7en2ir3b" path="res://Scenes/enemy_kill_zones.tscn" id="4_dk8f7"]
+[ext_resource type="Texture2D" uid="uid://cu4a2m3jghngh" path="res://Assets/Sprites/Inimigos/monstrotransformação.png" id="5_tewva"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g403j"]
 atlas = ExtResource("3_dkt1y")
@@ -106,17 +107,41 @@ region = Rect2(320, 0, 32, 32)
 atlas = ExtResource("3_yc572")
 region = Rect2(352, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dkt1y"]
-atlas = ExtResource("3_dkt1y")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6te4f"]
+atlas = ExtResource("5_tewva")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6te4f"]
-atlas = ExtResource("3_dkt1y")
-region = Rect2(288, 0, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_24v8j"]
-atlas = ExtResource("3_dkt1y")
-region = Rect2(320, 0, 32, 32)
+atlas = ExtResource("5_tewva")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlp6m"]
+atlas = ExtResource("5_tewva")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhkhe"]
+atlas = ExtResource("5_tewva")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_menc7"]
+atlas = ExtResource("5_tewva")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7ime"]
+atlas = ExtResource("5_tewva")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kfi0"]
+atlas = ExtResource("5_tewva")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1ey8"]
+atlas = ExtResource("5_tewva")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfcmt"]
+atlas = ExtResource("5_tewva")
+region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hqr2v"]
 animations = [{
@@ -217,31 +242,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dkt1y")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_6te4f")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_24v8j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dkt1y")
+"texture": SubResource("AtlasTexture_jlp6m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6te4f")
+"texture": SubResource("AtlasTexture_mhkhe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_24v8j")
+"texture": SubResource("AtlasTexture_menc7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dkt1y")
+"texture": SubResource("AtlasTexture_a7ime")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6te4f")
+"texture": SubResource("AtlasTexture_5kfi0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_24v8j")
+"texture": SubResource("AtlasTexture_v1ey8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfcmt")
 }],
 "loop": 0,
 "name": &"Transformacao",
@@ -259,8 +284,7 @@ script = ExtResource("1_yc572")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=252946101 groups=["inimigos"]]
 sprite_frames = SubResource("SpriteFrames_hqr2v")
-animation = &"Monstro"
-frame_progress = 0.14542589
+animation = &"Transformacao"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1349689404 groups=["inimigos"]]
 visibility_layer = 2
