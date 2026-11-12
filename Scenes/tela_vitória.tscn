@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://oi81duv4ame3"]
+
+[ext_resource type="Script" uid="uid://d3x2ocafd65m5" path="res://Scripts/tela_vitória.gd" id="1_1ciqw"]
+[ext_resource type="Texture2D" uid="uid://br1v0mg6axtkb" path="res://Assets/Sprites/UI/Botões/botao-menu.png" id="1_07lnb"]
+[ext_resource type="Texture2D" uid="uid://b402ht303k12h" path="res://Assets/Sprites/UI/Botões/botao-sair.png" id="2_5epr8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qgu4t"]
+font_size = 78
+font_color = Color(0.34045568, 0.7186995, 0.08563528, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_425uk"]
+atlas = ExtResource("1_07lnb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mys0b"]
+atlas = ExtResource("1_07lnb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5epr8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_425uk")
+}],
+"loop": 1,
+"name": &"MouseOn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mys0b")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ciqw"]
+atlas = ExtResource("2_5epr8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46rio"]
+atlas = ExtResource("2_5epr8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qgu4t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ciqw")
+}],
+"loop": 1,
+"name": &"MouseOn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46rio")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TelaVitória" type="CanvasLayer" unique_id=526109343]
+script = ExtResource("1_1ciqw")
+
+[node name="Label" type="Label" parent="." unique_id=2067164569]
+offset_left = 419.0
+offset_top = 132.0
+offset_right = 896.0
+offset_bottom = 255.0
+text = "Você Venceu"
+label_settings = SubResource("LabelSettings_qgu4t")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=75266531]
+z_index = -2
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 1284.0
+offset_bottom = 729.0
+
+[node name="MenuVisual" type="AnimatedSprite2D" parent="." unique_id=1497693413]
+position = Vector2(654, 385)
+scale = Vector2(13, 13)
+sprite_frames = SubResource("SpriteFrames_5epr8")
+animation = &"MouseOn"
+
+[node name="Back To Menu" type="Button" parent="MenuVisual" unique_id=1509303823]
+z_index = -1
+offset_left = -16.538462
+offset_top = -6.9230824
+offset_right = 17.153845
+offset_bottom = 3.8461475
+
+[node name="QuitVisual" type="AnimatedSprite2D" parent="." unique_id=1743610953]
+position = Vector2(666, 601.00006)
+scale = Vector2(13, 13)
+sprite_frames = SubResource("SpriteFrames_qgu4t")
+
+[node name="Quit" type="Button" parent="QuitVisual" unique_id=518814248]
+offset_left = -17.0
+offset_top = -7.0
+offset_right = 17.0
+offset_bottom = 3.0
+
+[connection signal="mouse_entered" from="MenuVisual/Back To Menu" to="." method="_on_back_to_menu_mouse_entered"]
+[connection signal="mouse_exited" from="MenuVisual/Back To Menu" to="." method="_on_back_to_menu_mouse_exited"]
+[connection signal="pressed" from="MenuVisual/Back To Menu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="mouse_entered" from="QuitVisual/Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="mouse_exited" from="QuitVisual/Quit" to="." method="_on_quit_mouse_exited"]
+[connection signal="pressed" from="QuitVisual/Quit" to="." method="_on_quit_pressed"]
