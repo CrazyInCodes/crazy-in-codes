@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://l4w3v3wx47l"]
+
+[ext_resource type="Texture2D" uid="uid://br1v0mg6axtkb" path="res://Assets/Sprites/UI/Botões/botao-menu.png" id="1_ka2pi"]
+[ext_resource type="Script" uid="uid://br2600ssrgi4a" path="res://Scripts/menu.gd" id="2_feyax"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qgu4t"]
+font_size = 70
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 1, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c7vtl"]
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_feyax"]
+atlas = ExtResource("1_ka2pi")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omtrn"]
+atlas = ExtResource("1_ka2pi")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wgyhe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_feyax")
+}],
+"loop": 1,
+"name": &"MouseOn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omtrn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tutorial" type="CanvasLayer" unique_id=469794930]
+
+[node name="Fase1" type="ColorRect" parent="." unique_id=1975401286]
+offset_right = 416.0
+offset_bottom = 753.0
+
+[node name="Label" type="Label" parent="Fase1" unique_id=1919327000]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 40.0
+offset_right = 303.0
+offset_bottom = 130.0
+text = "FASE1"
+label_settings = SubResource("LabelSettings_qgu4t")
+
+[node name="Label2" type="Label" parent="Fase1" unique_id=690815782]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 154.0
+offset_right = 410.0
+offset_bottom = 703.0
+text = "*Fase com derrota obrigatória
+Estilo de quiz
+Após a animação inical, um quiz de 4 alternativas irá aparecer na tela. 
+Responda as perguntas corretamente
+"
+label_settings = SubResource("LabelSettings_c7vtl")
+autowrap_mode = 2
+
+[node name="Fase2" type="ColorRect" parent="." unique_id=1121968295]
+offset_left = 418.0
+offset_top = -2.0
+offset_right = 850.0
+offset_bottom = 756.0
+
+[node name="Label" type="Label" parent="Fase2" unique_id=1393481917]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 40.0
+offset_right = 303.0
+offset_bottom = 130.0
+text = "FASE2"
+label_settings = SubResource("LabelSettings_qgu4t")
+
+[node name="Label2" type="Label" parent="Fase2" unique_id=1247135531]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 154.0
+offset_right = 410.0
+offset_bottom = 571.0
+text = "Siga os glitches e encontre o óculos, equipe-o e interprete o código no visor localizado no canto superior direito da tela
+
+	Para Dash aperte Q
+	Para equipar o óculos aperte E
+
+Derrote os inimigos e avance a próxima fase."
+label_settings = SubResource("LabelSettings_c7vtl")
+autowrap_mode = 2
+
+[node name="Fase3" type="ColorRect" parent="." unique_id=1445917554]
+offset_left = 853.0
+offset_top = -4.0
+offset_right = 1296.0
+offset_bottom = 758.0
+
+[node name="Label" type="Label" parent="Fase3" unique_id=901795784]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 40.0
+offset_right = 303.0
+offset_bottom = 130.0
+text = "FASE3"
+label_settings = SubResource("LabelSettings_qgu4t")
+
+[node name="Label2" type="Label" parent="Fase3" unique_id=1226236360]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 154.0
+offset_right = 410.0
+offset_bottom = 703.0
+text = "Defenda o núcleo do jogo e sobreviva as 3 ondas de inimigos
+
+Para utilizar a espada e atacar inimigos, aperte R ou clique do botão esquerdo do Mouse"
+label_settings = SubResource("LabelSettings_c7vtl")
+autowrap_mode = 2
+
+[node name="Menu" type="AnimatedSprite2D" parent="." unique_id=662610133]
+z_index = 2
+position = Vector2(170.00003, 682.00006)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_wgyhe")
+script = ExtResource("2_feyax")
+
+[node name="MenuB" type="Button" parent="Menu" unique_id=110074546]
+z_index = -1
+offset_left = -16.599993
+offset_top = -7.1999936
+offset_right = 16.300009
+offset_bottom = 3.3000064
+
+[connection signal="mouse_entered" from="Menu/MenuB" to="Menu" method="_on_menu_b_mouse_entered"]
+[connection signal="mouse_exited" from="Menu/MenuB" to="Menu" method="_on_menu_b_mouse_exited"]
+[connection signal="pressed" from="Menu/MenuB" to="Menu" method="_on_menu_b_pressed"]

@@ -99,6 +99,7 @@ scale = Vector2(13, 13)
 sprite_frames = SubResource("SpriteFrames_qgu4t")
 
 [node name="Quit" type="Button" parent="QuitVisual" unique_id=518814248]
+z_index = -1
 offset_left = -17.0
 offset_top = -7.0
 offset_right = 17.0
