@@ -142,6 +142,9 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if finalizado:
+		await get_tree().create_timer(4).timeout
+		get_tree().change_scene_to_file("res://Scenes/tela_vitória.tscn")
 	der = player.derrotados
 
 	mostrartx()
