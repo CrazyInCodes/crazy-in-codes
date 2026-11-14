@@ -79,23 +79,24 @@ offset_bottom = 756.0
 
 [node name="Label" type="Label" parent="Fase2" unique_id=1393481917]
 layout_mode = 0
-offset_left = 108.0
-offset_top = 40.0
-offset_right = 303.0
-offset_bottom = 130.0
+offset_left = 113.0
+offset_top = 1.0
+offset_right = 314.0
+offset_bottom = 97.0
 text = "FASE2"
 label_settings = SubResource("LabelSettings_qgu4t")
 
 [node name="Label2" type="Label" parent="Fase2" unique_id=1247135531]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 154.0
-offset_right = 410.0
-offset_bottom = 571.0
+offset_left = 20.0
+offset_top = 79.0
+offset_right = 419.0
+offset_bottom = 706.0
 text = "Siga os glitches e encontre o óculos, equipe-o e interprete o código no visor localizado no canto superior direito da tela
 
 	Para Dash aperte Q
 	Para equipar o óculos aperte E
+	W A S D Ou setas para andar
 
 Derrote os inimigos e avance a próxima fase."
 label_settings = SubResource("LabelSettings_c7vtl")

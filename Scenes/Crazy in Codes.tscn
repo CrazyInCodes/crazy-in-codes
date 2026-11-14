@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://cakgfqgh4tpnb" path="res://Scripts/quitButton.gd" id="2_4uahm"]
 [ext_resource type="Texture2D" uid="uid://b402ht303k12h" path="res://Assets/Sprites/UI/Botões/botao-sair.png" id="3_206en"]
 [ext_resource type="Texture2D" uid="uid://1tsojdnruprn" path="res://Assets/Sprites/Cenários/tela-inicial.png" id="5_206en"]
+[ext_resource type="Texture2D" uid="uid://pw6qmd0cd87a" path="res://Assets/Sprites/UI/Botões/botaotutorial.png" id="6_iq3d2"]
+[ext_resource type="Script" uid="uid://bccp4cama7at0" path="res://Scripts/tutorialbutton.gd" id="6_q4j2g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iq3d2"]
 atlas = ExtResource("1_26p5a")
@@ -60,6 +62,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqthn"]
+atlas = ExtResource("6_iq3d2")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7nqp"]
+atlas = ExtResource("6_iq3d2")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_exckr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqthn")
+}],
+"loop": 1,
+"name": &"Mouse_on",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a7nqp")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Menu" type="Control" unique_id=1719148576]
 layout_mode = 3
 anchors_preset = 15
@@ -69,32 +98,32 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="StartVisual" type="AnimatedSprite2D" parent="." unique_id=1188971946]
-position = Vector2(267, 226)
+position = Vector2(253, 193)
 scale = Vector2(13, 13)
 sprite_frames = SubResource("SpriteFrames_7fw7d")
 
 [node name="Start" type="Button" parent="." unique_id=505519816]
 z_index = -1
 layout_mode = 0
-offset_left = 53.0
-offset_top = 135.0
-offset_right = 475.0
-offset_bottom = 264.0
+offset_left = 39.0
+offset_top = 102.0
+offset_right = 461.0
+offset_bottom = 231.0
 theme_type_variation = &"FlatButton"
 script = ExtResource("1_sj23m")
 
 [node name="QuitVisual" type="AnimatedSprite2D" parent="." unique_id=2034477714]
-position = Vector2(268, 469)
+position = Vector2(264, 637)
 scale = Vector2(13, 13)
 sprite_frames = SubResource("SpriteFrames_4b3kd")
 
 [node name="Quit" type="Button" parent="." unique_id=2088075113]
 z_index = -1
 layout_mode = 0
-offset_left = 59.0
-offset_top = 378.0
-offset_right = 479.0
-offset_bottom = 511.0
+offset_left = 55.0
+offset_top = 546.0
+offset_right = 475.0
+offset_bottom = 679.0
 theme_type_variation = &"FlatButton"
 text = "
 "
@@ -106,9 +135,25 @@ position = Vector2(637.00006, 465)
 scale = Vector2(20, 20)
 texture = ExtResource("5_206en")
 
+[node name="Tut" type="Button" parent="." unique_id=9160116]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 332.0
+offset_right = 461.0
+offset_bottom = 455.0
+script = ExtResource("6_q4j2g")
+
+[node name="TutorialVIsual" type="AnimatedSprite2D" parent="." unique_id=937119752]
+position = Vector2(250, 402)
+scale = Vector2(13, 13)
+sprite_frames = SubResource("SpriteFrames_exckr")
+
 [connection signal="mouse_entered" from="Start" to="Start" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Start" to="Start" method="_on_mouse_exited"]
 [connection signal="pressed" from="Start" to="Start" method="_on_pressed"]
 [connection signal="mouse_entered" from="Quit" to="Quit" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Quit" to="Quit" method="_on_mouse_exited"]
 [connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]
+[connection signal="mouse_entered" from="Tut" to="Tut" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Tut" to="Tut" method="_on_mouse_exited"]
+[connection signal="pressed" from="Tut" to="Tut" method="_on_pressed"]
