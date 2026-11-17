@@ -98,9 +98,10 @@
                       grid-auto-rows: auto; margin-bottom: 0;}
             .gameplay h2{font-size: clamp(14px, 5vw, 60px); margin: 0; white-space: nowrap; align-self: start; margin-top: -4vw;}
             .gameplay p{font-size: clamp(5px, 2.4vw, 12px); list-style: 1.4; margin: 0; width: 100%; max-width: 30vw;
-                         align-self: start; margin-top: -4vw; line-height: 1.5; justify-self: end; text-align: right; padding-left: 2vw;}
+                         align-self: start; margin-top: 2vw; line-height: 1.5; justify-self: end; text-align: right; padding-left: 2vw;}
             .video{ width: 70%; margin: 1.5rem 0; margin-top: -2vw;}
             .video video, .video iframe{width: 100%; height: 100%; display:block}
+            .btn-jogar{margin: 2vw 0 0; padding: 6px 8px; border-width: 2px; border-radius: 4px; font-size: clamp(5px, 2.2vw, 11px);}
         }
         @media (min-width:769px) and (max-width:1366px){
             .gameplay{min-height: 0; padding: 2rem 3vw 35vh; column-gap: 2vw; align-content: start;}
@@ -118,21 +119,22 @@
               border-radius: 8px; margin: 50px 0 0; text-align: center; margin-top: 50px; display: flex; flex-direction: column;}
         .card p{margin-top: auto; font-size: 16px;}
         .card h3{font-size: 25px;}
-        .sprite{--zoom: 3;      /* tamanho na tela */
-                --fw: 64;       /* largura de UM frame, em px da imagem */
-                --fh: 64;       /* altura de UM frame */
-                --frames: 4;    /* frames por linha */
-                --rows: 1;      /* nº de linhas da imagem */
-                --row: 0;       /* qual linha mostrar (0 = primeira) */
+        .sprite{--zoom: 3;
+                --fw: 64;
+                --fh: 64;
+                --frames: 4;
+                --rows: 1;
+                --row: 0;
                 width: calc(var(--fw) * var(--zoom) * 1px); height: calc(var(--fh) * var(--zoom) * 1px); background-repeat: no-repeat;
                 background-size: calc(var(--fw) * var(--frames) * var(--zoom) * 1px)
                    calc(var(--fh) * var(--rows) * var(--zoom) * 1px); background-position: 0 calc(var(--row) * var(--fh) * var(--zoom) * -1px);
                 image-rendering: pixelated; margin: 0 auto 12px;
                 animation: andar 0.8s steps(var(--frames)) infinite; /* Animação de andar */}
         .spriteprotagonista{animation: andar 1.2s steps(var(--frames)) infinite !important;}
+        .sprite-p1{--zoom: 4 !important; margin: 0 20px;}
         @keyframes andar{
             to{background-position-x: calc(var(--fw) * var(--frames) * var(--zoom) * -1px);}
-            } /* animação de andar do personagem, com 4 sprites */
+            } 
         .lado{display: flex; gap: 1.5vw;}
         #ladoEsq{grid-column: 1; justify-self: start;}
         #ladoDir{grid-column: 3; justify-self: end;}
@@ -288,6 +290,17 @@
             .rodape{flex-direction: column; gap:12px; text-align: center;}
             .rodape-imagem{height: 36px;}
         }
+
+        /* Visor */
+        .visor{position: fixed; inset: 0; z-index: 3000; background:#000;display: flex; flex-direction: column;}
+        .visor[hidden]{display:none;}
+        .visor-barra{display: flex; align-items: center; justify-content: center; gap: 14px; padding: 10px; border-bottom: 3px solid #fff;
+                     font-family: "Press Start 2P", monospace; color :#fff; font-size:14px;}
+        .visor-barra button{font-family: inherit; font-size: 14px; background: #000; color: #fff; border: 2px solid #fff; 
+                            padding: 8px 12px; cursor: pointer;}
+        .visor-barra button:hover{background:#fff; color:#000;}
+        .visor-area{flex:1; overflow:auto; display:flex; cursor:grab;}
+        .visor-area img{margin:auto; max-width:none; display:block;}
     </style>
 </head>
 <body>
@@ -323,11 +336,11 @@
             <h2>Gameplay</h2>
             <div>
                 <div class="video">
-                    <video src="Gameplay/GameplayEditada.mp4" controls poster="Imagens/thumbnailjogo.jpeg"></video>
+                    <video src="Gameplay/gameplayeditada2.mp4" controls poster="Imagens/thumbnailjogo.jpeg"></video>
                 </div>
                 <p href="#https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">Vídeo de Jogabilidade com tutorial mostrando
                 detalhes sobre nosso jogo!!!</p>
-                <a class="btn-jogar" href="Gameplay/Crazy in Codes.exe" download>Jogue agora</a>
+                <a class="btn-jogar" href="https://siriusve.itch.io/crazy-in-codes" target="_blank">Jogue agora</a>
             </div>
         </section>
         <section class="personagens" id="personagens">
@@ -347,19 +360,19 @@
                             
                             <div class="card">
                                 <h3>Carangueijo</h3>
-                                <div class="sprite" style="--frames: 4; --rows: 2; --row: 0; background-image: url(Imagens/caranguejo.andando.png);"></div>
+                                <div class="sprite sprite-p1" style="--frames: 4; --rows: 2; --row: 0; background-image: url(Imagens/caranguejo.andando.png);"></div>
                                 <p>Inimigo da Fase 2, vive na praia.</p>
                             </div>
 
                             <div class="card">
                                 <h3>Rato</h3>
-                                <div class="sprite" style="--frames: 4; --rows: 2; --row: 0; background-image: url(Imagens/rato.andando.png);"></div>
+                                <div class="sprite sprite-p1" style="--frames: 4; --rows: 2; --row: 0; background-image: url(Imagens/rato.andando.png);"></div>
                                 <p>Inimigo da Fase 2, roedor maisperigoso da cidade.</p>
                             </div>
 
                             <div class="card">                                
                                 <h3>Morcego</h3>
-                                <div class="sprite" style="background-image: url(Imagens/morcego.voando.png);"></div>
+                                <div class="sprite sprite-p1" style="background-image: url(Imagens/morcego.voando.png);"></div>
                                 <p>Inimigo da Fase 2, te ataca pelo céu.</p>
                             </div>
 
@@ -404,36 +417,42 @@
                         <img src="Imagens/cenario.mesa.png" alt="Quarto">
                         <h3>Quarto da Protagonista</h3>
                         <p>Fase 1</p>
+                        <button class="btn-tela" type="button">Tela cheia</button>
                     </div>
 
                     <div class="card-cen">
                         <img src="Imagens/cenario.telagrande.png" alt="Computador">
                         <h3>Computador da Protagonista</h3>
                         <p>Fase 1</p>
+                        <button class="btn-tela" type="button">Tela cheia</button>
                     </div>
 
                     <div class="card-cen">
                         <img src="Imagens/cenario.monstro.png" alt="Monstro">
                         <h3>Monstro na Janela</h3>
                         <p>Fase 1</p>
+                        <button class="btn-tela" type="button">Tela cheia</button>
                     </div>
 
                     <div class="card-cen">
                         <img src="Imagens/Cenario.fase2.png" alt="Cidade">
                         <h3>Cidade dentro do Jogo</h3>
                         <p>Fase 2</p>
+                        <button class="btn-tela" type="button">Tela cheia</button>
                     </div>
 
                     <div class="card-cen">
                         <img src="Imagens/Cenarios.fase2deserto.png" alt="Deserto">
                         <h3>Deserto da Fase 2</h3>
                         <p>Fase 2</p>
+                        <button class="btn-tela" type="button">Tela cheia</button>
                     </div>
 
                     <div class="card-cen">
                         <img src="Imagens/fase3.cenario.png" alt="Arena">
                         <h3>Núcleo do Jogo</h3>
                         <p>Fase 3</p>
+                        <button class="btn-tela" type="button">Tela cheia</button>
                     </div>
                 </div>
             </section>
@@ -495,6 +514,7 @@
                         <img src="Imagens/Storyboard2.jpeg" alt="Storyboard 1">
                         <h3>Storyboard 1</h3>
                         <p>Storyboard Primeira Fase</p>
+                        <button class="btn-tela" type="button">Tela cheia</button>
                     </div>
                 </div>
 
@@ -503,6 +523,7 @@
                         <img src="Imagens/Storyboard1.jpeg" alt="Storyboard 2">
                         <h3>Storyboard 2</h3>
                         <p>Storyboard Fase Final</p>
+                        <button class="btn-tela" type="button">Tela cheia</button>
                     </div>
                 </div>
             </section>
@@ -524,7 +545,7 @@
                     <div class="membro">
                         <img class="foto" src="Imagens/fotojons.jpeg" alt="Foto Jons">
                         <div class="corpo">
-                            <h3>Jônatas David Quispe Pimenta da Silva</h3>
+                            <h3>Jônatas David</h3>
                             <a href="https://github.com/JonatasDavid27" target="_blank" rel="noopener">@JonatasDavid27</a>
                         </div>
                     </div>
@@ -540,7 +561,7 @@
                     <div class="membro">
                         <img class="foto" src="Imagens/fotomick2.jpeg" alt="Foto Mickeias">
                         <div class="corpo">
-                            <h3>Mickeias Nascimento de Brito</h3>
+                            <h3>Mickeias Nascimento</h3>
                             <a href="https://github.com/tp4mickeias290-droid" target="_blank" rel="noopener">@tp4mickeias290-droid</a>
                         </div>
                     </div>
@@ -586,6 +607,17 @@
             </li>
         </ul>
     </footer>
+    <div class="visor" id="visor" hidden>
+        <div class="visor-barra">
+            <button type="button" id="visorMenos">-</button>
+            <span id="visorNivel">100%</span>
+            <button type="button" id="visorMais">+</button>
+            <button type="button" id="visorFechar">Fechar</button>
+        </div>
+        <div class="visor-area" id="visorArea">
+            <img id="visorImg" alt="">
+        </div>
+    </div>  
     <script>
         /* Script para alternar o menu em telas menores */
         const menuToggle = document.querySelector('.menu-toggle');
@@ -714,15 +746,99 @@
         }
         carrossel2em2({todos:'#todosCod', esq:'codEsq', dir:'codDir', btnEsq:'esqCod', btnDir:'dirCod'});
 
-        /* Botão de tela cheia dos Códigos */
+        /* Botão de tela cheia (Códigos, Cenários e Storyboard) */
         document.addEventListener('click', e => {
             const b = e.target.closest('.btn-tela');
             if (!b) return;
             if (document.fullscreenElement) { document.exitFullscreen(); return; }
-            const img = b.closest('.card-cod').querySelector('img');
-            const abrir = img.requestFullscreen || img.webkitRequestFullscreen;
-            if (abrir) abrir.call(img); else window.open(img.src, '_blank');
+        const img = b.closest('.card-cod, .card-cen, .card-sb').querySelector('img');
+        const abrir = img.requestFullscreen || img.webkitRequestFullscreen;
+        if (abrir) abrir.call(img); else window.open(img.src, '_blank');
         });
+
+        /* Visor com zoom (Códigos, Cenários e Storyboard) */
+const visor = document.getElementById('visor');
+const visorImg = document.getElementById('visorImg');
+const visorArea = document.getElementById('visorArea');
+const visorNivel = document.getElementById('visorNivel');
+let zoom = 1;
+
+function ajustarVisor(){
+  // zoom 1 = imagem inteira cabendo na tela
+  const base = Math.min(
+    visorArea.clientWidth / visorImg.naturalWidth,
+    visorArea.clientHeight / visorImg.naturalHeight
+  );
+  visorImg.style.width = (visorImg.naturalWidth * base * zoom) + 'px';
+  visorNivel.textContent = Math.round(zoom * 100) + '%';
+}
+
+function mudarZoom(novo){
+  const cx = (visorArea.scrollLeft + visorArea.clientWidth / 2) / visorArea.scrollWidth;
+  const cy = (visorArea.scrollTop + visorArea.clientHeight / 2) / visorArea.scrollHeight;
+  zoom = Math.min(5, Math.max(1, novo));
+  ajustarVisor();
+  visorArea.scrollLeft = cx * visorArea.scrollWidth - visorArea.clientWidth / 2;
+  visorArea.scrollTop = cy * visorArea.scrollHeight - visorArea.clientHeight / 2;
+}
+
+function abrirVisor(src, alt){
+  zoom = 1;
+  visorImg.alt = alt || '';
+  visor.hidden = false;
+  document.body.style.overflow = 'hidden';
+  visorImg.onload = ajustarVisor;
+  visorImg.src = src;
+  if (visorImg.complete) ajustarVisor();
+}
+
+function fecharVisor(){
+  visor.hidden = true;
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('.btn-tela');
+  if (!b) return;
+  const img = b.closest('.card-cod, .card-cen, .card-sb').querySelector('img');
+  abrirVisor(img.src, img.alt);
+});
+
+document.getElementById('visorMais').addEventListener('click', () => mudarZoom(zoom + 0.5));
+document.getElementById('visorMenos').addEventListener('click', () => mudarZoom(zoom - 0.5));
+document.getElementById('visorFechar').addEventListener('click', fecharVisor);
+visorImg.addEventListener('dblclick', () => mudarZoom(zoom > 1 ? 1 : 2.5));
+
+// Ctrl + roda do mouse dá zoom só na imagem
+visorArea.addEventListener('wheel', e => {
+  if (!e.ctrlKey) return;
+  e.preventDefault();
+  mudarZoom(zoom + (e.deltaY < 0 ? 0.5 : -0.5));
+}, {passive:false});
+
+document.addEventListener('keydown', e => {
+  if (visor.hidden) return;
+  if (e.key === 'Escape') fecharVisor();
+  if (e.key === '+' || e.key === '=') mudarZoom(zoom + 0.5);
+  if (e.key === '-') mudarZoom(zoom - 0.5);
+});
+
+window.addEventListener('resize', () => { if (!visor.hidden) ajustarVisor(); });
+
+// arrastar a imagem com o mouse
+let arrastando = false, sx, sy, sl, st;
+visorArea.addEventListener('mousedown', e => {
+  arrastando = true; sx = e.clientX; sy = e.clientY;
+  sl = visorArea.scrollLeft; st = visorArea.scrollTop;
+  visorArea.style.cursor = 'grabbing';
+  e.preventDefault();
+});
+window.addEventListener('mouseup', () => { arrastando = false; visorArea.style.cursor = 'grab'; });
+window.addEventListener('mousemove', e => {
+  if (!arrastando) return;
+  visorArea.scrollLeft = sl - (e.clientX - sx);
+  visorArea.scrollTop = st - (e.clientY - sy);
+  });
     </script>
 </body>
 </html>
